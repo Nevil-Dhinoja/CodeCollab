@@ -17,7 +17,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
       $current = $_POST['current'];
       $new = $_POST['new'];
       $confirm = $_POST['confirm'];
-// regex
       $passwordPattern = "/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/";
 
       if ($current === $pass) {
