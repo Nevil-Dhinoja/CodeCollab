@@ -1,0 +1,33 @@
+Dashboard:
+Users available on platform/overview of them
+Profile
+teams
+project of user
+
+Projects and Overview;
+available from database - project list type
+create project button then one my project page 
+in that 
+overview
+teams members - who have selected that projects pr working on that add and delete the member
+files of that projects
+settings - to change name etc..
+
+on adding any member to project/team mail forwaded that he added to team
+
+user can see team and join
+team add- daily small task in that and polls member of team can see that and answer
+user can see any others project and members,files
+in project button
+
+
+
+database ;
+create update delete project - project database
+users project also stored in this and 
+teams member name also 
+= user on that projects on time of create and after any updation neccsarry
+teams table =  team name and task and polls
+
+
+
