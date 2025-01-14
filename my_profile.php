@@ -31,7 +31,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="assets/css/theme.minc619.css?v=1.0">
-
+  
     <link rel="preload" href="assets/css/theme.min.css" data-hs-appearance="default" as="style">
     <link rel="preload" href="assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
 
@@ -456,19 +456,19 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
           </div>
           <script>
             setTimeout(function() {
-              window.location = "dashboard.php"; // Redirect after 3 seconds
+              window.location = "my_profile.php"; // Redirect after 3 seconds
             }, 3000);
           </script>
         <?php
         } else {
         ?>
           <div class="alert alert-danger alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
-            <strong>Error!</strong> Select Image.
+            <strong>Error!</strong> First Select Image then Update Header.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
           <script>
             setTimeout(function() {
-              window.location = "dashboard.php"; // Redirect after 3 seconds
+              window.location = "my_profile.php"; // Redirect after 3 seconds
             }, 3000);
           </script>
       <?php
