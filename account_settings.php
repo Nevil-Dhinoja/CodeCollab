@@ -245,18 +245,12 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                                             </label>
                                             <!-- Custom File Cover -->
                                             <div class="profile-cover-content profile-cover-uploader p-3">
-                                                <form method="post" enctype="multipart/form-data">
-                                                    <input type="file" class="js-file-attach profile-cover-uploader-input" id="profileCoverUplaoder" name="file" data-hs-file-attach-options='{
-                            "textTarget": "#profileCoverImg",
-                            "mode": "image",
-                            "targetAttr": "src",
-                            "allowTypes": [".png", ".jpeg", ".jpg"]
-                         }'>
-                                                    <Button class="profile-cover-uploader-label btn btn-sm btn-white" for="" type="submit" name="update">
+                                                <!-- <form method="post" enctype="multipart/form-data"> -->
+                                                    <!-- <Button class="profile-cover-uploader-label btn btn-sm btn-white" for="" type="submit" name="update">
                                                         <i class="bi-camera-fill"></i>
                                                         <span class="d-none d-sm-inline-block ms-1" name="update" type="submit">Update Header</span>
-                                                    </Button>
-                                                </form>
+                                                    </Button> -->
+                                                <!-- </form> -->
                                             </div>
                                             <!-- End Custom File Cover -->
                                         </div>
