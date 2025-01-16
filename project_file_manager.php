@@ -1,6 +1,10 @@
 <?php   
+session_start();
 include_once("create_database.php");
-$q = "SELECT * FROM users ";
+if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
+  $email = $_SESSION['email'];
+  $pass = $_SESSION['password'];
+  $q = "SELECT * FROM users WHERE user_email = '$email'";
 $result2 = mysqli_query($conn, $q);  ?>
 
 <!DOCTYPE html>
@@ -52,7 +56,7 @@ $result2 = mysqli_query($conn, $q);  ?>
   </head>
   <?php include_once("user_header.php") ?>
 
-  <nav class="has-navbar-vertical-aside navbar-vertical-aside-show-xl   footer-offset">
+  <body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl   footer-offset">
 
     <script src="assets/js/hs.theme-appearance.js"></script>
 
@@ -1705,8 +1709,8 @@ $result2 = mysqli_query($conn, $q);  ?>
     <!-- End Content -->
   </main>
   <!-- ========== END MAIN CONTENT ========== -->
-<?php include_once("user_footer.php"); ?>
-</>
+<?php include_once("user_footer.php"); }  ?>
+    </body>
 
 <!-- Mirrored from htmlstream.com/front-dashboard/apps-file-manager.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 29 Dec 2024 09:36:00 GMT -->
 </html>

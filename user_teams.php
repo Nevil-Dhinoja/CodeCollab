@@ -97,13 +97,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
       <div class="page-header">
         <div class="row align-items-end mb-3">
           <div class="col-sm mb-2 mb-sm-0">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb breadcrumb-no-gutter">
-                <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Pages</a></li>
-                <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Project</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Teams</li>
-              </ol>
-            </nav>
 
             <h1 class="page-header-title">Teams</h1>
           </div>
