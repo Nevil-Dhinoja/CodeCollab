@@ -83,7 +83,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
       }
       if (!empty($row['profile_header']) && $row['profile_header'] == 1) {
         $profile_complete++;
-      }
+      } 
 
       // Calculate the percentage based on the number of fields completed
       $total_fields = 6; // Total number of fields to track (user_name, profile, user_email, Mobile_no)
@@ -199,7 +199,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                     <a class="nav-link" href="my_teams.php">Teams</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="user_project.php">Projects <span class="badge bg-soft-dark text-dark rounded-circle ms-1">3</span></a>
+                    <a class="nav-link" href="my_projects.php">Projects <span class="badge bg-soft-dark text-dark rounded-circle ms-1"></span></a>
                   </li>
 
                   <li class="nav-item ms-auto">
@@ -433,7 +433,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
 
       </main>
-      <?php
+      <?php 
       if (isset($_POST['update'])) {
         include_once("create_database.php");
         // Handle file upload

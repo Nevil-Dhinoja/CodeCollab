@@ -8,11 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Title -->
-  <title>Basic Reset Password | Front - Admin &amp; Dashboard Template</title>
+  <title>Forgot My Password</title>
+  <link rel="shortcut icon" href="assets/images/logo-mini.svg" />
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="favicon.ico">
-
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
 
@@ -213,6 +212,4 @@
     })()
   </script>
 </body>
-
-<!-- Mirrored from htmlstream.com/front-dashboard/authentication-reset-password-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 29 Dec 2024 09:38:59 GMT -->
 </html>

@@ -11,7 +11,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     while ($row = mysqli_fetch_array($result)) {
         $pass = $row['user_password'];
     }
-    if (isset($_POST['lgn_btn'])) {
+    if (isset($_POST['btn'])) {
         $current = $_POST['current'];
         $new = $_POST['new'];
         $confirm = $_POST['confirm'];
@@ -27,7 +27,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
                     if ($res) {
                         session_destroy();
-                        echo "<script>alert('Password Changed Successfully.'); window.location='login_user.php';</script>";
+                    echo "<div class='alert alert-success'>Password Changed Successfully !!  Login Again.</div>";
+                        echo "<script> window.location='login_user.php';</script>";
                     } else {
                         echo "<div class='alert alert-dark'>Error in changing the password.</div>";
                     }
@@ -45,71 +46,131 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     echo "<script>window.location = 'login_user.php';</script>"; // Redirect to login if not authenticated
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <!-- Mirrored from htmlstream.com/front-dashboard/user-profile-my-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 29 Dec 2024 09:38:11 GMT -->
+
+  <head>
+    <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8">
-    <meta name="author" content="CodeColab">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Change Password</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #333;
-            color: #fff;
-        }
-        .register-form {
-            max-width: 500px;
-            margin: 100px auto;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-        .register-form h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #4e73df;
-        }
-        .form-control {
-            border-radius: 20px;
-            margin-bottom: 15px;
-        }
-        .btn-primary {
-            border-radius: 20px;
-            width: 100%;
-            padding: 10px;
-        }
-        .links {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .links a {
-            color: #4e73df;
-            text-decoration: none;
-        }
-        .links a:hover {
-            text-decoration: underline;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>Update password</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/logo-mini.svg" />
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="assets/css/vendor.min.css">
+
+    <!-- CSS Front Template -->
+    <link rel="stylesheet" href="assets/css/theme.minc619.css?v=1.0">
+  
+    <link rel="preload" href="assets/css/theme.min.css" data-hs-appearance="default" as="style">
+    <link rel="preload" href="assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
+
+    <style data-hs-appearance-onload-styles>
+      * {
+        transition: unset !important;
+      }
+
+      body {
+        opacity: 0;
+      }
     </style>
-</head>
-<body>
-<header>
-    <?php include_once("header1.php"); ?>
-</header>
-<div class="container">
-    <div class="register-form">
-        <h2>Change Password</h2>
-        <form method="POST" action="">
-            <input type="password" class="form-control" name="current" placeholder="Current Password" required>
-            <input type="password" class="form-control" name="new" placeholder="New Password" required>
-            <input type="password" class="form-control" name="confirm" placeholder="Confirm Password" required>
-            <button type="submit" class="btn btn-primary btn-block" name="lgn_btn">Change</button>
-        </form>
+
+    <!-- ONLY DEV -->
+
+    <style>
+      body {
+        opacity: 0;
+      }
+    </style>
+
+  </head>
+  <?php include_once("user_header.php") ?>
+
+  <body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl   footer-offset">
+
+    <script src="assets/js/hs.theme-appearance.js"></script>
+
+    <script src="assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
+
+    <main id="content" role="main" class="main">
+    <div class="position-fixed top-0 end-0 start-0 bg-img-start" style="height: 32rem; background-image: url(assets/svg/components/card-6.svg);">
+      <!-- Shape -->
+      <div class="shape shape-bottom zi-1">
+        <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1921 273">
+          <polygon fill="#fff" points="0,273 1921,273 1921,0 " />
+        </svg>
+      </div>
+      <!-- End Shape -->
     </div>
-</div>
-<footer>
-    <?php include_once("footer1.php"); ?>
-</footer>
-</body>
-</html>
+
+    <!-- Content -->
+    <div class="container py-5 py-sm-7">
+ 
+
+      <div class="mx-auto" style="max-width: 30rem;">
+        <!-- Card -->
+        <div class="card card-lg mb-5">
+          <div class="card-body">
+            <!-- Form -->
+            <form  action="change_pass.php"  novalidate enctype="multipart/form-data" method="post">
+              <div class="text-center">
+                <div class="mb-5">
+				<a class="d-flex justify-content-center mb-5" href="index.php">
+        <img class="zi-2" src="assets/images/logo (2).svg" alt="Image Description" style="width: 8rem;">
+      </a>
+                  <h1 class="display-5">Wanted a New Password ?</h1>
+                  <p>Enter the Details we'll send you instructions to reset your password.</p>
+                </div>
+              </div>
+
+              <!-- Form -->
+              <div class="mb-4">
+                <label class="form-label" for="resetPasswordSrEmail" tabindex="0">Your Current password</label>
+
+                <input type="text" class="form-control form-control-lg" name="current" id="resetPasswordSrEmail" tabindex="1" placeholder="Existing Password" aria-label="Enter your email address" value="<?php echo $pass; ?>" readonly>
+                <span class="invalid-feedback">Existing Password</span>
+              </div>
+              <div class="mb-4">
+                <label class="form-label" for="resetPasswordSrEmail" tabindex="0">New password</label>
+
+                <input type="password" class="form-control form-control-lg" name="new" id="resetPasswordSrEmail" tabindex="1" placeholder="Please enter a valid Password" aria-label="Enter your email address" required>
+                <span class="invalid-feedback">Please enter a valid Password</span>
+              </div>
+              <div class="mb-4">
+                <label class="form-label" for="resetPasswordSrEmail" tabindex="0">Confirm New Password</label>
+
+                <input type="password" class="form-control form-control-lg" name="confirm" id="resetPasswordSrEmail" tabindex="1" placeholder="Please enter a valid Password" aria-label="Enter your email address" required>
+                <span class="invalid-feedback">Please enter a valid Password.</span>
+              </div>
+              <!-- End Form -->
+
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg" name="btn">Submit</button>
+
+              </div>
+            </form>
+            <!-- End Form -->
+          </div>
+        </div>
+        <!-- End Card -->
+      </div>
+    </div>
+    <!-- End Content -->
+  </main>
+
+
+    <?php
+    include_once("user_footer.php");
+    ?>
+  </body>
+
+  </html>

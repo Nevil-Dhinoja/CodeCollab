@@ -954,9 +954,9 @@
               <div class="nav-item">
                     <!-- Collapse -->
                     <div class="nav-item">
-                      <a class="nav-link " href="#navbarVerticalMenuAuthenticationResetPasswordMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuAuthenticationResetPasswordMenu" aria-expanded="false" aria-controls="navbarVerticalMenuAuthenticationResetPasswordMenu">
+                      <a class="nav-link " href="change_pass.php" role="button">
                       <i class="bi-archive  nav-icon"></i>
-                      <span class="nav-link-title">Reset Password</span>
+                      <span class="nav-link-title">Change Password</span>
                       </a>
                     </div>
                     <!-- End Collapse -->
@@ -967,7 +967,7 @@
 
               <!-- Collapse -->
               <div class="nav-item">
-                <a class="nav-link " href="#navbarVerticalMenuPagesProjectMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesProjectMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesProjectMenu">
+                <a class="nav-link " href="user_project.php" role="button">
                   <i class="bi-briefcase nav-icon"></i>
                   <span class="nav-link-title">Public Projects</span>
                 </a>

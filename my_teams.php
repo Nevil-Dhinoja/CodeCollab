@@ -18,7 +18,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Dashboard</title>
+    <title>My Teams</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo-mini.svg" />
@@ -199,49 +199,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                     <a class="nav-link active disabled" href="user_teams.php">Teams</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="user_project.php">Projects <span class="badge bg-soft-dark text-dark rounded-circle ms-1">3</span></a>
-                  </li>
-
-                  <li class="nav-item ms-auto">
-                    <div class="d-flex gap-2">
-                      <a class="btn btn-white btn-sm" href="account-settings.html">
-                        <i class="bi-person-plus-fill me-1"></i> Edit profile
-                      </a>
-
-                      <a class="btn btn-white btn-icon btn-sm" href="#">
-                        <i class="bi-list-ul me-1"></i>
-                      </a>
-
-                      <!-- Dropdown -->
-                      <div class="dropdown nav-scroller-dropdown">
-                        <button type="button" class="btn btn-white btn-icon btn-sm" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                          <i class="bi-three-dots-vertical"></i>
-                        </button>
-
-                        <div class="dropdown-menu dropdown-menu-end mt-1" aria-labelledby="profileDropdown">
-                          <span class="dropdown-header">Settings</span>
-
-                          <a class="dropdown-item" href="#">
-                            <i class="bi-share-fill dropdown-item-icon"></i> Share profile
-                          </a>
-                          <a class="dropdown-item" href="#">
-                            <i class="bi-slash-circle dropdown-item-icon"></i> Block page and profile
-                          </a>
-                          <a class="dropdown-item" href="#">
-                            <i class="bi-info-circle dropdown-item-icon"></i> Suggest edits
-                          </a>
-
-                          <div class="dropdown-divider"></div>
-
-                          <span class="dropdown-header">Feedback</span>
-
-                          <a class="dropdown-item" href="#">
-                            <i class="bi-flag dropdown-item-icon"></i> Report
-                          </a>
-                        </div>
-                      </div>
-                      <!-- End Dropdown -->
-                    </div>
+                    <a class="nav-link" href="my_projects.php">Projects <span class="badge bg-soft-dark text-dark rounded-circle ms-1">3</span></a>
                   </li>
                 </ul>
               </div>

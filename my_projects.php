@@ -18,7 +18,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Public Projects</title>
+    <title>My Projects</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo-mini.svg" />
@@ -61,7 +61,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <script src="assets/js/hs.theme-appearance.js"></script>
 
     <script src="assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
-
+    <?php while ($row = mysqli_fetch_array($result)) {
+    ?>
     <main id="content" role="main" class="main">
     <!-- Content -->
     <div class="content container-fluid">
@@ -69,59 +70,66 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
         <div class="col-lg-10">
           <!-- Profile Cover -->
           <div class="profile-cover">
-            <div class="profile-cover-img-wrapper">
-              <img class="profile-cover-img" src="assets/img/1920x400/img1.jpg" alt="Image Description">
-            </div>
-          </div>
-          <!-- End Profile Cover -->
+                <div class="profile-cover-img-wrapper">
+                  <!-- <img id="profileCoverImg" class="profile-cover-img" src="assets/img/1920x400/img2.jpg" alt="Image Description"> -->
+                  <label for="profileCoverUplaoder" class="profile-cover-img">
+                    <?php
+                    echo "<img id='profileCoverImg' class='profile-cover-img' for='profileCoverUplaoder' src='uploads/" . $row['profile_header'] . "' height='60px' width='65px'>";
+                    ?>
+                  </label>
+                  <!-- Custom File Cover -->
+                  <div class="profile-cover-content profile-cover-uploader p-3">
+                    <form method="post" enctype="multipart/form-data">
+                      <input type="file" class="js-file-attach profile-cover-uploader-input" id="profileCoverUplaoder" name="file" data-hs-file-attach-options='{
+                            "textTarget": "#profileCoverImg",
+                            "mode": "image",
+                            "targetAttr": "src",
+                            "allowTypes": [".png", ".jpeg", ".jpg"]
+                         }'>
+                      <Button class="profile-cover-uploader-label btn btn-sm btn-white" for="" type="submit" name="update">
+                        <i class="bi-camera-fill"></i>
+                        <span class="d-none d-sm-inline-block ms-1" name="update" type="submit">Update Header</span>
+                      </Button>
+                    </form>
+                  </div>
+                  <!-- End Custom File Cover -->
+                </div>
+              </div>
+              <!-- End Profile Cover -->
+              <!-- Profile Header -->
+              <div class="text-center mb-5">
+                <!-- Avatar -->
+                <label class="avatar avatar-xxl avatar-circle avatar-uploader profile-cover-avatar" for="editAvatarUploaderModal">
+                  <?php
+                  echo "<img id='editAvatarImgModal' class='avatar-img' src='uploads/" . $row['profile'] . "' height='60px' width='65px'style='border-radius:100%'>";
+                  ?>
+                  <input type="file" class="js-file-attach avatar-uploader-input" id="editAvatarUploaderModal" name="profile" data-hs-file-attach-options='{
+                          "textTarget": "#editAvatarImgModal",
+                          "mode": "image",
+                          "targetAttr": "src",
+                          "allowTypes": [".png", ".jpeg", ".jpg"]
+                       }'>
 
-          <!-- Profile Header -->
-          <div class="text-center mb-5">
-            <!-- Avatar -->
-            <div class="avatar avatar-xxl avatar-circle profile-cover-avatar">
-              <img class="avatar-img" src="assets/img/160x160/img9.jpg" alt="Image Description">
-              <span class="avatar-status avatar-status-success"></span>
-            </div>
-            <!-- End Avatar -->
+                  <span class="avatar-uploader-trigger">
+                    <i class="bi-pencil-fill avatar-uploader-icon shadow-sm"></i>
+                  </span>
+                </label>
+                <!-- End Avatar -->
 
-            <h1 class="page-header-title">Ella Lauda <i class="bi-patch-check-fill fs-2 text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></h1>
+                <h1 class="page-header-title"><?php echo "$row[user_name]"; ?>
+                  <i class="bi-patch-check-fill fs-2 text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i>
+                </h1>
 
-            <!-- List -->
-            <ul class="list-inline list-px-2">
-              <li class="list-inline-item">
-                <i class="bi-building me-1"></i>
-                <span>Htmlstream</span>
-              </li>
-
-              <li class="list-inline-item">
-                <i class="bi-geo-alt me-1"></i>
-                <a href="#">San Francisco,</a>
-                <a href="#">US</a>
-              </li>
-
-              <li class="list-inline-item">
-                <i class="bi-calendar-week me-1"></i>
-                <span>Joined March 2017</span>
-              </li>
-            </ul>
-            <!-- End List -->
-          </div>
-          <!-- End Profile Header -->
-
-          <!-- Nav -->
-          <div class="js-nav-scroller hs-nav-scroller-horizontal mb-5">
-            <span class="hs-nav-scroller-arrow-prev" style="display: none;">
-              <a class="hs-nav-scroller-arrow-link" href="javascript:;">
-                <i class="bi-chevron-left"></i>
-              </a>
+                <!-- List -->
+                <ul class="list-inline list-px-2">
+                  <li class="list-inline-item">
+                    <i class="bi-envelope me-1"></i>
+                    <span><?php echo "$row[user_email]"; } ?></span>
+                  </li>
+                  <!-- End List -->
+              </div>
             </span>
-
-            <span class="hs-nav-scroller-arrow-next" style="display: none;">
-              <a class="hs-nav-scroller-arrow-link" href="javascript:;">
-                <i class="bi-chevron-right"></i>
-              </a>
-            </span>
-
+            <div class="js-nav-scroller hs-nav-scroller-horizontal mb-5">
             <ul class="nav nav-tabs align-items-center">
               <li class="nav-item">
                 <a class="nav-link " href="my_profile.php">Profile</a>
@@ -1775,6 +1783,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
           </div>
           <!-- End Tab Content -->
         </div>
+        </div>
         <!-- End Col -->
       </div>
       <!-- End Row -->
@@ -1782,41 +1791,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <!-- End Content -->
 
     <!-- Footer -->
-
-    <div class="footer">
-      <div class="row justify-content-between align-items-center">
-        <div class="col">
-          <p class="fs-6 mb-0">&copy; Front. <span class="d-none d-sm-inline-block">2022 Htmlstream.</span></p>
-        </div>
-        <!-- End Col -->
-
-        <div class="col-auto">
-          <div class="d-flex justify-content-end">
-            <!-- List Separator -->
-            <ul class="list-inline list-separator">
-              <li class="list-inline-item">
-                <a class="list-separator-link" href="#">FAQ</a>
-              </li>
-
-              <li class="list-inline-item">
-                <a class="list-separator-link" href="#">License</a>
-              </li>
-
-              <li class="list-inline-item">
-                <!-- Keyboard Shortcuts Toggle -->
-                <button class="btn btn-ghost-secondary btn btn-icon btn-ghost-secondary rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasKeyboardShortcuts" aria-controls="offcanvasKeyboardShortcuts">
-                  <i class="bi-command"></i>
-                </button>
-                <!-- End Keyboard Shortcuts Toggle -->
-              </li>
-            </ul>
-            <!-- End List Separator -->
-          </div>
-        </div>
-        <!-- End Col -->
-      </div>
-      <!-- End Row -->
-    </div>
 
     <!-- End Footer -->
   </main>
