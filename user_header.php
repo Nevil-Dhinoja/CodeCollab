@@ -1003,14 +1003,14 @@ $result1 = mysqli_query($conn, $q);  ?>
             <small class="bi-three-dots nav-subtitle-replacer"></small>
 
             <div class="nav-item">
-              <a class="nav-link " href="documentation/index.html" data-placement="left">
+              <a class="nav-link " href="documentation.php" data-placement="left">
                 <i class="bi-book nav-icon"></i>
                 <span class="nav-link-title">Documentation <span class="badge bg-primary rounded-pill ms-1">v0.1</span></span>
               </a>
             </div>
 
             <div class="nav-item">
-              <a class="nav-link " href="documentation/typography.html" data-placement="left">
+              <a class="nav-link " href="components.php" data-placement="left">
                 <i class="bi-layers nav-icon"></i>
                 <span class="nav-link-title">Components</span>
               </a>
