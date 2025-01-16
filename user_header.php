@@ -1,5 +1,7 @@
 
-<?php    $result1 = mysqli_query($conn, $q);  ?>
+<?php    
+include_once("create_database.php");
+$result1 = mysqli_query($conn, $q);  ?>
 <!DOCTYPE html>
 <html lang="en">
 

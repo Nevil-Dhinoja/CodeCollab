@@ -128,7 +128,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
           <ul class="nav nav-tabs page-header-tabs" id="projectsTab" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" href="user_teams.php">Teams</a>
             </li>
           </ul>
         </div>
