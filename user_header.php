@@ -919,7 +919,7 @@
               <div id="navbarVerticalMenuDashboards" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenu">
               <a class="nav-link " href="my_profile.php">My Profile</a>
                 <a class="nav-link " href="my_teams.php">My Teams</a>
-                <a class="nav-link " href="user_project.php">My Projects</a>
+                <a class="nav-link " href="my_projects.php">My Projects</a>
               </div>
             </div>
             <!-- End Collapse -->

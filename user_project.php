@@ -65,1719 +65,421 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <main id="content" role="main" class="main">
     <!-- Content -->
     <div class="content container-fluid">
-      <div class="row justify-content-lg-center">
-        <div class="col-lg-10">
-          <!-- Profile Cover -->
-          <div class="profile-cover">
-            <div class="profile-cover-img-wrapper">
-              <img class="profile-cover-img" src="assets/img/1920x400/img1.jpg" alt="Image Description">
-            </div>
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="row align-items-end">
+          <div class="col-sm mb-2 mb-sm-0">
+            <nav aria-label="breadcrumb">
+            </nav>
+
+            <h1 class="page-header-title">Public Projects</h1>
           </div>
-          <!-- End Profile Cover -->
+          <!-- End Col -->
 
-          <!-- Profile Header -->
-          <div class="text-center mb-5">
-            <!-- Avatar -->
-            <div class="avatar avatar-xxl avatar-circle profile-cover-avatar">
-              <img class="avatar-img" src="assets/img/160x160/img9.jpg" alt="Image Description">
-              <span class="avatar-status avatar-status-success"></span>
-            </div>
-            <!-- End Avatar -->
-
-            <h1 class="page-header-title">Ella Lauda <i class="bi-patch-check-fill fs-2 text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></h1>
-
-            <!-- List -->
-            <ul class="list-inline list-px-2">
-              <li class="list-inline-item">
-                <i class="bi-building me-1"></i>
-                <span>Htmlstream</span>
-              </li>
-
-              <li class="list-inline-item">
-                <i class="bi-geo-alt me-1"></i>
-                <a href="#">San Francisco,</a>
-                <a href="#">US</a>
-              </li>
-
-              <li class="list-inline-item">
-                <i class="bi-calendar-week me-1"></i>
-                <span>Joined March 2017</span>
-              </li>
-            </ul>
-            <!-- End List -->
+          <div class="col-sm-auto">
+            <a class="btn btn-primary" href="javascript:;" data-bs-toggle="modal" data-bs-target="#newProjectModal">
+              <i class="bi-plus me-1"></i> New project
+            </a>
           </div>
-          <!-- End Profile Header -->
-
-          <!-- Nav -->
-          <div class="js-nav-scroller hs-nav-scroller-horizontal mb-5">
-            <span class="hs-nav-scroller-arrow-prev" style="display: none;">
-              <a class="hs-nav-scroller-arrow-link" href="javascript:;">
-                <i class="bi-chevron-left"></i>
-              </a>
-            </span>
-
-            <span class="hs-nav-scroller-arrow-next" style="display: none;">
-              <a class="hs-nav-scroller-arrow-link" href="javascript:;">
-                <i class="bi-chevron-right"></i>
-              </a>
-            </span>
-
-            <ul class="nav nav-tabs align-items-center">
-              <li class="nav-item">
-                <a class="nav-link " href="my_profile.php">Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="my_teams.php">Teams</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="user-profile-projects.html">Projects <span class="badge bg-soft-dark text-dark rounded-circle ms-1"></span></a>
-              </li>
-            </ul>
-          </div>
-          <!-- End Nav -->
-
-          <!-- Filter -->
-          <div class="row align-items-center mb-5">
-            <div class="col">
-              <h3 class="mb-0">8 projects</h3>
-            </div>
-            <!-- End Col -->
-
-            <div class="col-auto">
-              <!-- Nav -->
-              <ul class="nav nav-segment" id="projectsTab" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" id="grid-tab" data-bs-toggle="tab" href="#grid" role="tab" aria-controls="grid" aria-selected="true" title="Column view">
-                    <i class="bi-grid"></i>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="list-tab" data-bs-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false" title="List view">
-                    <i class="bi-view-list"></i>
-                  </a>
-                </li>
-              </ul>
-              <!-- End Nav -->
-            </div>
-            <!-- End Col -->
-          </div>
-          <!-- End Filter -->
-
-          <!-- Tab Content -->
-          <div class="tab-content" id="projectsTabContent">
-            <div class="tab-pane fade show active" id="grid" role="tabpanel" aria-labelledby="grid-tab">
-              <div class="row row-cols-1 row-cols-md-2">
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-hover-shadow text-center h-100">
-                    <div class="card-progress-wrap">
-                      <!-- Progress -->
-                      <div class="progress card-progress">
-                        <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <!-- End Progress -->
-                    </div>
-
-                    <!-- Body -->
-                    <div class="card-body">
-                      <div class="row align-items-center text-start mb-4">
-                        <div class="col">
-                          <span class="badge bg-soft-secondary text-secondary p-2">To do</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col-auto">
-                          <!-- Dropdown -->
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsGridDropdown8" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="bi-three-dots-vertical"></i>
-                            </button>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsGridDropdown8">
-                              <a class="dropdown-item" href="#">Rename project </a>
-                              <a class="dropdown-item" href="#">Add to favorites</a>
-                              <a class="dropdown-item" href="#">Archive project</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item text-danger" href="#">Delete</a>
-                            </div>
-                          </div>
-                          <!-- End Dropdown -->
-                        </div>
-                        <!-- End Col -->
-                      </div>
-
-                      <div class="d-flex justify-content-center mb-2">
-                        <!-- Avatar -->
-                        <img class="avatar avatar-lg" src="assets/svg/brands/google-webdev-icon.svg" alt="Image Description">
-                      </div>
-
-                      <div class="mb-4">
-                        <h2 class="mb-1">Webdev</h2>
-
-                        <span class="fs-5">Updated 2 hours ago</span>
-                      </div>
-
-                      <small class="card-subtitle">Members</small>
-
-                      <div class="d-flex justify-content-center">
-                        <!-- Avatar Group -->
-                        <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Finch Hoot">
-                            <img class="avatar-img" src="assets/img/160x160/img5.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Bob Bardly">
-                            <span class="avatar-initials">B</span>
-                          </a>
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Clarice Boone">
-                            <img class="avatar-img" src="assets/img/160x160/img7.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Adam Keep">
-                            <span class="avatar-initials">A</span>
-                          </a>
-                        </div>
-                        <!-- End Avatar Group -->
-                      </div>
-
-                      <a class="stretched-link" href="#"></a>
-                    </div>
-                    <!-- End Body -->
-
-                    <!-- Footer -->
-                    <div class="card-footer">
-                      <!-- Stats -->
-                      <div class="row col-divider">
-                        <div class="col">
-                          <span class="h4">19</span>
-                          <span class="d-block fs-5">Tasks</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">33</span>
-                          <span class="d-block fs-5">Completed</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">10</span>
-                          <span class="d-block fs-5">Days left</span>
-                        </div>
-                        <!-- End Col -->
-                      </div>
-                      <!-- End Stats -->
-                    </div>
-                    <!-- End Footer -->
-                  </div>
-                  <!-- End Card -->
-                </div>
-
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-hover-shadow text-center h-100">
-                    <!-- Progress -->
-                    <div class="card-progress-wrap">
-                      <div class="progress card-progress">
-                        <div class="progress-bar" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                    <!-- End Progress -->
-
-                    <!-- Body -->
-                    <div class="card-body">
-                      <div class="row align-items-center text-start mb-4">
-                        <div class="col">
-                          <span class="badge bg-soft-primary text-primary p-2">In progress</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col-auto">
-                          <!-- Dropdown -->
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsGridDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="bi-three-dots-vertical"></i>
-                            </button>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsGridDropdown1">
-                              <a class="dropdown-item" href="#">Rename project </a>
-                              <a class="dropdown-item" href="#">Add to favorites</a>
-                              <a class="dropdown-item" href="#">Archive project</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item text-danger" href="#">Delete</a>
-                            </div>
-                          </div>
-                          <!-- End Dropdown -->
-                        </div>
-                        <!-- End Col -->
-                      </div>
-
-                      <div class="d-flex justify-content-center mb-2">
-                        <!-- Avatar -->
-                        <img class="avatar avatar-lg" src="assets/svg/brands/spec-icon.svg" alt="Image Description">
-                      </div>
-
-                      <div class="mb-4">
-                        <h2 class="mb-1">Get a complete store audit</h2>
-
-                        <span class="fs-5">Updated 1 day ago</span>
-                      </div>
-
-                      <small class="card-subtitle">Members</small>
-
-                      <div class="d-flex justify-content-center">
-                        <!-- Avatar Group -->
-                        <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Ella Lauda">
-                            <img class="avatar-img" src="assets/img/160x160/img9.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="David Harrison">
-                            <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Antony Taylor">
-                            <span class="avatar-initials">A</span>
-                          </a>
-                          <a class="avatar avatar-soft-info" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Sara Iwens">
-                            <span class="avatar-initials">S</span>
-                          </a>
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Finch Hoot">
-                            <img class="avatar-img" src="assets/img/160x160/img5.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar avatar-light avatar-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Sam Kart, Amanda Harvey and 1 more">
-                            <span class="avatar-initials">+3</span>
-                          </a>
-                        </div>
-                        <!-- End Avatar Group -->
-                      </div>
-
-                      <a class="stretched-link" href="#"></a>
-                    </div>
-                    <!-- End Body -->
-
-                    <!-- Footer -->
-                    <div class="card-footer">
-                      <!-- Stats -->
-                      <div class="row col-divider">
-                        <div class="col">
-                          <span class="h4">4</span>
-                          <span class="d-block fs-5">Tasks</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">8</span>
-                          <span class="d-block fs-5">Completed</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">18</span>
-                          <span class="d-block fs-5">Days left</span>
-                        </div>
-                        <!-- End Col -->
-                      </div>
-                      <!-- End Stats -->
-                    </div>
-                    <!-- End Footer -->
-                  </div>
-                  <!-- End Card -->
-                </div>
-
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-hover-shadow text-center h-100">
-                    <!-- Progress -->
-                    <div class="card-progress-wrap">
-                      <div class="progress card-progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                    <!-- End Progress -->
-
-                    <!-- Body -->
-                    <div class="card-body">
-                      <div class="row align-items-center text-start mb-4">
-                        <div class="col">
-                          <span class="badge bg-soft-success text-success p-2">Completed</span>
-                        </div>
-
-                        <div class="col-auto">
-                          <!-- Dropdown -->
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsGridDropdown6" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="bi-three-dots-vertical"></i>
-                            </button>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsGridDropdown6">
-                              <a class="dropdown-item" href="#">Rename project </a>
-                              <a class="dropdown-item" href="#">Add to favorites</a>
-                              <a class="dropdown-item" href="#">Archive project</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item text-danger" href="#">Delete</a>
-                            </div>
-                          </div>
-                          <!-- End Dropdown -->
-                        </div>
-                        <!-- End Col -->
-                      </div>
-
-                      <div class="d-flex justify-content-center mb-2">
-                        <!-- Avatar -->
-                        <img class="avatar avatar-lg" src="assets/svg/brands/capsule-icon.svg" alt="Image Description">
-                      </div>
-
-                      <div class="mb-4">
-                        <h2 class="mb-1">Build stronger customer relationships</h2>
-
-                        <span class="fs-5">Updated 1 day ago</span>
-                      </div>
-
-                      <small class="card-subtitle">Members</small>
-
-                      <div class="d-flex justify-content-center">
-                        <!-- Avatar Group -->
-                        <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Amanda Harvey">
-                            <img class="avatar-img" src="assets/img/160x160/img10.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="David Harrison">
-                            <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar avatar-soft-info" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Lisa Iston">
-                            <span class="avatar-initials">L</span>
-                          </a>
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Sam Kart">
-                            <img class="avatar-img" src="assets/img/160x160/img4.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Zack Ins">
-                            <span class="avatar-initials">Z</span>
-                          </a>
-                          <a class="avatar avatar-light avatar-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Lewis Clarke, Chris Mathew and 3 more">
-                            <span class="avatar-initials">+5</span>
-                          </a>
-                        </div>
-                        <!-- End Avatar Group -->
-                      </div>
-
-                      <a class="stretched-link" href="#"></a>
-                    </div>
-                    <!-- End Body -->
-
-                    <!-- Footer -->
-                    <div class="card-footer">
-                      <!-- Stats -->
-                      <div class="row col-divider">
-                        <div class="col">
-                          <span class="h4">7</span>
-                          <span class="d-block fs-5">Tasks</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">7</span>
-                          <span class="d-block fs-5">Completed</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">0</span>
-                          <span class="d-block fs-5">Days left</span>
-                        </div>
-                        <!-- End Col -->
-                      </div>
-                      <!-- End Stats -->
-                    </div>
-                    <!-- End Footer -->
-                  </div>
-                  <!-- End Card -->
-                </div>
-
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-hover-shadow text-center h-100">
-                    <!-- Progress -->
-                    <div class="card-progress-wrap">
-                      <div class="progress card-progress">
-                        <div class="progress-bar" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                    <!-- End Progress -->
-
-                    <!-- Body -->
-                    <div class="card-body">
-                      <div class="row align-items-center text-start mb-4">
-                        <div class="col">
-                          <span class="badge bg-soft-primary text-primary p-2">In progress</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col-auto">
-                          <!-- Dropdown -->
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsGridDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="bi-three-dots-vertical"></i>
-                            </button>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsGridDropdown2">
-                              <a class="dropdown-item" href="#">Rename project </a>
-                              <a class="dropdown-item" href="#">Add to favorites</a>
-                              <a class="dropdown-item" href="#">Archive project</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item text-danger" href="#">Delete</a>
-                            </div>
-                          </div>
-                          <!-- End Dropdown -->
-                        </div>
-                        <!-- End Col -->
-                      </div>
-
-                      <div class="d-flex justify-content-center mb-2">
-                        <!-- Avatar -->
-                        <img class="avatar avatar-lg" src="assets/svg/brands/prosperops-icon.svg" alt="Image Description">
-                      </div>
-
-                      <div class="mb-4">
-                        <h2 class="mb-1">Cloud computing</h2>
-
-                        <span class="fs-5">Updated 2 days ago</span>
-                      </div>
-
-                      <small class="card-subtitle">Members</small>
-
-                      <div class="d-flex justify-content-center">
-                        <!-- Avatar Group -->
-                        <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Finch Hoot">
-                            <img class="avatar-img" src="assets/img/160x160/img5.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Bob Bardly">
-                            <span class="avatar-initials">B</span>
-                          </a>
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Linda Bates">
-                            <img class="avatar-img" src="assets/img/160x160/img8.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Ella Lauda">
-                            <img class="avatar-img" src="assets/img/160x160/img9.jpg" alt="Image Description">
-                          </a>
-                        </div>
-                        <!-- End Avatar Group -->
-                      </div>
-
-                      <a class="stretched-link" href="#"></a>
-                    </div>
-                    <!-- End Body -->
-
-                    <!-- Footer -->
-                    <div class="card-footer">
-                      <!-- Stats -->
-                      <div class="row col-divider">
-                        <div class="col">
-                          <span class="h4">4</span>
-                          <span class="d-block fs-5">Tasks</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">8</span>
-                          <span class="d-block fs-5">Completed</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">30</span>
-                          <span class="d-block fs-5">Days left</span>
-                        </div>
-                        <!-- End Col -->
-                      </div>
-                      <!-- End Stats -->
-                    </div>
-                    <!-- End Footer -->
-                  </div>
-                  <!-- End Card -->
-                </div>
-
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-hover-shadow text-center h-100">
-                    <!-- Progress -->
-                    <div class="card-progress-wrap">
-                      <div class="progress card-progress">
-                        <div class="progress-bar" role="progressbar" style="width: 59%" aria-valuenow="59" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                    <!-- End Progress -->
-
-                    <!-- Body -->
-                    <div class="card-body">
-                      <div class="row align-items-center text-start mb-4">
-                        <div class="col">
-                          <span class="badge bg-soft-primary text-primary p-2">In progress</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col-auto">
-                          <!-- Dropdown -->
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsGridDropdown4" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="bi-three-dots-vertical"></i>
-                            </button>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsGridDropdown4">
-                              <a class="dropdown-item" href="#">Rename project </a>
-                              <a class="dropdown-item" href="#">Add to favorites</a>
-                              <a class="dropdown-item" href="#">Archive project</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item text-danger" href="#">Delete</a>
-                            </div>
-                          </div>
-                          <!-- End Dropdown -->
-                        </div>
-                        <!-- End Col -->
-                      </div>
-
-                      <div class="d-flex justify-content-center mb-2">
-                        <!-- Avatar -->
-                        <img class="avatar avatar-lg" src="assets/svg/brands/mailchimp-icon.svg" alt="Image Description">
-                      </div>
-
-                      <div class="mb-4">
-                        <h2 class="mb-1">Update subscription method</h2>
-
-                        <span class="fs-5">Updated 2 days ago</span>
-                      </div>
-
-                      <small class="card-subtitle">Members</small>
-
-                      <div class="d-flex justify-content-center">
-                        <!-- Avatar Group -->
-                        <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Costa Quinn">
-                            <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Clarice Boone">
-                            <img class="avatar-img" src="assets/img/160x160/img7.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Adam Keep">
-                            <span class="avatar-initials">A</span>
-                          </a>
-                        </div>
-                        <!-- End Avatar Group -->
-                      </div>
-
-                      <a class="stretched-link" href="#"></a>
-                    </div>
-                    <!-- End Body -->
-
-                    <!-- Footer -->
-                    <div class="card-footer">
-                      <!-- Stats -->
-                      <div class="row col-divider">
-                        <div class="col">
-                          <span class="h4">25</span>
-                          <span class="d-block fs-5">Tasks</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">30</span>
-                          <span class="d-block fs-5">Completed</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">20</span>
-                          <span class="d-block fs-5">Days left</span>
-                        </div>
-                        <!-- End Col -->
-                      </div>
-                      <!-- End Stats -->
-                    </div>
-                    <!-- End Footer -->
-                  </div>
-                  <!-- End Card -->
-                </div>
-
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-hover-shadow text-center h-100">
-                    <!-- Progress -->
-                    <div class="card-progress-wrap">
-                      <div class="progress card-progress">
-                        <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                    <!-- End Progress -->
-
-                    <!-- Body -->
-                    <div class="card-body">
-                      <div class="row align-items-center text-start mb-4">
-                        <div class="col">
-                          <span class="badge bg-soft-secondary text-secondary p-2">To do</span>
-                        </div>
-
-                        <div class="col-auto">
-                          <!-- Dropdown -->
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsGridDropdown7" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="bi-three-dots-vertical"></i>
-                            </button>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsGridDropdown7">
-                              <a class="dropdown-item" href="#">Rename project </a>
-                              <a class="dropdown-item" href="#">Add to favorites</a>
-                              <a class="dropdown-item" href="#">Archive project</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item text-danger" href="#">Delete</a>
-                            </div>
-                          </div>
-                          <!-- End Dropdown -->
-                        </div>
-                        <!-- End Col -->
-                      </div>
-
-                      <div class="d-flex justify-content-center mb-2">
-                        <!-- Avatar -->
-                        <span class="avatar avatar-lg avatar-soft-info avatar-circle">
-                          <span class="avatar-initials">I</span>
-                        </span>
-                        <!-- End Avatar -->
-                      </div>
-
-                      <div class="mb-4">
-                        <h2 class="mb-1">Improve social banners</h2>
-
-                        <span class="fs-5">Updated 1 week ago</span>
-                      </div>
-
-                      <small class="card-subtitle">Members</small>
-
-                      <div class="d-flex justify-content-center">
-                        <!-- Avatar Group -->
-                        <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Costa Quinn">
-                            <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar avatar-soft-info" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Bob Bardly">
-                            <span class="avatar-initials">B</span>
-                          </a>
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Clarice Boone">
-                            <img class="avatar-img" src="assets/img/160x160/img7.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Sam Kart">
-                            <img class="avatar-img" src="assets/img/160x160/img4.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar avatar-soft-primary" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Daniel Cs.">
-                            <span class="avatar-initials">D</span>
-                          </a>
-                        </div>
-                        <!-- End Avatar Group -->
-                      </div>
-
-                      <a class="stretched-link" href="#"></a>
-                    </div>
-                    <!-- End Body -->
-
-                    <!-- Footer -->
-                    <div class="card-footer">
-                      <!-- Stats -->
-                      <div class="row col-divider">
-                        <div class="col">
-                          <span class="h4">9</span>
-                          <span class="d-block fs-5">Tasks</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">16</span>
-                          <span class="d-block fs-5">Completed</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">21</span>
-                          <span class="d-block fs-5">Days left</span>
-                        </div>
-                        <!-- End Col -->
-                      </div>
-                      <!-- End Stats -->
-                    </div>
-                    <!-- End Footer -->
-                  </div>
-                  <!-- End Card -->
-                </div>
-
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-hover-shadow text-center h-100">
-                    <!-- Progress -->
-                    <div class="card-progress-wrap">
-                      <div class="progress card-progress">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                    <!-- End Progress -->
-
-                    <!-- Body -->
-                    <div class="card-body">
-                      <div class="row align-items-center text-start mb-4">
-                        <div class="col">
-                          <span class="badge bg-soft-success text-success p-2">Completed</span>
-                        </div>
-
-                        <div class="col-auto">
-                          <!-- Dropdown -->
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsGridDropdown3" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="bi-three-dots-vertical"></i>
-                            </button>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsGridDropdown3">
-                              <a class="dropdown-item" href="#">Rename project </a>
-                              <a class="dropdown-item" href="#">Add to favorites</a>
-                              <a class="dropdown-item" href="#">Archive project</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item text-danger" href="#">Delete</a>
-                            </div>
-                          </div>
-                          <!-- End Dropdown -->
-                        </div>
-                        <!-- End Col -->
-                      </div>
-
-                      <div class="d-flex justify-content-center mb-2">
-                        <!-- Avatar -->
-                        <img class="avatar avatar-lg" src="assets/svg/brands/figma-icon.svg" alt="Image Description">
-                      </div>
-
-                      <div class="mb-4">
-                        <h2 class="mb-1">Create a new theme</h2>
-
-                        <span class="fs-5">Updated 1 week ago</span>
-                      </div>
-
-                      <small class="card-subtitle">Members</small>
-
-                      <div class="d-flex justify-content-center">
-                        <!-- Avatar Group -->
-                        <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Costa Quinn">
-                            <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Clarice Boone">
-                            <img class="avatar-img" src="assets/img/160x160/img7.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Zack Ins">
-                            <span class="avatar-initials">Z</span>
-                          </a>
-                        </div>
-                        <!-- End Avatar Group -->
-                      </div>
-
-                      <a class="stretched-link" href="#"></a>
-                    </div>
-                    <!-- End Body -->
-
-                    <!-- Footer -->
-                    <div class="card-footer">
-                      <!-- Stats -->
-                      <div class="row col-divider">
-                        <div class="col">
-                          <span class="h4">7</span>
-                          <span class="d-block fs-5">Tasks</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">7</span>
-                          <span class="d-block fs-5">Completed</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">0</span>
-                          <span class="d-block fs-5">Days left</span>
-                        </div>
-                        <!-- End Col -->
-                      </div>
-                      <!-- End Stats -->
-                    </div>
-                    <!-- End Footer -->
-                  </div>
-                  <!-- End Card -->
-                </div>
-
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-hover-shadow text-center h-100">
-                    <!-- Progress -->
-                    <div class="card-progress-wrap">
-                      <div class="progress card-progress">
-                        <div class="progress-bar" role="progressbar" style="width: 77%" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                    <!-- End Progress -->
-
-                    <!-- Body -->
-                    <div class="card-body">
-                      <div class="row align-items-center text-start mb-4">
-                        <div class="col">
-                          <span class="badge bg-soft-primary text-primary p-2">In progress</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col-auto">
-                          <!-- Dropdown -->
-                          <div class="dropdown">
-                            <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsGridDropdown5" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="bi-three-dots-vertical"></i>
-                            </button>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsGridDropdown5">
-                              <a class="dropdown-item" href="#">Rename project </a>
-                              <a class="dropdown-item" href="#">Add to favorites</a>
-                              <a class="dropdown-item" href="#">Archive project</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item text-danger" href="#">Delete</a>
-                            </div>
-                          </div>
-                          <!-- End Dropdown -->
-                        </div>
-                        <!-- End Col -->
-                      </div>
-
-                      <div class="d-flex justify-content-center mb-2">
-                        <!-- Avatar -->
-                        <span class="avatar avatar-lg avatar-soft-dark avatar-circle">
-                          <span class="avatar-initials">N</span>
-                        </span>
-                        <!-- End Avatar -->
-                      </div>
-
-                      <div class="mb-4">
-                        <h2 class="mb-1">Notifications</h2>
-
-                        <span class="fs-5">Updated 1 week ago</span>
-                      </div>
-
-                      <small class="card-subtitle">Members</small>
-
-                      <div class="d-flex justify-content-center">
-                        <!-- Avatar Group -->
-                        <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Sam Kart">
-                            <img class="avatar-img" src="assets/img/160x160/img4.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar avatar-soft-danger" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Teresa Eyker">
-                            <span class="avatar-initials">T</span>
-                          </a>
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Amanda Harvey">
-                            <img class="avatar-img" src="assets/img/160x160/img10.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="David Harrison">
-                            <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
-                          </a>
-                          <a class="avatar avatar-soft-warning" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Olivier L.">
-                            <span class="avatar-initials">O</span>
-                          </a>
-                          <a class="avatar avatar-light avatar-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Brian Halligan, Rachel Doe and 7 more">
-                            <span class="avatar-initials">+9</span>
-                          </a>
-                        </div>
-                        <!-- End Avatar Group -->
-                      </div>
-
-                      <a class="stretched-link" href="#"></a>
-                    </div>
-                    <!-- End Body -->
-
-                    <!-- Footer -->
-                    <div class="card-footer">
-                      <!-- Stats -->
-                      <div class="row col-divider">
-                        <div class="col">
-                          <span class="h4">9</span>
-                          <span class="d-block fs-5">Tasks</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">16</span>
-                          <span class="d-block fs-5">Completed</span>
-                        </div>
-                        <!-- End Col -->
-
-                        <div class="col">
-                          <span class="h4">21</span>
-                          <span class="d-block fs-5">Days left</span>
-                        </div>
-                        <!-- End Col -->
-                      </div>
-                      <!-- End Stats -->
-                    </div>
-                    <!-- End Footer -->
-                  </div>
-                  <!-- End Card -->
-                </div>
-              </div>
-              <!-- End Row -->
-            </div>
-
-            <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
-              <div class="row row-cols-1">
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-body">
-                    <div class="d-flex">
-                      <!-- Avatar -->
-                      <div class="flex-shrink-0 me-3 me-lg-4">
-                        <img class="avatar" src="assets/svg/brands/google-webdev-icon.svg" alt="Image Description">
-                      </div>
-
-                      <div class="flex-grow-1 ms-3">
-                        <div class="row align-items-sm-center">
-                          <div class="col">
-                            <span class="badge bg-soft-secondary text-secondary p-2 mb-2">To do</span>
-
-                            <h3 class="mb-1">Webdev</h3>
-                          </div>
-                          <!-- End Col -->
-
-                          <div class="col-md-3 d-none d-md-flex justify-content-md-end ms-n3">
-                            <!-- Avatar Group -->
-                            <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Finch Hoot">
-                                <img class="avatar-img" src="assets/img/160x160/img5.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Bob Bardly">
-                                <span class="avatar-initials">B</span>
-                              </a>
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Clarice Boone">
-                                <img class="avatar-img" src="assets/img/160x160/img7.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Adam Keep">
-                                <span class="avatar-initials">A</span>
-                              </a>
-                            </div>
-                            <!-- End Avatar Group -->
-                          </div>
-
-                          <div class="col-auto">
-                            <!-- Dropdown -->
-                            <div class="dropdown">
-                              <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsListDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi-three-dots-vertical"></i>
-                              </button>
-
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsListDropdown1">
-                                <a class="dropdown-item" href="#">Rename project </a>
-                                <a class="dropdown-item" href="#">Add to favorites</a>
-                                <a class="dropdown-item" href="#">Archive project</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                              </div>
-                            </div>
-                            <!-- End Unfold -->
-                          </div>
-                        </div>
-                        <!-- End Row -->
-
-                        <!-- Stats -->
-                        <ul class="list-inline">
-                          <li class="list-inline-item">
-                            <span class="fs-5">Updated:</span>
-                            <span class="fw-semibold text-dark">2 hours ago</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Tasks:</span>
-                            <span class="fw-semibold text-dark">19</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Completed:</span>
-                            <span class="fw-semibold text-dark">33</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Days left:</span>
-                            <span class="fw-semibold text-dark">10</span>
-                          </li>
-                        </ul>
-                        <!-- End Stats -->
-
-                        <!-- Progress -->
-                        <div class="progress card-progress">
-                          <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <!-- End Progress -->
-
-                        <a class="stretched-link" href="#"></a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- End Card -->
-                </div>
-
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-body">
-                    <div class="d-flex">
-                      <!-- Avatar -->
-                      <div class="flex-shrink-0 me-3 me-lg-4">
-                        <img class="avatar" src="assets/svg/brands/spec-icon.svg" alt="Image Description">
-                      </div>
-
-                      <div class="flex-grow-1 ms-3">
-                        <div class="row align-items-sm-center">
-                          <div class="col">
-                            <span class="badge bg-soft-primary text-primary p-2 mb-2">In progress</span>
-
-                            <h3 class="mb-1">Get a complete store audit</h3>
-                          </div>
-                          <!-- End Col -->
-
-                          <div class="col-md-3 d-none d-md-flex justify-content-md-end ms-n3">
-                            <!-- Avatar Group -->
-                            <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Ella Lauda">
-                                <img class="avatar-img" src="assets/img/160x160/img9.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar avatar-soft-info" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Sara Iwens">
-                                <span class="avatar-initials">S</span>
-                              </a>
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Finch Hoot">
-                                <img class="avatar-img" src="assets/img/160x160/img5.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar avatar-light avatar-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Sam Kart, Amanda Harvey and 1 more">
-                                <span class="avatar-initials">+5</span>
-                              </a>
-                            </div>
-                            <!-- End Avatar Group -->
-                          </div>
-
-                          <div class="col-auto">
-                            <!-- Dropdown -->
-                            <div class="dropdown">
-                              <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsListDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi-three-dots-vertical"></i>
-                              </button>
-
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsListDropdown2">
-                                <a class="dropdown-item" href="#">Rename project </a>
-                                <a class="dropdown-item" href="#">Add to favorites</a>
-                                <a class="dropdown-item" href="#">Archive project</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                              </div>
-                            </div>
-                            <!-- End Unfold -->
-                          </div>
-                        </div>
-                        <!-- End Row -->
-
-                        <!-- Stats -->
-                        <ul class="list-inline">
-                          <li class="list-inline-item">
-                            <span class="fs-5">Updated:</span>
-                            <span class="fw-semibold text-dark">1 day ago</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Tasks:</span>
-                            <span class="fw-semibold text-dark">4</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Completed:</span>
-                            <span class="fw-semibold text-dark">8</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Days left:</span>
-                            <span class="fw-semibold text-dark">18</span>
-                          </li>
-                        </ul>
-                        <!-- End Stats -->
-
-                        <!-- Progress -->
-                        <div class="progress card-progress">
-                          <div class="progress-bar" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <!-- End Progress -->
-
-                        <a class="stretched-link" href="#"></a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- End Card -->
-                </div>
-
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-body">
-                    <div class="d-flex">
-                      <!-- Avatar -->
-                      <div class="flex-shrink-0 me-3 me-lg-4">
-                        <img class="avatar" src="assets/svg/brands/capsule-icon.svg" alt="Image Description">
-                      </div>
-
-                      <div class="flex-grow-1 ms-3">
-                        <div class="row align-items-sm-center">
-                          <div class="col">
-                            <span class="badge bg-soft-success text-success p-2 mb-2">Completed</span>
-
-                            <h3 class="mb-1">Build stronger customer relationships</h3>
-                          </div>
-                          <!-- End Col -->
-
-                          <div class="col-md-3 d-none d-md-flex justify-content-md-end ms-n3">
-                            <!-- Avatar Group -->
-                            <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Amanda Harvey">
-                                <img class="avatar-img" src="assets/img/160x160/img10.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="David Harrison">
-                                <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Zack Ins">
-                                <span class="avatar-initials">Z</span>
-                              </a>
-                              <a class="avatar avatar-light avatar-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Lewis Clarke, Chris Mathew and 3 more">
-                                <span class="avatar-initials">+5</span>
-                              </a>
-                            </div>
-                            <!-- End Avatar Group -->
-                          </div>
-
-                          <div class="col-auto">
-                            <!-- Dropdown -->
-                            <div class="dropdown">
-                              <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsListDropdown3" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi-three-dots-vertical"></i>
-                              </button>
-
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsListDropdown3">
-                                <a class="dropdown-item" href="#">Rename project </a>
-                                <a class="dropdown-item" href="#">Add to favorites</a>
-                                <a class="dropdown-item" href="#">Archive project</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                              </div>
-                            </div>
-                            <!-- End Unfold -->
-                          </div>
-                        </div>
-                        <!-- End Row -->
-
-                        <!-- Stats -->
-                        <ul class="list-inline">
-                          <li class="list-inline-item">
-                            <span class="fs-5">Updated:</span>
-                            <span class="fw-semibold text-dark">1 day ago</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Tasks:</span>
-                            <span class="fw-semibold text-dark">7</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Completed:</span>
-                            <span class="fw-semibold text-dark">7</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Days left:</span>
-                            <span class="fw-semibold text-dark">0</span>
-                          </li>
-                        </ul>
-                        <!-- End Stats -->
-
-                        <!-- Progress -->
-                        <div class="progress card-progress">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <!-- End Progress -->
-
-                        <a class="stretched-link" href="#"></a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- End Card -->
-                </div>
-
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-body">
-                    <div class="d-flex">
-                      <!-- Avatar -->
-                      <div class="flex-shrink-0 me-3 me-lg-4">
-                        <img class="avatar" src="assets/svg/brands/prosperops-icon.svg" alt="Image Description">
-                      </div>
-
-                      <div class="flex-grow-1 ms-3">
-                        <div class="row align-items-sm-center">
-                          <div class="col">
-                            <span class="badge bg-soft-primary text-primary p-2 mb-2">In progress</span>
-
-                            <h3 class="mb-1">Cloud computing</h3>
-                          </div>
-                          <!-- End Col -->
-
-                          <div class="col-md-3 d-none d-md-flex justify-content-md-end ms-n3">
-                            <!-- Avatar Group -->
-                            <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Finch Hoot">
-                                <img class="avatar-img" src="assets/img/160x160/img5.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Bob Bardly">
-                                <span class="avatar-initials">B</span>
-                              </a>
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Linda Bates">
-                                <img class="avatar-img" src="assets/img/160x160/img8.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Ella Lauda">
-                                <img class="avatar-img" src="assets/img/160x160/img9.jpg" alt="Image Description">
-                              </a>
-                            </div>
-                            <!-- End Avatar Group -->
-                          </div>
-
-                          <div class="col-auto">
-                            <!-- Dropdown -->
-                            <div class="dropdown">
-                              <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsListDropdown4" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi-three-dots-vertical"></i>
-                              </button>
-
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsListDropdown4">
-                                <a class="dropdown-item" href="#">Rename project </a>
-                                <a class="dropdown-item" href="#">Add to favorites</a>
-                                <a class="dropdown-item" href="#">Archive project</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                              </div>
-                            </div>
-                            <!-- End Unfold -->
-                          </div>
-                        </div>
-                        <!-- End Row -->
-
-                        <!-- Stats -->
-                        <ul class="list-inline">
-                          <li class="list-inline-item">
-                            <span class="fs-5">Updated:</span>
-                            <span class="fw-semibold text-dark">2 hours ago</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Tasks:</span>
-                            <span class="fw-semibold text-dark">4</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Completed:</span>
-                            <span class="fw-semibold text-dark">8</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Days left:</span>
-                            <span class="fw-semibold text-dark">30</span>
-                          </li>
-                        </ul>
-                        <!-- End Stats -->
-
-                        <!-- Progress -->
-                        <div class="progress card-progress">
-                          <div class="progress-bar" role="progressbar" style="width: 57%" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <!-- End Progress -->
-
-                        <a class="stretched-link" href="#"></a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- End Card -->
-                </div>
-
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-body">
-                    <div class="d-flex">
-                      <!-- Avatar -->
-                      <div class="flex-shrink-0 me-3 me-lg-4">
-                        <img class="avatar" src="assets/svg/brands/mailchimp-icon.svg" alt="Image Description">
-                      </div>
-
-                      <div class="flex-grow-1 ms-3">
-                        <div class="row align-items-sm-center">
-                          <div class="col">
-                            <span class="badge bg-soft-primary text-primary p-2 mb-2">In progress</span>
-
-                            <h3 class="mb-1">Update subscription method</h3>
-                          </div>
-                          <!-- End Col -->
-
-                          <div class="col-md-3 d-none d-md-flex justify-content-md-end ms-n3">
-                            <!-- Avatar Group -->
-                            <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Costa Quinn">
-                                <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Clarice Boone">
-                                <img class="avatar-img" src="assets/img/160x160/img7.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Adam Keep">
-                                <span class="avatar-initials">A</span>
-                              </a>
-                            </div>
-                            <!-- End Avatar Group -->
-                          </div>
-
-                          <div class="col-auto">
-                            <!-- Dropdown -->
-                            <div class="dropdown">
-                              <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsListDropdown5" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi-three-dots-vertical"></i>
-                              </button>
-
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsListDropdown5">
-                                <a class="dropdown-item" href="#">Rename project </a>
-                                <a class="dropdown-item" href="#">Add to favorites</a>
-                                <a class="dropdown-item" href="#">Archive project</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                              </div>
-                            </div>
-                            <!-- End Unfold -->
-                          </div>
-                        </div>
-                        <!-- End Row -->
-
-                        <!-- Stats -->
-                        <ul class="list-inline">
-                          <li class="list-inline-item">
-                            <span class="fs-5">Updated:</span>
-                            <span class="fw-semibold text-dark">2 days ago</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Tasks:</span>
-                            <span class="fw-semibold text-dark">25</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Completed:</span>
-                            <span class="fw-semibold text-dark">30</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Days left:</span>
-                            <span class="fw-semibold text-dark">20</span>
-                          </li>
-                        </ul>
-                        <!-- End Stats -->
-
-                        <!-- Progress -->
-                        <div class="progress card-progress">
-                          <div class="progress-bar" role="progressbar" style="width: 59%" aria-valuenow="59" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <!-- End Progress -->
-
-                        <a class="stretched-link" href="#"></a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- End Card -->
-                </div>
-
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-body">
-                    <div class="d-flex">
-                      <!-- Avatar -->
-                      <span class="avatar avatar-soft-info avatar-circle me-3 me-lg-4">
-                        <span class="avatar-initials">I</span>
-                      </span>
-                      <!-- End Avatar -->
-
-                      <div class="flex-grow-1 ms-3">
-                        <div class="row align-items-sm-center">
-                          <div class="col">
-                            <span class="badge bg-soft-secondary text-secondary p-2 mb-2">To do</span>
-
-                            <h3 class="mb-1">Improve social banners</h3>
-                          </div>
-                          <!-- End Col -->
-
-                          <div class="col-md-3 d-none d-md-flex justify-content-md-end ms-n3">
-                            <!-- Avatar Group -->
-                            <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Costa Quinn">
-                                <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Clarice Boone">
-                                <img class="avatar-img" src="assets/img/160x160/img7.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Sam Kart">
-                                <img class="avatar-img" src="assets/img/160x160/img4.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar avatar-soft-primary" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Daniel Cs.">
-                                <span class="avatar-initials">D</span>
-                              </a>
-                            </div>
-                            <!-- End Avatar Group -->
-                          </div>
-
-                          <div class="col-auto">
-                            <!-- Dropdown -->
-                            <div class="dropdown">
-                              <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsListDropdown6" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi-three-dots-vertical"></i>
-                              </button>
-
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsListDropdown6">
-                                <a class="dropdown-item" href="#">Rename project </a>
-                                <a class="dropdown-item" href="#">Add to favorites</a>
-                                <a class="dropdown-item" href="#">Archive project</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                              </div>
-                            </div>
-                            <!-- End Unfold -->
-                          </div>
-                        </div>
-                        <!-- End Row -->
-
-                        <!-- Stats -->
-                        <ul class="list-inline">
-                          <li class="list-inline-item">
-                            <span class="fs-5">Updated:</span>
-                            <span class="fw-semibold text-dark">1 week ago</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Tasks:</span>
-                            <span class="fw-semibold text-dark">9</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Completed:</span>
-                            <span class="fw-semibold text-dark">16</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Days left:</span>
-                            <span class="fw-semibold text-dark">21</span>
-                          </li>
-                        </ul>
-                        <!-- End Stats -->
-
-                        <!-- Progress -->
-                        <div class="progress card-progress">
-                          <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <!-- End Progress -->
-
-                        <a class="stretched-link" href="#"></a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- End Card -->
-                </div>
-
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-body">
-                    <div class="d-flex">
-                      <!-- Avatar -->
-                      <div class="flex-shrink-0 me-3 me-lg-4">
-                        <img class="avatar" src="assets/svg/brands/figma-icon.svg" alt="Image Description">
-                      </div>
-
-                      <div class="flex-grow-1 ms-3">
-                        <div class="row align-items-sm-center">
-                          <div class="col">
-                            <span class="badge bg-soft-success text-success p-2 mb-2">Completed</span>
-
-                            <h3 class="mb-1">Create a new theme</h3>
-                          </div>
-                          <!-- End Col -->
-
-                          <div class="col-md-3 d-none d-md-flex justify-content-md-end ms-n3">
-                            <!-- Avatar Group -->
-                            <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Costa Quinn">
-                                <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Clarice Boone">
-                                <img class="avatar-img" src="assets/img/160x160/img7.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Zack Ins">
-                                <span class="avatar-initials">Z</span>
-                              </a>
-                            </div>
-                            <!-- End Avatar Group -->
-                          </div>
-
-                          <div class="col-auto">
-                            <!-- Dropdown -->
-                            <div class="dropdown">
-                              <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsListDropdown7" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi-three-dots-vertical"></i>
-                              </button>
-
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsListDropdown7">
-                                <a class="dropdown-item" href="#">Rename project </a>
-                                <a class="dropdown-item" href="#">Add to favorites</a>
-                                <a class="dropdown-item" href="#">Archive project</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                              </div>
-                            </div>
-                            <!-- End Unfold -->
-                          </div>
-                        </div>
-                        <!-- End Row -->
-
-                        <!-- Stats -->
-                        <ul class="list-inline">
-                          <li class="list-inline-item">
-                            <span class="fs-5">Updated:</span>
-                            <span class="fw-semibold text-dark">1 week ago</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Tasks:</span>
-                            <span class="fw-semibold text-dark">7</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Completed:</span>
-                            <span class="fw-semibold text-dark">7</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Days left:</span>
-                            <span class="fw-semibold text-dark">0</span>
-                          </li>
-                        </ul>
-                        <!-- End Stats -->
-
-                        <!-- Progress -->
-                        <div class="progress card-progress">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <!-- End Progress -->
-
-                        <a class="stretched-link" href="#"></a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- End Card -->
-                </div>
-
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card card-body">
-                    <div class="d-flex">
-                      <!-- Avatar -->
-                      <span class="avatar avatar-soft-dark avatar-circle me-3 me-lg-4">
-                        <span class="avatar-initials">N</span>
-                      </span>
-                      <!-- End Avatar -->
-
-                      <div class="flex-grow-1 ms-3">
-                        <div class="row align-items-sm-center">
-                          <div class="col">
-                            <span class="badge bg-soft-primary text-primary p-2 mb-2">In progress</span>
-
-                            <h3 class="mb-1">Notifications</h3>
-                          </div>
-                          <!-- End Col -->
-
-                          <div class="col-md-3 d-none d-md-flex justify-content-md-end ms-n3">
-                            <!-- Avatar Group -->
-                            <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
-                              <a class="avatar avatar-soft-danger" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Teresa Eyker">
-                                <span class="avatar-initials">T</span>
-                              </a>
-                              <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Amanda Harvey">
-                                <img class="avatar-img" src="assets/img/160x160/img10.jpg" alt="Image Description">
-                              </a>
-                              <a class="avatar avatar-soft-warning" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Olivier L.">
-                                <span class="avatar-initials">O</span>
-                              </a>
-                              <a class="avatar avatar-light avatar-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Brian Halligan, Rachel Doe and 7 more">
-                                <span class="avatar-initials">+9</span>
-                              </a>
-                            </div>
-                            <!-- End Avatar Group -->
-                          </div>
-
-                          <div class="col-auto">
-                            <!-- Dropdown -->
-                            <div class="dropdown">
-                              <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsListDropdown8" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi-three-dots-vertical"></i>
-                              </button>
-
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsListDropdown8">
-                                <a class="dropdown-item" href="#">Rename project </a>
-                                <a class="dropdown-item" href="#">Add to favorites</a>
-                                <a class="dropdown-item" href="#">Archive project</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="#">Delete</a>
-                              </div>
-                            </div>
-                            <!-- End Unfold -->
-                          </div>
-                        </div>
-                        <!-- End Row -->
-
-                        <!-- Stats -->
-                        <ul class="list-inline">
-                          <li class="list-inline-item">
-                            <span class="fs-5">Updated:</span>
-                            <span class="fw-semibold text-dark">1 week ago</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Tasks:</span>
-                            <span class="fw-semibold text-dark">9</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Completed:</span>
-                            <span class="fw-semibold text-dark">16</span>
-                          </li>
-
-                          <li class="list-inline-item">
-                            <span class="fs-5">Days left:</span>
-                            <span class="fw-semibold text-dark">21</span>
-                          </li>
-                        </ul>
-                        <!-- End Stats -->
-
-                        <!-- Progress -->
-                        <div class="progress card-progress">
-                          <div class="progress-bar" role="progressbar" style="width: 77%" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <!-- End Progress -->
-
-                        <a class="stretched-link" href="#"></a>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- End Card -->
-                </div>
-              </div>
-              <!-- End Row -->
-            </div>
-          </div>
-          <!-- End Tab Content -->
+          <!-- End Col -->
         </div>
-        <!-- End Col -->
+        <!-- End Row -->
+
+        <!-- Nav -->
+        <ul class="nav nav-tabs page-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="projects.html">
+              Projects <span class="badge bg-soft-dark text-dark ms-1"></span>
+            </a>
+          </li>
+        </ul>
+        <!-- End Nav -->
       </div>
-      <!-- End Row -->
+      <!-- End Page Header -->
+
+      <!-- Card -->
+      <div class="card mb-3 mb-lg-5">
+        <!-- Body -->
+        <div class="card-body">
+          <div class="d-flex align-items-md-center">
+            <div class="flex-shrink-0">
+              <span class="display-3 text-dark">24</span>
+            </div>
+
+            <div class="flex-grow-1 ms-3">
+              <div class="row mx-md-n3">
+                <div class="col-md px-md-4">
+                  <span class="d-block">Total projects</span>
+                  <span class="badge bg-soft-danger text-danger rounded-pill p-1">
+                    <i class="bi-graph-down"></i> -2 late in due
+                  </span>
+                </div>
+                <!-- End Col -->
+
+                <div class="col-md-9 col-lg-10 column-md-divider px-md-4">
+                  <div class="row justify-content-start mb-2">
+                    <div class="col-auto">
+                      <span class="legend-indicator bg-primary"></span>
+                      In progress (10)
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <span class="legend-indicator bg-success"></span>
+                      Completed (8)
+                    </div>
+                    <!-- End Col -->
+
+                    <div class="col-auto">
+                      <span class="legend-indicator"></span>
+                      To do (6)
+                    </div>
+                    <!-- End Col -->
+                  </div>
+                  <!-- End Row -->
+
+                  <!-- Progress -->
+                  <div class="progress rounded-pill">
+                    <div class="progress-bar" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <!-- End Progress -->
+                </div>
+                <!-- End Col -->
+              </div>
+              <!-- End Row -->
+            </div>
+          </div>
+        </div>
+        <!-- End Body -->
+      </div>
+      <!-- End Card -->
+
+      <!-- Card -->
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header card-header-content-md-between">
+          <div class="mb-2 mb-md-0">
+            <form>
+              <!-- Search -->
+              <div class="input-group input-group-merge input-group-flush">
+                <div class="input-group-prepend input-group-text">
+                  <i class="bi-search"></i>
+                </div>
+                <input id="datatableSearch" type="search" class="form-control" placeholder="Search users" aria-label="Search users">
+              </div>
+              <!-- End Search -->
+            </form>
+          </div>
+
+          <div class="d-grid d-sm-flex justify-content-md-end align-items-sm-center gap-2">
+            <!-- Datatable Info -->
+            <div id="datatableCounterInfo" style="display: none;">
+              <div class="d-flex align-items-center">
+                <span class="fs-5 me-3">
+                  <span id="datatableCounter">0</span>
+                  Selected
+                </span>
+                <a class="btn btn-outline-danger btn-sm" href="javascript:;">
+                  <i class="bi-trash"></i> Delete
+                </a>
+              </div>
+            </div>
+            <!-- End Datatable Info -->
+
+            <!-- Dropdown -->
+            <div class="dropdown">
+              <button type="button" class="btn btn-white btn-sm dropdown-toggle w-100" id="usersExportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi-download me-2"></i> Export
+              </button>
+
+              <div class="dropdown-menu dropdown-menu-sm-end" aria-labelledby="usersExportDropdown">
+                <span class="dropdown-header">Options</span>
+                <a id="export-copy" class="dropdown-item" href="javascript:;">
+                  <img class="avatar avatar-xss avatar-4x3 me-2" src="assets/svg/illustrations/copy-icon.svg" alt="Image Description">
+                  Copy
+                </a>
+                <a id="export-print" class="dropdown-item" href="javascript:;">
+                  <img class="avatar avatar-xss avatar-4x3 me-2" src="assets/svg/illustrations/print-icon.svg" alt="Image Description">
+                  Print
+                </a>
+                <div class="dropdown-divider"></div>
+                <span class="dropdown-header">Download options</span>
+                <a id="export-excel" class="dropdown-item" href="javascript:;">
+                  <img class="avatar avatar-xss avatar-4x3 me-2" src="assets/svg/brands/excel-icon.svg" alt="Image Description">
+                  Excel
+                </a>
+                <a id="export-csv" class="dropdown-item" href="javascript:;">
+                  <img class="avatar avatar-xss avatar-4x3 me-2" src="assets/svg/components/placeholder-csv-format.svg" alt="Image Description">
+                  .CSV
+                </a>
+                <a id="export-pdf" class="dropdown-item" href="javascript:;">
+                  <img class="avatar avatar-xss avatar-4x3 me-2" src="assets/svg/brands/pdf-icon.svg" alt="Image Description">
+                  PDF
+                </a>
+              </div>
+            </div>
+            <!-- End Dropdown -->
+
+            <!-- Dropdown -->
+            <div class="dropdown">
+              <button type="button" class="btn btn-white btn-sm w-100" id="usersFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi-filter me-1"></i> Filter <span class="badge bg-soft-dark text-dark rounded-circle ms-1">2</span>
+              </button>
+
+              <div class="dropdown-menu dropdown-menu-sm-end dropdown-card card-dropdown-filter-centered" aria-labelledby="usersFilterDropdown" style="min-width: 22rem;">
+                <!-- Card -->
+                <div class="card">
+                  <div class="card-header card-header-content-between">
+                    <h5 class="card-header-title">Filter users</h5>
+
+                    <!-- Toggle Button -->
+                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm ms-2">
+                      <i class="bi-x-lg"></i>
+                    </button>
+                    <!-- End Toggle Button -->
+                  </div>
+
+                  <div class="card-body">
+                    <form>
+                      <div class="mb-4">
+                        <small class="text-cap text-body">Role</small>
+
+                        <div class="row">
+                          <div class="col">
+                            <!-- Check -->
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="usersFilterCheckAll" checked>
+                              <label class="form-check-label" for="usersFilterCheckAll">
+                                All
+                              </label>
+                            </div>
+                            <!-- End Check -->
+                          </div>
+                          <!-- End Col -->
+
+                          <div class="col">
+                            <!-- Check -->
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="usersFilterCheckEmployee">
+                              <label class="form-check-label" for="usersFilterCheckEmployee">
+                                Employee
+                              </label>
+                            </div>
+                            <!-- End Check -->
+                          </div>
+                          <!-- End Col -->
+                        </div>
+                        <!-- End Row -->
+                      </div>
+
+                      <div class="row">
+                        <div class="col-sm mb-4">
+                          <small class="text-cap text-body">Position</small>
+
+                          <!-- Select -->
+                          <div class="tom-select-custom">
+                            <select class="js-select js-datatable-filter form-select form-select-sm" data-target-column-index="2" data-hs-tom-select-options='{
+                                      "placeholder": "Any",
+                                      "searchInDropdown": false,
+                                      "hideSearch": true,
+                                      "dropdownWidth": "10rem"
+                                    }'>
+                              <option value="">Any</option>
+                              <option value="Accountant">Accountant</option>
+                              <option value="Co-founder">Co-founder</option>
+                              <option value="Designer">Designer</option>
+                              <option value="Developer">Developer</option>
+                              <option value="Director">Director</option>
+                            </select>
+                            <!-- End Select -->
+                          </div>
+                        </div>
+                        <!-- End Col -->
+
+                        <div class="col-sm mb-4">
+                          <small class="text-cap text-body">Status</small>
+
+                          <!-- Select -->
+                          <div class="tom-select-custom">
+                            <select class="js-select js-datatable-filter form-select form-select-sm" data-target-column-index="4" data-hs-tom-select-options='{
+                                      "placeholder": "Any status",
+                                      "searchInDropdown": false,
+                                      "hideSearch": true,
+                                      "dropdownWidth": "10rem"
+                                    }'>
+                              <option value="">Any status</option>
+                              <option value="Completed" data-option-template='<span class="d-flex align-items-center"><span class="legend-indicator bg-success"></span>Completed</span>'>Completed</option>
+                              <option value="In progress" data-option-template='<span class="d-flex align-items-center"><span class="legend-indicator bg-warning"></span>In progress</span>'>In progress</option>
+                              <option value="To do" data-option-template='<span class="d-flex align-items-center"><span class="legend-indicator bg-danger"></span>To do</span>'>To do</option>
+                            </select>
+                          </div>
+                          <!-- End Select -->
+                        </div>
+                        <!-- End Col -->
+
+                        <div class="col-12 mb-4">
+                          <small class="text-cap text-body">Members</small>
+
+                          <!-- Select -->
+                          <div class="tom-select-custom">
+                            <select class="js-select form-select" autocomplete="off" multiple data-hs-tom-select-options='{
+                                      "singleMultiple": true,
+                                      "hideSelected": false,
+                                      "placeholder": "Select member"
+                                    }'>
+                              <option label="empty"></option>
+                              <option value="AH" selected data-option-template='<span class="d-flex align-items-center"><img class="avatar avatar-xss avatar-circle me-2" src="assets/img/160x160/img10.jpg" alt="Image Description" /><span class="text-truncate">Amanda Harvey</span></span>'>Amanda Harvey</option>
+                              <option value="DH" selected data-option-template='<span class="d-flex align-items-center"><img class="avatar avatar-xss avatar-circle me-2" src="assets/img/160x160/img3.jpg" alt="Image Description" /><span class="text-truncate">David Harrison</span></span>'>David Harrison</option>
+                              <option value="SK" data-option-template='<span class="d-flex align-items-center"><img class="avatar avatar-xss avatar-circle me-2" src="assets/img/160x160/img4.jpg" alt="Image Description" /><span class="text-truncate">Sam Kart</span></span>'>Sam Kart</option>
+                              <option value="FH" data-option-template='<span class="d-flex align-items-center"><img class="avatar avatar-xss avatar-circle me-2" src="assets/img/160x160/img5.jpg" alt="Image Description" /><span class="text-truncate">Finch Hoot</span></span>'>Finch Hoot</option>
+                              <option value="CQ" selected data-option-template='<span class="d-flex align-items-center"><img class="avatar avatar-xss avatar-circle me-2" src="assets/img/160x160/img6.jpg" alt="Image Description" /><span class="text-truncate">Costa Quinn</span></span>'>Costa Quinn</option>
+                            </select>
+                          </div>
+                          <!-- End Select -->
+                        </div>
+                        <!-- End Col -->
+                      </div>
+                      <!-- End Row -->
+
+                      <div class="d-grid">
+                        <a class="btn btn-primary" href="javascript:;">Apply</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <!-- End Card -->
+              </div>
+            </div>
+            <!-- End Dropdown -->
+          </div>
+        </div>
+        <!-- End Header -->
+
+        <!-- Table -->
+        <div class="table-responsive datatable-custom">
+          <table id="datatable" class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table" data-hs-datatables-options='{
+                   "columnDefs": [{
+                      "targets": [0, 2, 3, 6, 7],
+                      "orderable": false
+                    }],
+                   "order": [],
+                   "info": {
+                     "totalQty": "#datatableWithPaginationInfoTotalQty"
+                   },
+                   "search": "#datatableSearch",
+                   "entries": "#datatableEntries",
+                   "pageLength": 15,
+                   "isResponsive": false,
+                   "isShowPaging": false,
+                   "pagination": "datatablePagination"
+                 }'>
+            <thead class="thead-light">
+              <tr>
+                <th class="table-column-pe-0">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
+                    <label class="form-check-label" for="datatableCheckAll"></label>
+                  </div>
+                </th>
+                <th class="table-column-ps-0">Project</th>
+                <th>Tasks</th>
+                <th>Members</th>
+                <th>Due date</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="table-column-pe-0">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="usersDataCheck1">
+                    <label class="form-check-label" for="usersDataCheck1"></label>
+                  </div>
+                </td>
+                <td class="table-column-ps-0">
+                  <a class="d-flex align-items-center" href="project.html">
+                    <img class="avatar" src="assets/svg/brands/guideline-icon.svg" alt="Image Description">
+                    <div class="ms-3">
+                      <span class="d-block h5 text-inherit mb-0">Cloud computing web service</span>
+                      <span class="d-block fs-6 text-body">Updated 2 minutes ago</span>
+                    </div>
+                  </a>
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    120 <a class="badge bg-soft-dark text-dark ms-1" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="top" title="tasks completed today">+2</a>
+                  </div>
+                </td>
+                <td>
+                  <!-- Avatar Group -->
+                  <div class="avatar-group avatar-group-xs avatar-circle">
+                    <a class="avatar" href="user-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Ella Lauda">
+                      <img class="avatar-img" src="assets/img/160x160/img9.jpg" alt="Image Description">
+                    </a>
+                    <a class="avatar" href="user-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="David Harrison">
+                      <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
+                    </a>
+                    <a class="avatar avatar-soft-dark" href="user-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Antony Taylor">
+                      <span class="avatar-initials">A</span>
+                    </a>
+                    <a class="avatar avatar-soft-info" href="user-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Sara Iwens">
+                      <span class="avatar-initials">S</span>
+                    </a>
+                    <a class="avatar" href="user-profile.html" data-bs-toggle="tooltip" data-bs-placement="top" title="Finch Hoot">
+                      <img class="avatar-img" src="assets/img/160x160/img5.jpg" alt="Image Description">
+                    </a>
+                  </div>
+                  <!-- End Avatar Group -->
+                </td>
+                <td>05 May</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- End Table -->
+
+        <!-- Footer -->
+        <div class="card-footer">
+          <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
+            <div class="col-sm mb-2 mb-sm-0">
+              <div class="d-flex justify-content-center justify-content-sm-start align-items-center">
+                <span class="me-2">Showing:</span>
+
+                <!-- Select -->
+                <div class="tom-select-custom">
+                  <select id="datatableEntries" class="js-select form-select form-select-borderless w-auto" autocomplete="off" data-hs-tom-select-options='{
+                            "searchInDropdown": false,
+                            "hideSearch": true
+                          }'>
+                    <option value="10">10</option>
+                    <option value="15" selected>15</option>
+                    <option value="20">20</option>
+                  </select>
+                </div>
+                <!-- End Select -->
+
+            
+
+                <!-- Pagination Quantity -->
+                <span id="datatableWithPaginationInfoTotalQty"></span>
+              </div>
+            </div>
+            <!-- End Col -->
+
+            <div class="col-sm-auto">
+              <div class="d-flex justify-content-center justify-content-sm-end">
+                <!-- Pagination -->
+                <nav id="datatablePagination" aria-label="Activity pagination"></nav>
+              </div>
+            </div>
+            <!-- End Col -->
+          </div>
+          <!-- End Row -->
+        </div>
+        <!-- End Footer -->
+      </div>
+      <!-- End Card -->
     </div>
     <!-- End Content -->
 
