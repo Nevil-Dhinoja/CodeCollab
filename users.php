@@ -98,7 +98,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <div class="content container-fluid">
       <!-- Page Header -->
       <div class="page-header">
-        <div class="row align-items-end">
           <div class="col-sm mb-2 mb-sm-0">
             <!-- <nav aria-label="breadcrumb">
               <ol class="breadcrumb breadcrumb-no-gutter">
@@ -111,9 +110,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
             <h1 class="page-header-title">Users</h1>
           </div>
           <!-- End Col -->
-          <!-- End Col -->
-        </div>
-        <!-- End Row -->
       </div>
       <!-- End Page Header -->
 
@@ -416,7 +412,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <!-- End Content -->
   </main>
   <!-- JS Implementing Plugins -->
-  <script src="assets/js/vendor.min.js"></script>
+  <script src="assets/js/vendor.min.js"></script> 
 
   <!-- JS Front -->
   <script src="assets/js/theme.min.js"></script>
