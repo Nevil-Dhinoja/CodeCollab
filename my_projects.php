@@ -254,13 +254,110 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                                     </div>
                                     <!-- End Row -->
                                 </div>
+                                <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
+                                    <div class="row row-cols-1">
+                                        <div class="col mb-3 mb-lg-5">
+                                            <!-- Card -->
+                                            <div class="card card-body">
+                                                <div class="d-flex">
+                                                    <!-- Avatar -->
+                                                    <div class="flex-shrink-0 me-3 me-lg-4">
+                                                        <img class="avatar" src="assets/svg/brands/google-webdev-icon.svg" alt="Image Description">
+                                                    </div>
+
+                                                    <div class="flex-grow-1 ms-3">
+                                                        <div class="row align-items-sm-center">
+                                                            <div class="col">
+                                                                <span class="badge bg-soft-secondary text-secondary p-2 mb-2">To do</span>
+
+                                                                <h3 class="mb-1">Webdev</h3>
+                                                            </div>
+                                                            <!-- End Col -->
+
+                                                            <div class="col-md-3 d-none d-md-flex justify-content-md-end ms-n3">
+                                                                <!-- Avatar Group -->
+                                                                <div class="avatar-group avatar-group-sm avatar-circle card-avatar-group">
+                                                                    <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Finch Hoot">
+                                                                        <img class="avatar-img" src="assets/img/160x160/img5.jpg" alt="Image Description">
+                                                                    </a>
+                                                                    <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Bob Bardly">
+                                                                        <span class="avatar-initials">B</span>
+                                                                    </a>
+                                                                    <a class="avatar" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Clarice Boone">
+                                                                        <img class="avatar-img" src="assets/img/160x160/img7.jpg" alt="Image Description">
+                                                                    </a>
+                                                                    <a class="avatar avatar-soft-dark" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Adam Keep">
+                                                                        <span class="avatar-initials">A</span>
+                                                                    </a>
+                                                                </div>
+                                                                <!-- End Avatar Group -->
+                                                            </div>
+
+                                                            <div class="col-auto">
+                                                                <!-- Dropdown -->
+                                                                <div class="dropdown">
+                                                                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm card-dropdown-btn rounded-circle" id="projectsListDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="bi-three-dots-vertical"></i>
+                                                                    </button>
+
+                                                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="projectsListDropdown1">
+                                                                        <a class="dropdown-item" href="#">Rename project </a>
+                                                                        <a class="dropdown-item" href="#">Add to favorites</a>
+                                                                        <a class="dropdown-item" href="#">Archive project</a>
+                                                                        <div class="dropdown-divider"></div>
+                                                                        <a class="dropdown-item text-danger" href="#">Delete</a>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- End Unfold -->
+                                                            </div>
+                                                        </div>
+                                                        <!-- End Row -->
+
+                                                        <!-- Stats -->
+                                                        <ul class="list-inline">
+                                                            <li class="list-inline-item">
+                                                                <span class="fs-5">Updated:</span>
+                                                                <span class="fw-semibold text-dark">2 hours ago</span>
+                                                            </li>
+
+                                                            <li class="list-inline-item">
+                                                                <span class="fs-5">Tasks:</span>
+                                                                <span class="fw-semibold text-dark">19</span>
+                                                            </li>
+
+                                                            <li class="list-inline-item">
+                                                                <span class="fs-5">Completed:</span>
+                                                                <span class="fw-semibold text-dark">33</span>
+                                                            </li>
+
+                                                            <li class="list-inline-item">
+                                                                <span class="fs-5">Days left:</span>
+                                                                <span class="fw-semibold text-dark">10</span>
+                                                            </li>
+                                                        </ul>
+                                                        <!-- End Stats -->
+
+                                                        <!-- Progress -->
+                                                        <div class="progress card-progress">
+                                                            <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                        <!-- End Progress -->
+
+                                                        <a class="stretched-link" href="#"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Card -->
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- End Tab Content -->
                             </div>
-                            <!-- End Tab Content -->
                         </div>
+                        <!-- End Col -->
                     </div>
-                    <!-- End Col -->
-                </div>
-                <!-- End Row -->
+                    <!-- End Row -->
                 </div>
                 <!-- End Content -->
 

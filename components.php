@@ -16,9 +16,10 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
     <!-- Title -->
-    <title>Users</title>
+    <title>Components</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo-mini.svg" />
@@ -91,7 +92,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
       .contact-info {
         margin-top: 20px;
-        text-align: center;
       }
 
       .contact-info ul {
@@ -142,8 +142,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
       $progress_percentage = ($profile_complete / $total_fields) * 100;
     }
     ?>
-  <!-- <script src="assets/js/vendor.min.js"></script> -->
-  <main id="content" role="main" class="main">
+    <!-- <script src="assets/js/vendor.min.js"></script> -->
+    <main id="content" role="main" class="main">
       <div class="card">
         <div class="card-header">
           <h2 class="card-title h4">Components</h2>
@@ -178,31 +178,31 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
           <h2>Contact</h2>
           <div class="contact-info">
             <ul>
-            <li>
-  <a href="https://www.linkedin.com/in/nevil-dhinoja" target="_blank">
-  <i class="fa-solid fa-user"></i> &nbsp;Nevil Dhinoja
-  </a>
-</li>
-<li>
-  <a href="https://www.linkedin.com/in/nevil-dhinoja" target="_blank">
-    <i class="fab fa-linkedin"></i> &nbsp;LinkedIn
-  </a>
-</li>
-<li>
-  <a href="https://github.com/Nevil-Dhinoja" target="_blank">
-    <i class="fab fa-github"></i> &nbsp;GitHub
-  </a>
-</li>
-</ul>
+              <li>
+                <a href="https://www.linkedin.com/in/nevil-dhinoja" target="_blank">
+                  <i class="fa-solid fa-user"></i> &nbsp;Nevil Dhinoja
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/nevil-dhinoja" target="_blank">
+                  <i class="fab fa-linkedin"></i> &nbsp;LinkedIn
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/Nevil-Dhinoja" target="_blank">
+                  <i class="fab fa-github"></i> &nbsp;GitHub
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
     </main>
-    <?php
-    include_once("user_footer.php");
-  } else {
-    header("Location: login_user.php");
-  }
-    ?>
+  <?php
+  include_once("user_footer.php");
+} else {
+  header("Location: login_user.php");
+}
+  ?>
   </body>
 
   </html>
