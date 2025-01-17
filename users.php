@@ -325,7 +325,9 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
             <tbody>
               <tr>
                   <?php
-                            while ($row = mysqli_fetch_array($result1)) { ?>
+                            while ($row = mysqli_fetch_array($result1)) { 
+                              $name = $row['user_name'];
+                              ?>
                 <td class="table-column-pe-0">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll1">
@@ -338,8 +340,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                       <img class="avatar-img" src="assets/img/160x160/img10.jpg" alt="Image Description">
                     </div>
                     <div class="ms-3">
-                      <span class="d-block h5 text-inherit mb-0"><?php "$row[user_name]"; ?> &nbsp;<i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
-                      <span class="d-block fs-5 text-body"><?php "$row[user_email]"; ?> &nbsp;</span>
+                      <span class="d-block h5 text-inherit mb-0"><?php $name ?> &nbsp;<i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
+                      <span class="d-block fs-5 text-body"><?php $row['user_email'];  }?> &nbsp;</span>
                     </div>
                   </a>
                 </td>
@@ -348,9 +350,9 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
-                    <span class="fs-5 me-2">72%</span>
+                    <span class="fs-5 me-2">100%</span>
                     <div class="progress table-progress">
-                      <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
                 </td>
@@ -360,7 +362,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                     <i class="bi-pencil-fill me-1"></i> Edit
                   </button>
                 </td>
-                <?php } ?>
+                <?php ?>
               </tr>
 
 
