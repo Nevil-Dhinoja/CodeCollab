@@ -881,7 +881,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                 </div>
                 <!-- End Select -->
 
-                <span class="text-secondary me-2">of</span>
+                <!-- <span class="text-secondary me-2">of</span> -->
 
                 <!-- Pagination Quantity -->
                 <span id="datatableWithPaginationInfoTotalQty"></span>
