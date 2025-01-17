@@ -14,11 +14,12 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
   <head>
     <!-- Required Meta Tags Always Come First -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Users</title>
+    <title>Documentation</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo-mini.svg" />
@@ -34,22 +35,72 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
     <link rel="preload" href="assets/css/theme.min.css" data-hs-appearance="default" as="style">
     <link rel="preload" href="assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
-
-    <style data-hs-appearance-onload-styles>
-      * {
-        transition: unset !important;
-      }
-
-      body {
-        opacity: 0;
-      }
-    </style>
-
-    <!-- ONLY DEV -->
-
     <style>
       body {
-        opacity: 0;
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .card {
+        max-width: 800px;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background: #fff;
+        align-items: center;
+      }
+
+      .card-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .card-header h2 {
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .card-body h2 {
+        font-size: 20px;
+        margin-top: 20px;
+        font-weight: 500;
+      }
+
+      .card-body ul {
+        padding-left: 20px;
+        list-style-type: disc;
+      }
+
+      .card-body ol {
+        padding-left: 20px;
+        list-style-type: decimal;
+      }
+
+      .card-body p,
+      .card-body li {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .contact-info {
+        margin-top: 20px;
+      }
+
+      .contact-info ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .contact-info ul li {
+        font-size: 16px;
+        margin: 5px 0;
       }
     </style>
 
@@ -63,126 +114,83 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <script src="assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
 
     <?php while ($row = mysqli_fetch_array($result)) {
-      $profile_complete = 0;
-
-      // Check profile fields for completeness
-      if (!empty($row['user_name'])) {
-        $profile_complete++;
-      }
-      if (!empty($row['profile'])) {
-        $profile_complete++;
-      }
-      if (!empty($row['user_email'])) {
-        $profile_complete++;
-      }
-      if (!empty($row['Mobile_no'])) {
-        $profile_complete++;
-      }
-      if (!empty($row['user_password'])) {
-        $profile_complete++;
-      }
-      if (!empty($row['profile_header']) && $row['profile_header'] == 1) {
-        $profile_complete++;
-      }
-
-      // Calculate the percentage based on the number of fields completed
-      $total_fields = 6; // Total number of fields to track (user_name, profile, user_email, Mobile_no)
-      $progress_percentage = ($profile_complete / $total_fields) * 100;
     }
     ?>
-  <script src="assets/js/vendor.min.js"></script>
-  <main id="content" role="main" class="main">
-        <!-- Page Header -->
-        <div class="bg-light py-3">
-            <div class="container">
-                <h1 class="h3 mb-0">Website Documentation</h1>
-            </div>
+    <!-- <script src="assets/js/vendor.min.js"></script> -->
+    <main id="content" role="main" class="main">
+
+      <div class="card justify-content-lg-center">
+        <div class="card-header">
+          <h2 class="card-title">Documentation</h2>
         </div>
+        <div class="card-body">
+          <h2>Overview</h2>
+          <p>CodeColab is a collaborative platform designed for developers, students, and tech enthusiasts to work on coding projects together. It provides an interactive environment where users can share code, collaborate in real-time, and improve their skills through group learning and teamwork.</p>
 
-        <!-- Documentation Sections -->
-        <div class="container py-5">
-            <!-- Introduction Section -->
-            <section id="introduction">
-                <h2 class="h4">Introduction</h2>
-                <p>This documentation provides an in-depth guide to the website's structure, components, and functionalities. It serves as a reference for users and developers to understand and utilize the features effectively.</p>
-            </section>
+          <h2>Features</h2>
+          <ul>
+            <li><strong>Real-Time Collaboration:</strong> Users can edit and debug code collaboratively with live updates.</li>
+            <li><strong>Project Management:</strong> Manage projects, assign tasks, and track progress effectively.</li>
+            <li><strong>Code Sharing:</strong> Easily share code snippets with team members or the community.</li>
+            <li><strong>Interactive Code Editor:</strong> Built-in editor with syntax highlighting, autocomplete, and multi-language support.</li>
+            <li><strong>Version Control Integration:</strong> Option to manually integrate with Git for version control.</li>
+            <li><strong>User Authentication:</strong> Secure login and registration system.</li>
+            <li><strong>Responsive Design:</strong> Accessible on desktops, tablets, and mobile devices.</li>
+          </ul>
 
-            <!-- Features Section -->
-            <section id="features" class="mt-4">
-                <h2 class="h4">Features</h2>
-                <ul>
-                    <li><strong>Responsive Design:</strong> Fully optimized for desktop, tablet, and mobile devices.</li>
-                    <li><strong>User Authentication:</strong> Secure login and registration system.</li>
-                    <li><strong>Dynamic Content:</strong> Content is dynamically loaded and updated using PHP and AJAX.</li>
-                    <li><strong>Admin Panel:</strong> Comprehensive control over website management, including user data and content moderation.</li>
-                    <li><strong>Documentation:</strong> Detailed guides and FAQs for users and developers.</li>
-                </ul>
-            </section>
+          <h2>Technology Stack</h2>
+          <ul>
+            <li><strong>Frontend:</strong> HTML, CSS, and JavaScript (Bootstrap for responsive design)</li>
+            <li><strong>Backend:</strong> PHP and MySQL</li>
+            <li><strong>Hosting:</strong> Deployed on a suitable web server</li>
+          </ul>
 
-            <!-- Code Structure Section -->
-            <section id="code-structure" class="mt-4">
-                <h2 class="h4">Code Structure</h2>
-                <p>The project follows a modular approach to ensure scalability and maintainability. Below is the directory structure:</p>
-                <pre>
-root/
-|-- assets/
-|   |-- css/
-|   |-- js/
-|   |-- images/
-|-- includes/
-|   |-- user_header.php
-|   |-- user_footer.php
-|-- pages/
-|   |-- documentation.php
-|-- index.php
-                </pre>
-            </section>
+          <h2>Setup Instructions</h2>
+          <h3>Prerequisites</h3>
+          <ul>
+            <li>PHP 7.4 or higher installed on your system.</li>
+            <li>MySQL database server.</li>
+            <li>A web server (e.g., Apache or Nginx).</li>
+          </ul>
+          <h3>Installation Steps</h3>
+          <ol>
+            <li>Clone the repository: <code>git clone [repository URL]</code></li>
+            <li>Navigate to the project directory: <code>cd CodeColab</code></li>
+            <li>Set up the database by importing the `database.sql` file into MySQL.</li>
+            <li>Update the database configuration in <code>config.php</code>.</li>
+            <li>Start the local server and access the project in the browser.</li>
+          </ol>
 
-            <!-- Technology Stack Section -->
-            <section id="technology-stack" class="mt-4">
-                <h2 class="h4">Technology Stack</h2>
-                <ul>
-                    <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript, Bootstrap.</li>
-                    <li><strong>Backend:</strong> PHP 7.4+, MySQL.</li>
-                    <li><strong>Version Control:</strong> Git and GitHub.</li>
-                    <li><strong>Libraries/Plugins:</strong> DataTables, Chart.js, HS Navigation.</li>
-                </ul>
-            </section>
+          <h2>Contact</h2>
+          <div class="contact-info">
+            <ul>
+              <li>
+                <a href="https://www.linkedin.com/in/nevil-dhinoja" target="_blank">
+                  <i class="fa-solid fa-user"></i> &nbsp;Nevil Dhinoja
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/nevil-dhinoja" target="_blank">
+                  <i class="fab fa-linkedin"></i> &nbsp;LinkedIn
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/Nevil-Dhinoja" target="_blank">
+                  <i class="fab fa-github"></i> &nbsp;GitHub
+                </a>
+              </li>
 
-            <!-- Usage Guidelines Section -->
-            <section id="usage-guidelines" class="mt-4">
-                <h2 class="h4">Usage Guidelines</h2>
-                <p>To use the website effectively, follow these steps:</p>
-                <ol>
-                    <li>Navigate to the homepage to explore the website's main features.</li>
-                    <li>Use the navigation menu to access different sections.</li>
-                    <li>For admin functionalities, log in with admin credentials to access the admin panel.</li>
-                    <li>Refer to the FAQ section for common queries and troubleshooting tips.</li>
-                </ol>
-            </section>
-
-            <!-- FAQ Section -->
-            <section id="faq" class="mt-4">
-                <h2 class="h4">Frequently Asked Questions</h2>
-                <dl>
-                    <dt>How do I reset my password?</dt>
-                    <dd>Click on the "Forgot Password" link on the login page and follow the instructions.</dd>
-
-                    <dt>What browsers are supported?</dt>
-                    <dd>The website is compatible with all modern browsers, including Chrome, Firefox, Edge, and Safari.</dd>
-
-                    <dt>Can I access the website on mobile devices?</dt>
-                    <dd>Yes, the website is fully responsive and optimized for mobile devices.</dd>
-                </dl>
-            </section>
+            </ul>
+          </div>
         </div>
+      </div>
     </main>
-    <?php
-    include_once("user_footer.php");
-  } else {
-    header("Location: login_user.php");
-  }
-    ?>
+  <?php
+  include_once("user_footer.php");
+} else {
+  header("Location: login_user.php");
+}
+  ?>
   </body>
 
   </html>

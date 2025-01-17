@@ -35,21 +35,73 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <link rel="preload" href="assets/css/theme.min.css" data-hs-appearance="default" as="style">
     <link rel="preload" href="assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
 
-    <style data-hs-appearance-onload-styles>
-      * {
-        transition: unset !important;
-      }
-
-      body {
-        opacity: 0;
-      }
-    </style>
-
-    <!-- ONLY DEV -->
-
     <style>
       body {
-        opacity: 0;
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .card {
+        max-width: 800px;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background: #fff;
+        align-items: center;
+      }
+
+      .card-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .card-header h2 {
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .card-body h2 {
+        font-size: 20px;
+        margin-top: 20px;
+        font-weight: 500;
+      }
+
+      .card-body ul {
+        padding-left: 20px;
+        list-style-type: disc;
+      }
+
+      .card-body ol {
+        padding-left: 20px;
+        list-style-type: decimal;
+      }
+
+      .card-body p,
+      .card-body li {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .contact-info {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .contact-info ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .contact-info ul li {
+        font-size: 16px;
+        margin: 5px 0;
       }
     </style>
 
@@ -90,92 +142,60 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
       $progress_percentage = ($profile_complete / $total_fields) * 100;
     }
     ?>
-  <script src="assets/js/vendor.min.js"></script>
+  <!-- <script src="assets/js/vendor.min.js"></script> -->
   <main id="content" role="main" class="main">
-        <!-- Page Header -->
-        <div class="bg-light py-3">
-            <div class="container">
-                <h1 class="h3 mb-0">Website Documentation</h1>
-            </div>
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title h4">Components</h2>
         </div>
+        <div class="card-body">
+          <h2>Overview</h2>
+          <p>CodeColab Components is a modular system designed to enhance reusability and maintainability of code. Each component is built with a focus on clarity, simplicity, and scalability.</p>
 
-        <!-- Documentation Sections -->
-        <div class="container py-5">
-            <!-- Introduction Section -->
-            <section id="introduction">
-                <h2 class="h4">Introduction</h2>
-                <p>This documentation provides an in-depth guide to the website's structure, components, and functionalities. It serves as a reference for users and developers to understand and utilize the features effectively.</p>
-            </section>
+          <h2>Available Components</h2>
+          <ul>
+            <li><strong>Navbar:</strong> A responsive navigation bar that adapts to various screen sizes.</li>
+            <li><strong>Footer:</strong> A customizable footer with multiple layout options.</li>
+            <li><strong>Cards:</strong> Pre-designed card components for displaying information.</li>
+            <li><strong>Modals:</strong> Popup modals for alerts, confirmations, or displaying forms.</li>
+            <li><strong>Buttons:</strong> Standardized buttons with various styles and sizes.</li>
+            <li><strong>Forms:</strong> Pre-styled form components for input handling.</li>
+          </ul>
 
-            <!-- Features Section -->
-            <section id="features" class="mt-4">
-                <h2 class="h4">Features</h2>
-                <ul>
-                    <li><strong>Responsive Design:</strong> Fully optimized for desktop, tablet, and mobile devices.</li>
-                    <li><strong>User Authentication:</strong> Secure login and registration system.</li>
-                    <li><strong>Dynamic Content:</strong> Content is dynamically loaded and updated using PHP and AJAX.</li>
-                    <li><strong>Admin Panel:</strong> Comprehensive control over website management, including user data and content moderation.</li>
-                    <li><strong>Documentation:</strong> Detailed guides and FAQs for users and developers.</li>
-                </ul>
-            </section>
+          <h2>Technology Stack</h2>
+          <ul>
+            <li><strong>Frontend:</strong> HTML, CSS, JavaScript (with Bootstrap for responsive design)</li>
+            <li><strong>Backend:</strong> PHP and MySQL</li>
+          </ul>
 
-            <!-- Code Structure Section -->
-            <section id="code-structure" class="mt-4">
-                <h2 class="h4">Code Structure</h2>
-                <p>The project follows a modular approach to ensure scalability and maintainability. Below is the directory structure:</p>
-                <pre>
-root/
-|-- assets/
-|   |-- css/
-|   |-- js/
-|   |-- images/
-|-- includes/
-|   |-- user_header.php
-|   |-- user_footer.php
-|-- pages/
-|   |-- documentation.php
-|-- index.php
-                </pre>
-            </section>
+          <h2>How to Use</h2>
+          <ol>
+            <li>Identify the component you want to use from the above list.</li>
+            <li>Include the necessary HTML markup and classes in your code.</li>
+            <li>Refer to the documentation for any specific configuration or customization options.</li>
+          </ol>
 
-            <!-- Technology Stack Section -->
-            <section id="technology-stack" class="mt-4">
-                <h2 class="h4">Technology Stack</h2>
-                <ul>
-                    <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript, Bootstrap.</li>
-                    <li><strong>Backend:</strong> PHP 7.4+, MySQL.</li>
-                    <li><strong>Version Control:</strong> Git and GitHub.</li>
-                    <li><strong>Libraries/Plugins:</strong> DataTables, Chart.js, HS Navigation.</li>
-                </ul>
-            </section>
-
-            <!-- Usage Guidelines Section -->
-            <section id="usage-guidelines" class="mt-4">
-                <h2 class="h4">Usage Guidelines</h2>
-                <p>To use the website effectively, follow these steps:</p>
-                <ol>
-                    <li>Navigate to the homepage to explore the website's main features.</li>
-                    <li>Use the navigation menu to access different sections.</li>
-                    <li>For admin functionalities, log in with admin credentials to access the admin panel.</li>
-                    <li>Refer to the FAQ section for common queries and troubleshooting tips.</li>
-                </ol>
-            </section>
-
-            <!-- FAQ Section -->
-            <section id="faq" class="mt-4">
-                <h2 class="h4">Frequently Asked Questions</h2>
-                <dl>
-                    <dt>How do I reset my password?</dt>
-                    <dd>Click on the "Forgot Password" link on the login page and follow the instructions.</dd>
-
-                    <dt>What browsers are supported?</dt>
-                    <dd>The website is compatible with all modern browsers, including Chrome, Firefox, Edge, and Safari.</dd>
-
-                    <dt>Can I access the website on mobile devices?</dt>
-                    <dd>Yes, the website is fully responsive and optimized for mobile devices.</dd>
-                </dl>
-            </section>
+          <h2>Contact</h2>
+          <div class="contact-info">
+            <ul>
+            <li>
+  <a href="https://www.linkedin.com/in/nevil-dhinoja" target="_blank">
+  <i class="fa-solid fa-user"></i> &nbsp;Nevil Dhinoja
+  </a>
+</li>
+<li>
+  <a href="https://www.linkedin.com/in/nevil-dhinoja" target="_blank">
+    <i class="fab fa-linkedin"></i> &nbsp;LinkedIn
+  </a>
+</li>
+<li>
+  <a href="https://github.com/Nevil-Dhinoja" target="_blank">
+    <i class="fab fa-github"></i> &nbsp;GitHub
+  </a>
+</li>
+</ul>
         </div>
+      </div>
     </main>
     <?php
     include_once("user_footer.php");

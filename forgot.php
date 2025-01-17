@@ -186,7 +186,7 @@
   <!-- ========== END MAIN CONTENT ========== -->
 
   <!-- JS Implementing Plugins -->
-  <script src="assets/js/vendor.min.js"></script>
+  <!-- <script src="assets/js/vendor.min.js"></script> -->
 
   <!-- JS Front -->
   <script src="assets/js/theme.min.js"></script>

@@ -146,10 +146,10 @@ $result1 = mysqli_query($conn, $q);  ?>
     <div class="navbar-nav-wrap">
       <!-- Logo -->
       <a class="navbar-brand" href="dashboard.php" aria-label="CodeColab">
-        <img class="navbar-brand-logo" src="assets/images/logo.png" alt="Logo" data-hs-theme-appearance="default">
-        <img class="navbar-brand-logo" src="assets/images/logo.png" alt="Logo" data-hs-theme-appearance="dark">
-        <img class="navbar-brand-logo-mini" src="assets/svg/logos/logo-short.svg" alt="Logo" data-hs-theme-appearance="default">
-        <img class="navbar-brand-logo-mini" src="assets/svg/logos-light/logo-short.svg" alt="Logo" data-hs-theme-appearance="dark">
+        <img class="navbar-brand-logo" src="assets/images/logo (2).svg" alt="Logo" data-hs-theme-appearance="default">
+        <img class="navbar-brand-logo" src="assets/images/logo (2).svg" alt="Logo" data-hs-theme-appearance="dark">
+        <!-- <img class="navbar-brand-logo-mini" src="assets/svg/logos/logo-short.svg" alt="Logo" data-hs-theme-appearance="default">
+        <img class="navbar-brand-logo-mini" src="assets/svg/logos-light/logo-short.svg" alt="Logo" data-hs-theme-appearance="dark"> -->
       </a>
       <!-- End Logo -->
 

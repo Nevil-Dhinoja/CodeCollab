@@ -1169,7 +1169,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
       </div>
     </div>
   </div>
-  <script src="assets/js/vendor.min.js"></script>
+  <!-- <script src="assets/js/vendor.min.js"></script> -->
   <script>
     $(document).on('ready', function () {
       // INITIALIZATION OF DATATABLES

@@ -90,7 +90,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
       $progress_percentage = ($profile_complete / $total_fields) * 100;
     }
     ?>
-  <script src="assets/js/vendor.min.js"></script>
+  <!-- <script src="assets/js/vendor.min.js"></script> -->
   <main id="content" role="main" class="main">
 
   </main>
