@@ -5,7 +5,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
   $email = $_SESSION['email'];
   $pass = $_SESSION['password'];
   $q = "SELECT * FROM users WHERE user_email = '$email'";
-  $q1 ="SELECT * FROM users";
+  $q1 ="SELECT *  FROM users";
   $result = mysqli_query($conn, $q);
   $result01 = mysqli_query($conn, $q1);
 ?>
@@ -64,34 +64,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
   <script src="assets/js/hs.theme-appearance.js"></script>
 
   <script src="assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
-    <?php while ($row = mysqli_fetch_array($result)) {
-      $profile_complete = 0;
-
-      // Check profile fields for completeness
-      if (!empty($row['user_name'])) {
-        $profile_complete++;
-      }
-      if (!empty($row['profile'])) {
-        $profile_complete++;
-      }
-      if (!empty($row['user_email'])) {
-        $profile_complete++;
-      }
-      if (!empty($row['Mobile_no'])) {
-        $profile_complete++;
-      }
-      if (!empty($row['user_password'])) {
-        $profile_complete++;
-      }
-      if (!empty($row['profile_header']) && $row['profile_header'] == 1) {
-        $profile_complete++;
-      }
-
-      // Calculate the percentage based on the number of fields completed
-      $total_fields = 6; // Total number of fields to track (user_name, profile, user_email, Mobile_no)
-      $progress_percentage = ($profile_complete / $total_fields) * 100;
-    }
-    ?>
   <script src="assets/js/vendor.min.js"></script>
   <main id="content" role="main" class="main">
     <!-- Content -->
@@ -149,55 +121,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
               <div class="row align-items-center gx-2">
                 <div class="col">
-                  <span class="js-counter display-4 text-dark">12</span>
-                  <span class="text-body fs-5 ms-1">from 11</span>
-                </div>
-
-                <div class="col-auto">
-                  <span class="badge bg-soft-success text-success p-1">
-                    <i class="bi-graph-up"></i> 1.2%
-                  </span>
-                </div>
-              </div>
-              <!-- End Row -->
-            </div>
-          </div>
-          <!-- End Card -->
-        </div>
-
-        <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
-          <!-- Card -->
-          <div class="card h-100">
-            <div class="card-body">
-              <h6 class="card-subtitle mb-2">New/returning</h6>
-
-              <div class="row align-items-center gx-2">
-                <div class="col">
-                  <span class="js-counter display-4 text-dark">56</span>
-                  <span class="display-4 text-dark">%</span>
-                  <span class="text-body fs-5 ms-1">from 48.7</span>
-                </div>
-
-                <div class="col-auto">
-                  <span class="badge bg-soft-danger text-danger p-1">
-                    <i class="bi-graph-down"></i> 2.8%
-                  </span>
-                </div>
-              </div>
-              <!-- End Row -->
-            </div>
-          </div>
-          <!-- End Card -->
-        </div>
-
-        <div class="col-sm-6 col-lg-3 mb-3 mb-lg-5">
-          <!-- Card -->
-          <div class="card h-100">
-            <div class="card-body">
-              <h6 class="card-subtitle mb-2">Active members</h6>
-
-              <div class="row align-items-center gx-2">
-                <div class="col">
                   <span class="js-counter display-4 text-dark">28.6</span>
                   <span class="display-4 text-dark">%</span>
                   <span class="text-body fs-5 ms-1">from 28.6%</span>
@@ -233,19 +156,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
           </div>
 
           <div class="d-grid d-sm-flex justify-content-md-end align-items-sm-center gap-2">
-            <!-- Datatable Info -->
-            <div id="datatableCounterInfo" style="display: none;">
-              <div class="d-flex align-items-center">
-                <span class="fs-5 me-3">
-                  <span id="datatableCounter">0</span>
-                  Selected
-                </span>
-                <a class="btn btn-outline-danger btn-sm" href="javascript:;">
-                  <i class="bi-trash"></i> Delete
-                </a>
-              </div>
-            </div>
-            <!-- End Datatable Info -->
 
             <!-- Dropdown -->
             <div class="dropdown">
@@ -319,11 +229,23 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
             </thead>
 
             <tbody>
-              <tr>
-                  <?php
+            <?php
                             while ($row = mysqli_fetch_array($result01)) { 
-                              $name = $row['user_name'];
+                              $profile_complete = 0;
+
+                // Check profile fields for completeness
+                if (!empty($row['user_name'])) $profile_complete++;
+                if (!empty($row['profile'])) $profile_complete++;
+                if (!empty($row['user_email'])) $profile_complete++;
+                if (!empty($row['Mobile_no'])) $profile_complete++;
+                if (!empty($row['user_password'])) $profile_complete++;
+                if (!empty($row['profile_header']) && $row['profile_header_updated'] == 1) $profile_complete++;
+
+                // Calculate the percentage
+                $total_fields = 6;
+                $progress_percentage = ($profile_complete / $total_fields) * 100;
                               ?>
+              <tr>
                 <td class="table-column-pe-0">
                   <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll1">
@@ -336,29 +258,25 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                       <img class="avatar-img" src="assets/img/160x160/img10.jpg" alt="Image Description">
                     </div>
                     <div class="ms-3">
-                      <span class="d-block h5 text-inherit mb-0"><?php $name ?> &nbsp;<i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
-                      <span class="d-block fs-5 text-body"><?php $row['user_email'];  }?> &nbsp;</span>
+                      <span class="d-block h5 text-inherit mb-0"><?php echo "$row[user_name]"; ?> &nbsp;<i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
+                      <span class="d-block fs-5 text-body"><?php echo "$row[user_email]"; ?> &nbsp;</span>
                     </div>
                   </a>
                 </td>
                 <td>
-                  <span class="legend-indicator bg-success"></span>Active
+                  <span class="legend-indicator bg-success"></span><?php echo "$row[Status]"; ?> &nbsp;
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
-                    <span class="fs-5 me-2">100%</span>
+                    <span class="fs-5 me-2"><?php echo "$progress_percentage"; ?></span>
                     <div class="progress table-progress">
                       <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
                 </td>
                 <td>
-                 
-                  <button type="button" class="btn btn-white btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal">
-                    <i class="bi-pencil-fill me-1"></i> Edit
-                  </button>
                 </td>
-                <?php ?>
+                <?php } ?>
               </tr>
 
 
