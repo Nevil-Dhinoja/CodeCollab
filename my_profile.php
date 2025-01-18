@@ -81,13 +81,14 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
       if (!empty($row['user_password'])) {
         $profile_complete++;
       }
-      if (!empty($row['profile_header']) && $row['profile_header'] == 1) {
+      if (!empty($row['profile_header']) && $row['profile_header_updated'] == 1) {
         $profile_complete++;
       } 
 
       // Calculate the percentage based on the number of fields completed
       $total_fields = 6; // Total number of fields to track (user_name, profile, user_email, Mobile_no)
-      $progress_percentage = ($profile_complete / $total_fields) * 100;
+      $progress_percentage = round(($profile_complete / $total_fields) * 100);
+
     ?>
       <main id="content" role="main" class="main">
         <?php
