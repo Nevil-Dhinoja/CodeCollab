@@ -7,7 +7,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
   $q = "SELECT * FROM users WHERE user_email = '$email'";
   $q1 ="SELECT * FROM users";
   $result = mysqli_query($conn, $q);
-  $result1 = mysqli_query($conn, $q1);
+  $result01 = mysqli_query($conn, $q1);
 ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -321,7 +321,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
             <tbody>
               <tr>
                   <?php
-                            while ($row = mysqli_fetch_array($result1)) { 
+                            while ($row = mysqli_fetch_array($result01)) { 
                               $name = $row['user_name'];
                               ?>
                 <td class="table-column-pe-0">
