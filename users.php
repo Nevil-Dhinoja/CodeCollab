@@ -222,9 +222,9 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                   </div>
                 </th>
                 <th class="table-column-ps-0">Name</th>
+                <th>Password</th>
                 <th>Status</th>
                 <th>Portfolio</th>
-                <th>Info</th>
               </tr>
             </thead>
 
@@ -255,7 +255,9 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                 <td class="table-column-ps-0">
                   <a class="d-flex align-items-center" href="user-profile.html">
                     <div class="avatar avatar-circle">
-                      <img class="avatar-img" src="assets/img/160x160/img10.jpg" alt="Image Description">
+                         <?php
+                    echo "<img id='profileCoverImg' class='avatar-img' for='profileCoverUplaoder' src='uploads/" . $row['profile_header'] . "' height='60px' width='65px'>";
+                    ?>
                     </div>
                     <div class="ms-3">
                       <span class="d-block h5 text-inherit mb-0"><?php echo "$row[user_name]"; ?> &nbsp;<i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
@@ -264,7 +266,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                   </a>
                 </td>
                 <td>
-                  <span class="legend-indicator bg-success"></span><?php echo "$row[Status]"; ?> &nbsp;
+                  <?php echo "$row[user_password]"; ?> &nbsp;
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
@@ -275,6 +277,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                   </div>
                 </td>
                 <td>
+                  <span class="legend-indicator bg-success"></span><?php echo "$row[Status]"; ?> &nbsp;
                 </td>
                 <?php } ?>
               </tr>
