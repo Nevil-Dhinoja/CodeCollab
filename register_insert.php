@@ -31,7 +31,19 @@ if (isset($_POST['btn'])) {
     }
 
 
+    // Check if email already exists
+    $email_check_query = "SELECT user_email FROM users WHERE user_email = ?";
+    $stmt_check = $conn->prepare($email_check_query);
+    $stmt_check->bind_param("s", $email);
+    $stmt_check->execute();
+    $stmt_check->store_result();
 
+    if ($stmt_check->num_rows > 0) {
+        // Email already exists
+        $_SESSION['reg_msg_err'] = "This email is already registered. Please use a different email.";
+        header("Location: register.php");
+        exit();
+    }
     // Use a prepared statement for the SQL query
     $stmt = $conn->prepare("INSERT INTO users (user_name, Mobile_no, user_email, user_password, Profile, Status) VALUES (?, ?, ?, ?, ?, 'Inactive')");
     $stmt->bind_param("sisss", $name, $mobile_no, $email, $password, $file_name);
@@ -60,7 +72,7 @@ if (isset($_POST['btn'])) {
             $mail->Password = getenv('SMTP_PASS');
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
-            
+
             // Email settings
             $mail->setFrom('ndhinoja188@rku.ac.in', 'CodeColab Team');
             $mail->addAddress($email, $name);
@@ -87,11 +99,11 @@ if (isset($_POST['btn'])) {
     header("Location: register.php");
     exit();
 } else {
-    ?>
+?>
     <script>
         alert("Error in Registration. Please try again.");
         window.location = "register.php";
     </script>
-    <?php
+<?php
 }
 ?>

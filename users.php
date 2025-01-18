@@ -6,8 +6,12 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
   $pass = $_SESSION['password'];
   $q = "SELECT * FROM users WHERE user_email = '$email'";
   $q1 ="SELECT *  FROM users";
+  $q2 = "SELECT COUNT(*) AS active_users FROM users WHERE Status = 'Active'";
   $result = mysqli_query($conn, $q);
   $result01 = mysqli_query($conn, $q1);
+  $result2 = mysqli_query($conn, $q2);
+  $total_users = mysqli_num_rows($result01);
+  $active_users = mysqli_fetch_assoc($result2)['active_users'];
 ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -95,14 +99,14 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
               <div class="row align-items-center gx-2">
                 <div class="col">
-                  <span class="js-counter display-4 text-dark">24</span>
-                  <span class="text-body fs-5 ms-1">from 22</span>
+                  <span class="js-counter display-4 text-dark"><?php  echo $total_users; ?></span>
+                  <!-- <span class="text-body fs-5 ms-1">from 22</span> -->
                 </div>
                 <!-- End Col -->
 
                 <div class="col-auto">
-                  <span class="badge bg-soft-success text-success p-1">
-                    <i class="bi-graph-up"></i> 5.0%
+                  <!-- <span class="badge bg-soft-success text-success p-1"> -->
+                    <!-- <i class="bi-graph-up"></i> 5.0% -->
                   </span>
                 </div>
                 <!-- End Col -->
@@ -121,13 +125,11 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
               <div class="row align-items-center gx-2">
                 <div class="col">
-                  <span class="js-counter display-4 text-dark">28.6</span>
-                  <span class="display-4 text-dark">%</span>
-                  <span class="text-body fs-5 ms-1">from 28.6%</span>
+                  <span class="js-counter display-4 text-dark"><?php echo "$active_users"  ?></span>
                 </div>
 
                 <div class="col-auto">
-                  <span class="badge bg-soft-secondary text-secondary p-1">0.0%</span>
+                  <!-- <span class="badge bg-soft-secondary text-secondary p-1">0.0%</span> -->
                 </div>
               </div>
               <!-- End Row -->
@@ -270,7 +272,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
-                    <span class="fs-5 me-2"><?php echo "$progress_percentage"; ?></span>
+                    <span class="fs-5 me-2"><?php echo "$progress_percentage %"; ?></span>
                     <div class="progress table-progress">
                       <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>

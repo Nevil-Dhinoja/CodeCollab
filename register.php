@@ -1,6 +1,12 @@
 <?php
 session_start();
 include_once("create_database.php");
+// Check if there's any error message to display
+if (isset($_SESSION['reg_msg_err'])) {
+    echo "<script>alert('" . $_SESSION['reg_msg_err'] . "');</script>";
+    // Clear the error message after it's displayed
+    unset($_SESSION['reg_msg_err']);
+}
 if (isset($_SESSION['reg_success'])) 
 {
     ?>
