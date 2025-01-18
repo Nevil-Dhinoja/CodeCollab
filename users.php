@@ -255,18 +255,28 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                   </div>
                 </td>
                 <td class="table-column-ps-0">
-                  <a class="d-flex align-items-center" href="user-profile.html">
-                    <div class="avatar avatar-circle">
-                         <?php
-                    echo "<img id='profileCoverImg' class='avatar-img' for='profileCoverUplaoder' src='uploads/" . $row['profile_header'] . "' height='60px' width='65px'>";
-                    ?>
-                    </div>
-                    <div class="ms-3">
-                      <span class="d-block h5 text-inherit mb-0"><?php echo "$row[user_name]"; ?> &nbsp;<i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></span>
-                      <span class="d-block fs-5 text-body"><?php echo "$row[user_email]"; ?> &nbsp;</span>
-                    </div>
-                  </a>
-                </td>
+  <!-- Add email as a query parameter in the href -->
+  <a class="d-flex align-items-center" href="user_profile.php?email=<?php echo urlencode($row['user_email']); ?>">
+    <div class="avatar avatar-circle">
+      <?php
+      // Display the profile image
+      echo "<img id='profileCoverImg' class='avatar-img' for='profileCoverUploader' src='uploads/" . $row['profile_header'] . "' height='60px' width='65px'>";
+      ?>
+    </div>
+    <div class="ms-3">
+      <!-- Display user details -->
+      <span class="d-block h5 text-inherit mb-0">
+        <?php echo htmlspecialchars($row['user_name']); ?>
+        &nbsp;<i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i>
+      </span>
+      <span class="d-block fs-5 text-body">
+        <?php echo htmlspecialchars($row['user_email']); ?>
+        &nbsp;
+      </span>
+    </div>
+  </a>
+</td>
+
                 <td>
                   <?php echo "$row[user_password]"; ?> &nbsp;
                 </td>

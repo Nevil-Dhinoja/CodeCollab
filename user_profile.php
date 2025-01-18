@@ -2,9 +2,10 @@
 session_start();
 include_once("create_database.php");
 if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
+  $user_email = urldecode($_GET['email']);
   $email = $_SESSION['email'];
   $pass = $_SESSION['password'];
-  $q = "SELECT * FROM users WHERE user_email = '$email'";
+  $q = "SELECT * FROM users WHERE user_email = '$user_email'";
   $result = mysqli_query($conn, $q);
 ?>
   <!DOCTYPE html>
@@ -18,7 +19,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Dashboard</title>
+    <title>Users Dashboard</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/logo-mini.svg" />
@@ -126,20 +127,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                     ?>
                   </label>
                   <!-- Custom File Cover -->
-                  <div class="profile-cover-content profile-cover-uploader p-3">
-                    <form method="post" enctype="multipart/form-data">
-                      <input type="file" class="js-file-attach profile-cover-uploader-input" id="profileCoverUplaoder" name="file" data-hs-file-attach-options='{
-                            "textTarget": "#profileCoverImg",
-                            "mode": "image",
-                            "targetAttr": "src",
-                            "allowTypes": [".png", ".jpeg", ".jpg"]
-                         }'>
-                      <Button class="profile-cover-uploader-label btn btn-sm btn-white" for="" type="submit" name="update">
-                        <i class="bi-camera-fill"></i>
-                        <span class="d-none d-sm-inline-block ms-1" name="update" type="submit">Update Header</span>
-                      </Button>
-                    </form>
-                  </div>
                   <!-- End Custom File Cover -->
                 </div>
               </div>
@@ -151,16 +138,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                   <?php
                   echo "<img id='editAvatarImgModal' class='avatar-img' src='uploads/" . $row['profile'] . "' height='60px' width='65px'style='border-radius:100%'>";
                   ?>
-                  <input type="file" class="js-file-attach avatar-uploader-input" id="editAvatarUploaderModal" name="profile" data-hs-file-attach-options='{
-                          "textTarget": "#editAvatarImgModal",
-                          "mode": "image",
-                          "targetAttr": "src",
-                          "allowTypes": [".png", ".jpeg", ".jpg"]
-                       }'>
-
-                  <span class="avatar-uploader-trigger">
-                    <i class="bi-pencil-fill avatar-uploader-icon shadow-sm"></i>
-                  </span>
                 </label>
                 <!-- End Avatar -->
 
@@ -197,16 +174,15 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                     <a class="nav-link active disabled" href="#">Profile</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="my_teams.php">Teams</a>
+                    <a class="nav-link" href="one_user_team.php?email=<?php echo urlencode($row['user_email']); ?>">Teams</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="my_projects.php">Projects <span class="badge bg-soft-dark text-dark rounded-circle ms-1"></span></a>
+                    <a class="nav-link" href="one_user_project.php?email=<?php echo urlencode($row['user_email']); ?>">Projects <span class="badge bg-soft-dark text-dark rounded-circle ms-1"></span></a>
                   </li>
-
                   <li class="nav-item ms-auto">
                     <div class="d-flex gap-2">
-                      <a class="btn btn-white btn-sm" href="account_settings.php">
-                        <i class="bi-person-plus-fill me-1"></i> Edit profile
+                      <a class="btn btn-white btn-sm" href="users.php">
+                        <i class="bi-person-plus-fill me-1"></i> Go to Users
                       </a>
                       <!-- Dropdown -->
                       <!-- End Dropdown -->
@@ -248,8 +224,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                         <!-- <li class="pt-4 pb-0"><span class="card-subtitle">Contacts</span></li> -->
                         <li class="pt-4 pb-0"><span class="card-subtitle">Contacts</li>
                         <li><i class="bi-at dropdown-item-icon"></i><?php echo "$row[user_email]" ?></li>
-                        <li><i class="bi-phone dropdown-item-icon"></i><?php echo "$row[Mobile_no]";
-                                                                      } ?></li>
+                        <li><i class="bi-phone dropdown-item-icon"></i><?php echo "$row[Mobile_no]";} ?></li>
 
                         <li class="pt-4 pb-0"><span class="card-subtitle">Teams</span></li>
                         <li class="fs-6 text-body"><i class="bi-people dropdown-item-icon"></i> You are not a member of any teams</li>
@@ -306,7 +281,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                       <img class="avatar avatar-xxl mb-3" src="assets/svg/illustrations/oc-error.svg" alt="Image Description" data-hs-theme-appearance="default">
                       <img class="avatar avatar-xxl mb-3" src="assets/svg/illustrations-light/oc-error.svg" alt="Image Description" data-hs-theme-appearance="dark">
                       <p class="card-text">No data to show</p>
-                      <a class="btn btn-white btn-sm" href="user_project.php">Start your Projects</a>
+                      <a class="btn btn-white btn-sm" href="one_user_project.php">Start your Projects</a>
                     </div>
                     <!-- End Body -->
                   </div>
@@ -412,7 +387,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                       <!-- End Body -->
 
                       <!-- Footer -->
-                      <a class="card-footer text-center" href="my_teams.php">
+                      <a class="card-footer text-center" href="one_user_team.php">
                         View all teams <i class="bi-chevron-right"></i>
                       </a>
                       <!-- End Footer -->
@@ -434,49 +409,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
 
       </main>
-      <?php 
-      if (isset($_POST['update'])) {
-        include_once("create_database.php");
-        // Handle file upload
-        if (isset($_POST['update']) && isset($_FILES['file'])) {
-          $target_dir = "uploads/";
-          $target_file = $target_dir . basename($_FILES["file"]["name"]);
-          if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-            $profile_header = $_FILES["file"]["name"];
-            $updateQuery = "UPDATE users SET profile_header = '$profile_header', profile_header_updated = 1 WHERE user_email = '$email'";
-            $result3 = mysqli_query($conn, $updateQuery);
-          } else {
-            echo "Error uploading file.";
-          }
-        }
-        if ($result3) {
-      ?>
-          <div class="alert alert-success alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
-            <strong>Success!</strong> Header Updated.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          <script>
-            setTimeout(function() {
-              window.location = "my_profile.php"; // Redirect after 3 seconds
-            }, 3000);
-          </script>
-        <?php
-        } else {
-        ?>
-          <div class="alert alert-danger alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
-            <strong>Error!</strong> First Select Image then Update Header.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          <script>
-            setTimeout(function() {
-              window.location = "my_profile.php"; // Redirect after 3 seconds
-            }, 3000);
-          </script>
-      <?php
-        }
-      }
-
-      ?>
     <?php
     include_once("user_footer.php");
   } else {

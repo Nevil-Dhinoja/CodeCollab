@@ -171,7 +171,7 @@ $result1 = mysqli_query($conn, $q);  ?>
                 <i class="bi-search"></i>
               </div>
 
-              <input type="search" class="js-form-search form-control" placeholder="Search in front" aria-label="Search in front" data-hs-form-search-options='{
+              <input type="search" class="js-form-search form-control" placeholder="Search in Colab" aria-label="Search in front" data-hs-form-search-options='{
                        "clearIcon": "#clearSearchResultsIcon",
                        "dropMenuElement": "#searchDropdownMenu",
                        "dropMenuOffset": 20,
@@ -262,7 +262,7 @@ $result1 = mysqli_query($conn, $q);  ?>
                 <a class="dropdown-item" href="index.html">
                   <div class="d-flex align-items-center">
                     <div class="flex-shrink-0">
-                      <img class="avatar avatar-xs avatar-circle" src="assets/img/160x160/image10" alt="Image Description">
+                      <img class="avatar avatar-xs avatar-circle" src="assets/img/160x160/img10.jpg" alt="Image Description">
                     </div>
                     <div class="flex-grow-1 text-truncate ms-2">
                       <span>Amanda Harvey <i class="tio-verified text-primary" data-toggle="tooltip" data-placement="top" title="Top endorsed"></i></span>
