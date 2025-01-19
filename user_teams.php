@@ -166,11 +166,9 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                 </a>
               </div>
             </div>
-            <!-- End Filter Collapse Trigger -->
+            <!-- End Datatable Info -->
           </div>
         </div>
-        <!-- End Header -->
-        <!-- End Filter Search Collapse -->
 
         <!-- Table -->
         <div class="table-responsive datatable-custom">
@@ -211,7 +209,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                 <th scope="col" class="table-column-ps-0">Team</th>
                 <th scope="col" style="min-width: 20rem;">Description</th>
                 <th scope="col">Members</th>
-                <th scope="col">Info</th>
+                <th scope="col">Created at</th>
+                <th scope="col"></th>
               </tr>
             </thead>
 
@@ -225,6 +224,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                 </td>
                 <td class="table-column-ps-0"><a href="#">#digitalmarketing</a></td>
                 <td>Our group promotes and sells products and services by leveraging online marketing tactics</td>
+                <td>2025-01-03</td>
                 <td>
                   <div class="avatar-group avatar-group-xs avatar-circle">
                     <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Ella Lauda">
@@ -273,6 +273,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                 </td>
                 <td class="table-column-ps-0"><a href="#">#ethereum</a></td>
                 <td>Focusing on innovative and disruptive business models</td>
+                <td>2025-01-03</td>
                 <td>
                   <div class="avatar-group avatar-group-xs avatar-circle">
                     <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Sam Kart">
@@ -311,6 +312,86 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                   </div>
                 </td>
               </tr>
+
+              <tr>
+                <td class="table-column-pe-0">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="teamDataCheck3">
+                    <label class="form-check-label" for="teamDataCheck3"></label>
+                  </div>
+                </td>
+                <td class="table-column-ps-0"><a href="#">#conference</a></td>
+                <td>Online meeting services group</td>
+                <td>2025-01-03</td>
+                <td>
+                  <div class="avatar-group avatar-group-xs avatar-circle">
+                    <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Costa Quinn">
+                      <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
+                    </span>
+                    <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Clarice Boone">
+                      <img class="avatar-img" src="assets/img/160x160/img7.jpg" alt="Image Description">
+                    </span>
+                    <span class="avatar avatar-soft-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Zack Ins">
+                      <span class="avatar-initials">Z</span>
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <div class="dropdown">
+                    <button type="button" class="btn btn-white btn-sm" id="teamsDropdown3" data-bs-toggle="dropdown" aria-expanded="false">
+                      More <i class="bi-chevron-down ms-1"></i>
+                    </button>
+
+                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsDropdown3">
+                      <a class="dropdown-item" href="#">Rename team</a>
+                      <a class="dropdown-item" href="#">Add to favorites</a>
+                      <a class="dropdown-item" href="#">Archive team</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item text-danger" href="#">Delete</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="table-column-pe-0">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="teamDataCheck4">
+                    <label class="form-check-label" for="teamDataCheck4"></label>
+                  </div>
+                </td>
+                <td class="table-column-ps-0"><a href="#">#supportteam</a></td>
+                <td>Keep in touch and stay productive with us</td>
+                <td>2025-01-03</td>
+                <td>
+                  <div class="avatar-group avatar-group-xs avatar-circle">
+                    <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Costa Quinn">
+                      <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
+                    </span>
+                    <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Clarice Boone">
+                      <img class="avatar-img" src="assets/img/160x160/img7.jpg" alt="Image Description">
+                    </span>
+                    <span class="avatar avatar-soft-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Adam Keep">
+                      <span class="avatar-initials">A</span>
+                    </span>
+                  </div>
+                </td>
+                <td>
+                  <div class="dropdown">
+                    <button type="button" class="btn btn-white btn-sm" id="teamsDropdown4" data-bs-toggle="dropdown" aria-expanded="false">
+                      More <i class="bi-chevron-down ms-1"></i>
+                    </button>
+
+                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsDropdown4">
+                      <a class="dropdown-item" href="#">Rename team</a>
+                      <a class="dropdown-item" href="#">Add to favorites</a>
+                      <a class="dropdown-item" href="#">Archive team</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item text-danger" href="#">Delete</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -337,7 +418,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                 </div>
                 <!-- End Select -->
 
-                <!-- <span class="text-secondary me-2">of</span> -->
+                <span class="text-secondary me-2">of</span>
 
                 <!-- Pagination Quantity -->
                 <span id="datatableWithPaginationInfoTotalQty"></span>
@@ -357,6 +438,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
         </div>
         <!-- End Footer -->
       </div>
+        <!-- End Table -->
+        </div>
       <!-- End Card -->
     </div>
     <!-- End Content -->
