@@ -94,27 +94,41 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
     ?>
       <main id="content" role="main" class="main">
-        <?php
-        if (isset($_SESSION['reg_success'])) {
-        ?>
-          <div class="alert alert-success alert-dismissible fade show" role="alert" id="alertmsg">
-            <strong>Success</strong>
-            <?php
-            echo $_SESSION['reg_success'];
-            ?>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <script>
-            setTimeout(function() {
-              document.getElementById('alertmsg').style.display = 'none';
-            }, 2000);
-          </script>
-        <?php
-          unset($_SESSION['reg_success']);
-        }
-        ?>
+      <?php
+// Display success message
+if (isset($_SESSION['Activation_succ'])) {
+    ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="alertmsg" style="width: 100%;">
+        <strong>Success:</strong> <?php echo $_SESSION['Activation_succ']; ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('alertmsg').style.display = 'none';
+        }, 5000);
+    </script>
+    <?php
+    unset($_SESSION['Activation_succ']);
+}
+
+// Display error message
+if (isset($_SESSION['Activation_err'])) {
+    ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alertmsg" style="width: 100%;">
+        <strong>Error:</strong> <?php echo $_SESSION['Activation_err']; ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('alertmsg').style.display = 'none';
+        }, 5000);
+    </script>
+    <?php
+    unset($_SESSION['Activation_err']);
+}
+?>
+
+
         <!-- Content -->
         <div class="content container-fluid">
           <div class="row justify-content-lg-center">
@@ -149,36 +163,42 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
               <!-- End Profile Cover -->
               <!-- Profile Header -->
               <div class="text-center mb-5">
-                <!-- Avatar -->
-                <label class="avatar avatar-xxl avatar-circle avatar-uploader profile-cover-avatar" for="editAvatarUploaderModal">
-                  <?php
-                  echo "<img id='editAvatarImgModal' class='avatar-img' src='uploads/" . $row['profile'] . "' height='60px' width='65px'style='border-radius:100%'>";
-                  ?>
-                  <input type="file" class="js-file-attach avatar-uploader-input" id="editAvatarUploaderModal" name="profile" data-hs-file-attach-options='{
-                          "textTarget": "#editAvatarImgModal",
-                          "mode": "image",
-                          "targetAttr": "src",
-                          "allowTypes": [".png", ".jpeg", ".jpg"]
-                       }'>
+  <!-- Avatar -->
+  <form id="profileForm" action="update_profile.php" method="POST" enctype="multipart/form-data">
+    <label class="avatar avatar-xxl avatar-circle avatar-uploader profile-cover-avatar" for="editAvatarUploaderModal">
+      <?php
+      echo "<img id='editAvatarImgModal' class='avatar-img' src='uploads/" . $row['profile'] . "' height='60px' width='65px'style='border-radius:100%'>";
+      ?>
+      <input type="file" class="js-file-attach avatar-uploader-input" id="editAvatarUploaderModal" name="profile" data-hs-file-attach-options='{
+              "textTarget": "#editAvatarImgModal",
+              "mode": "image",
+              "targetAttr": "src",
+              "allowTypes": [".png", ".jpeg", ".jpg"]
+           }'>
+      <span class="avatar-uploader-trigger">
+        <button type="submit" name="updateProfile" class="btn btn-link p-0">
+          <i class="bi-pencil-fill avatar-uploader-icon shadow-sm"></i>
+        </button>
+      </span>
+    </label>
+  </form>
+  <!-- End Avatar -->
 
-                  <span class="avatar-uploader-trigger">
-                    <i class="bi-pencil-fill avatar-uploader-icon shadow-sm"></i>
-                  </span>
-                </label>
-                <!-- End Avatar -->
+  <h1 class="page-header-title">
+    <?php echo $row['user_name']; ?>
+    <i class="bi-patch-check-fill fs-2 text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i>
+  </h1>
 
-                <h1 class="page-header-title"><?php echo "$row[user_name]"; ?>
-                  <i class="bi-patch-check-fill fs-2 text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i>
-                </h1>
+  <!-- List -->
+  <ul class="list-inline list-px-2">
+    <li class="list-inline-item">
+      <i class="bi-envelope me-1"></i>
+      <span><?php echo $row['user_email']; ?></span>
+    </li>
+  </ul>
+  <!-- End List -->
+</div>
 
-                <!-- List -->
-                <ul class="list-inline list-px-2">
-                  <li class="list-inline-item">
-                    <i class="bi-envelope me-1"></i>
-                    <span><?php echo "$row[user_email]";  ?></span>
-                  </li>
-                  <!-- End List -->
-              </div>
               <!-- End Profile Header -->
 
               <!-- Nav -->

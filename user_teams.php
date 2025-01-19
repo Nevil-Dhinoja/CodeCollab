@@ -373,258 +373,227 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
   </main>
   <div class="modal fade" id="shareWithPeopleModal" tabindex="-1" aria-labelledby="shareWithPeopleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="shareWithPeopleModalLabel">Invite users</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        <!-- Body -->
-        <div class="modal-body">
-          <!-- Form -->
-          <div class="mb-4">
-            <div class="input-group mb-2 mb-sm-0">
-              <input type="text" class="form-control" name="fullName" placeholder="Search name or emails" aria-label="Search name or emails">
-
-              <div class="input-group-append input-group-append-last-sm-down-none">
-                <!-- Select -->
-                <div class="tom-select-custom tom-select-custom-end">
-                  <select class="js-select form-select tom-select-custom-form-select-invite-user" autocomplete="off" data-hs-tom-select-options='{
-                            "searchInDropdown": false,
-                            "hideSearch": true,
-                            "dropdownWidth": "11rem"
-                          }'>
-                    <option value="guest" selected>Guest</option>
-                    <option value="can edit">Can edit</option>
-                    <option value="can comment">Can comment</option>
-                    <option value="full access">Full access</option>
-                  </select>
-                </div>
-                <!-- End Select -->
-
-                <a class="btn btn-primary d-none d-sm-inline-block" href="javascript:;">Invite</a>
-              </div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="shareWithPeopleModalLabel">Create New Team</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <a class="btn btn-primary w-100 d-sm-none" href="javascript:;">Invite</a>
-          </div>
-          <!-- End Form -->
-
-          <!-- List Group -->
-          <ul class="list-unstyled list-py-2">
-            <!-- Item -->
-            <li>
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <span class="icon icon-soft-dark icon-sm icon-circle">
-                    <i class="bi-people-fill"></i>
-                  </span>
-                </div>
-
-                <div class="flex-grow-1 ms-3">
-                  <div class="row align-items-center">
-                    <div class="col-sm">
-                      <h5 class="text-body mb-0">#digitalmarketing</h5>
-                      <span class="d-block fs-6">8 members</span>
+            <div class="modal-body">
+                <form id="createTeamForm">
+                    <div class="mb-4">
+                        <div class="input-group mb-2 mb-sm-0">
+                            <input type="text" class="form-control" name="team_name" placeholder="Team Name" required>
+                        </div>
                     </div>
-                    <!-- End Col -->
-
-                    <div class="col-sm-auto">
-                      <!-- Select -->
-                      <div class="tom-select-custom tom-select-custom-sm-end">
-                        <select class="js-select form-select form-select-borderless tom-select-custom-form-select-invite-user tom-select-form-select-ps-0" autocomplete="off" data-hs-tom-select-options='{
-                                  "searchInDropdown": false,
-                                  "hideSearch": true,
-                                  "dropdownWidth": "11rem"
-                                }'>
-                          <option value="guest">Guest</option>
-                          <option value="can edit" selected>Can edit</option>
-                          <option value="can comment">Can comment</option>
-                          <option value="full access">Full access</option>
-                          <option value="remove" data-option-template='<div class="text-danger">Remove</div>'>Remove</option>
-                        </select>
-                      </div>
-                      <!-- End Select -->
+                    
+                    <div class="mb-4">
+                        <div class="input-group mb-2 mb-sm-0">
+                            <textarea class="form-control" name="team_description" placeholder="Team Description" rows="3"></textarea>
+                        </div>
                     </div>
-                    <!-- End Col -->
-                  </div>
-                  <!-- End Row -->
-                </div>
-              </div>
-            </li>
-            <!-- End Item -->
 
-            <!-- Item -->
-            <li>
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <div class="avatar avatar-sm avatar-circle">
-                    <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
-                  </div>
-                </div>
+                    <div class="mb-4">
+                        <label class="form-label">Search and Add Team Members</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="userSearch" 
+                                   placeholder="Type to search for users..."
+                                   autocomplete="off">
+                        </div>
 
-                <div class="flex-grow-1 ms-3">
-                  <div class="row align-items-center">
-                    <div class="col-sm">
-                      <h5 class="text-body mb-0">David Harrison</h5>
-                      <span class="d-block fs-6">david@site.com</span>
+                        <!-- Search Results -->
+                        <div id="searchResults" class="border rounded mt-2" style="max-height: 200px; overflow-y: auto; display: none;">
+                            <!-- Search results will appear here -->
+                        </div>
                     </div>
-                    <!-- End Col -->
 
-                    <div class="col-sm-auto">
-                      <!-- Select -->
-                      <div class="tom-select-custom tom-select-custom-sm-end">
-                        <select class="js-select form-select form-select-borderless tom-select-custom-form-select-invite-user tom-select-form-select-ps-0" autocomplete="off" data-hs-tom-select-options='{
-                                  "searchInDropdown": false,
-                                  "hideSearch": true,
-                                  "dropdownWidth": "11rem"
-                                }'>
-                          <option value="guest">Guest</option>
-                          <option value="can edit" selected>Can edit</option>
-                          <option value="can comment">Can comment</option>
-                          <option value="full access">Full access</option>
-                          <option value="remove" data-option-template='<div class="text-danger">Remove</div>'>Remove</option>
-                        </select>
-                      </div>
-                      <!-- End Select -->
+                    <!-- Selected Users -->
+                    <div class="mt-3">
+                        <label class="form-label">Selected Team Members</label>
+                        <div id="selectedUsers" class="border rounded p-2" style="min-height: 100px;">
+                            <!-- Selected users will appear here -->
+                        </div>
                     </div>
-                    <!-- End Col -->
-                  </div>
-                  <!-- End Row -->
-                </div>
-              </div>
-            </li>
-            <!-- End Item -->
 
-            <!-- Item -->
-            <li>
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <div class="avatar avatar-sm avatar-circle">
-                    <img class="avatar-img" src="assets/img/160x160/img9.jpg" alt="Image Description">
-                  </div>
-                </div>
-
-                <div class="flex-grow-1 ms-3">
-                  <div class="row align-items-center">
-                    <div class="col-sm">
-                      <h5 class="text-body mb-0">Ella Lauda <i class="bi-patch-check-fill text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Top endorsed"></i></h5>
-                      <span class="d-block fs-6">Markvt@site.com</span>
-                    </div>
-                    <!-- End Col -->
-
-                    <div class="col-sm-auto">
-                      <!-- Select -->
-                      <div class="tom-select-custom tom-select-custom-sm-end">
-                        <select class="js-select form-select form-select-borderless tom-select-custom-form-select-invite-user tom-select-form-select-ps-0" autocomplete="off" data-hs-tom-select-options='{
-                                  "searchInDropdown": false,
-                                  "hideSearch": true,
-                                  "dropdownWidth": "11rem"
-                                }'>
-                          <option value="guest">Guest</option>
-                          <option value="can edit" selected>Can edit</option>
-                          <option value="can comment">Can comment</option>
-                          <option value="full access">Full access</option>
-                          <option value="remove" data-option-template='<div class="text-danger">Remove</div>'>Remove</option>
-                        </select>
-                      </div>
-                      <!-- End Select -->
-                    </div>
-                    <!-- End Col -->
-                  </div>
-                  <!-- End Row -->
-                </div>
-              </div>
-            </li>
-            <!-- End Item -->
-
-            <!-- Item -->
-            <li>
-              <div class="d-flex">
-                <div class="flex-shrink-0">
-                  <span class="icon icon-soft-dark icon-sm icon-circle">
-                    <i class="bi-people-fill"></i>
-                  </span>
-                </div>
-
-                <div class="flex-grow-1 ms-3">
-                  <div class="row align-items-center">
-                    <div class="col-sm">
-                      <h5 class="text-body mb-0">#conference</h5>
-                      <span class="d-block fs-6">3 members</span>
-                    </div>
-                    <!-- End Col -->
-
-                    <div class="col-sm-auto">
-                      <!-- Select -->
-                      <div class="tom-select-custom tom-select-custom-sm-end">
-                        <select class="js-select form-select form-select-borderless tom-select-custom-form-select-invite-user tom-select-form-select-ps-0" autocomplete="off" data-hs-tom-select-options='{
-                                  "searchInDropdown": false,
-                                  "hideSearch": true,
-                                  "dropdownWidth": "11rem"
-                                }'>
-                          <option value="guest">Guest</option>
-                          <option value="can edit" selected>Can edit</option>
-                          <option value="can comment">Can comment</option>
-                          <option value="full access">Full access</option>
-                          <option value="remove" data-option-template='<div class="text-danger">Remove</div>'>Remove</option>
-                        </select>
-                      </div>
-                      <!-- End Select -->
-                    </div>
-                    <!-- End Col -->
-                  </div>
-                  <!-- End Row -->
-                </div>
-              </div>
-            </li>
-            <!-- End Item -->
-          </ul>
-          <!-- End List Group -->
-
-          <!-- Form Switch -->
-          <label class="row form-check form-switch" for="addTeamPreferencesNewProjectSwitch1">
-            <span class="col-8 col-sm-9 ms-0">
-              <i class="bi-bell text-primary me-2"></i>
-              <span class="text-dark">Inform all project members</span>
-            </span>
-            <span class="col-4 col-sm-3 text-end">
-              <input type="checkbox" class="form-check-input" id="addTeamPreferencesNewProjectSwitch1" checked>
-            </span>
-          </label>
-          <!-- End Form Switch -->
-        </div>
-        <!-- End Body -->
-
-        <!-- Footer -->
-        <div class="modal-footer">
-          <div class="row align-items-center flex-grow-1 mx-n2">
-            <div class="col-sm-9 mb-2 mb-sm-0">
-              <input type="hidden" id="publicShareLinkClipboard" value="https://themes.getbootstrap.com/product/front-multipurpose-responsive-template/">
-
-              <p class="modal-footer-text">The public share <a class="link" href="#">link settings</a>
-                <i class="bi-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="The public share link allows people to view the project without giving access to full collaboration features."></i>
-              </p>
+                    <button type="submit" class="btn btn-primary w-100" id="createTeamButton">Create Team</button>
+                </form>
             </div>
-            <!-- End Col -->
 
-            <div class="col-sm-3 text-sm-end">
-              <a class="js-clipboard btn btn-white btn-sm text-nowrap" href="javascript:;" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy to clipboard!" data-hs-clipboard-options='{
-                  "type": "tooltip",
-                  "successText": "Copied!",
-                  "contentTarget": "#publicShareLinkClipboard",
-                  "container": "#shareWithPeopleModal"
-                 }'>
-                <i class="bi-link me-1"></i> Copy link</a>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
-            <!-- End Col -->
-          </div>
-          <!-- End Row -->
         </div>
-        <!-- End Footer -->
-      </div>
     </div>
-  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const selectedUsers = new Map();
+    let searchTimeout = null;
+
+    // Get DOM elements
+    const userSearch = document.getElementById('userSearch');
+    const searchResults = document.getElementById('searchResults');
+    const selectedUsersContainer = document.getElementById('selectedUsers');
+
+    // Style for search results and selected users
+    const style = document.createElement('style');
+    style.textContent = `
+    .search-result-item {
+        padding: 8px 12px;
+        cursor: pointer;
+        border-bottom: 1px solidrgb(56, 68, 80);
+    }
+
+    .search-result-item:last-child {
+        border-bottom: none;
+    }
+
+    .search-result-item:hover {
+        background-color:rgb(48, 52, 56);
+    }
+
+    .selected-user-tag {
+        display: inline-flex;
+        align-items: center;
+        background-color:rgb(65, 71, 77);
+        border-radius: 4px;
+        padding: 4px 8px;
+        margin: 2px;
+        font-size: 0.875rem;
+    }
+
+    .remove-user {
+        cursor: pointer;
+        color: #dc3545;
+        margin-left: 8px;
+        font-size: 1.2rem;
+        line-height: 1;
+    }
+
+    .remove-user:hover {
+        color: #bb2d3b;
+    }
+`;
+
+    document.head.appendChild(style);
+
+    // Handle search input with debounce
+    userSearch.addEventListener('input', () => {
+        clearTimeout(searchTimeout);
+        const query = userSearch.value.trim();
+        
+        if (query.length >= 1) {
+            searchTimeout = setTimeout(() => {
+                fetch(`search_users.php?query=${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Search results:', data); // Debug log
+                        displaySearchResults(data);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching search results:', error);
+                        searchResults.innerHTML = '<div class="p-3 text-center text-danger">Error searching users</div>';
+                        searchResults.style.display = 'block';
+                    });
+            }, 300); // Debounce delay
+        } else {
+            searchResults.style.display = 'none';
+        }
+    });
+
+    // Display search results
+    function displaySearchResults(users) {
+        searchResults.innerHTML = '';
+        
+        if (Array.isArray(users) && users.length > 0) {
+            users.forEach(user => {
+                if (!selectedUsers.has(user.user_id)) {
+                    const userItem = document.createElement('div');
+                    userItem.classList.add('search-result-item');
+                    userItem.innerHTML = `
+                        <strong>${user.user_name}</strong><br>
+                        <small class="text-muted">${user.user_email}</small>
+                    `;
+                    userItem.dataset.userId = user.user_id;
+                    userItem.dataset.userName = user.user_name;
+                    userItem.dataset.userEmail = user.user_email;
+
+                    userItem.addEventListener('click', () => {
+                        addSelectedUser(user.user_id, user.user_name, user.user_email);
+                        userItem.remove();
+                        userSearch.value = ''; // Clear search input
+                        searchResults.style.display = 'none';
+                    });
+
+                    searchResults.appendChild(userItem);
+                }
+            });
+            searchResults.style.display = 'block';
+        } else {
+            searchResults.innerHTML = '<div class="p-3 text-center text-muted">No users found</div>';
+            searchResults.style.display = 'block';
+        }
+    }
+
+    // Add selected user
+    function addSelectedUser(userId, userName, userEmail) {
+        if (!selectedUsers.has(userId)) {
+            selectedUsers.set(userId, { name: userName, email: userEmail });
+            const userTag = document.createElement('div');
+            userTag.classList.add('selected-user-tag');
+            userTag.dataset.userId = userId;
+            userTag.innerHTML = `
+                <span>${userName}</span>
+                <small class="text-muted">(${userEmail})</small>
+                <span class="remove-user">&times;</span>
+            `;
+
+            userTag.querySelector('.remove-user').addEventListener('click', () => {
+                selectedUsers.delete(userId);
+                userTag.remove();
+            });
+
+            selectedUsersContainer.appendChild(userTag);
+        }
+    }
+
+    // Handle form submission
+    const createTeamForm = document.getElementById('createTeamForm');
+    createTeamForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        if (selectedUsers.size === 0) {
+            alert('Please select at least one team member.');
+            return;
+        }
+
+        const selectedUsersArray = Array.from(selectedUsers.entries()).map(([id, data]) => ({
+            id: id,
+            name: data.name,
+            email: data.email
+        }));
+
+        console.log('Selected team members:', selectedUsersArray);
+        alert('Team created successfully!');
+        
+        // Reset form and selections
+        createTeamForm.reset();
+        selectedUsers.clear();
+        selectedUsersContainer.innerHTML = '';
+        searchResults.style.display = 'none';
+    });
+
+    // Close search results when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!userSearch.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.style.display = 'none';
+        }
+    });
+});
+</script>
+
+
   <script src="assets/js/vendor.min.js"></script>
   <script>
     $(document).on('ready', function () {
