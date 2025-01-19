@@ -345,7 +345,10 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                                             <!-- End Form -->
 
                                             <div class="d-flex justify-content-end">
-                                                <button type="submit" class="btn btn-primary" name="save">Save changes</button>
+                                                <!-- <button type="button" class="btn btn-primary" name="save">Update Password ?</button> -->
+                                                <a class="btn btn-primary btn-primary" href="change_pass.php">
+                        <i class="bi-person me-1"></i> Update Password ?
+                      </a>
                                             </div>
                                         </form>
                                         <!-- End Form -->
