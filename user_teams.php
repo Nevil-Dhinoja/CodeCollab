@@ -90,89 +90,95 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
       $progress_percentage = ($profile_complete / $total_fields) * 100;
     }
     ?>
-  <main id="content" role="main" class="main">
-    <!-- Content -->
-    <div class="content container-fluid">
-      <!-- Page Header -->
-      <div class="page-header">
-        <div class="row align-items-end mb-3">
-          <div class="col-sm mb-2 mb-sm-0">
+    <main id="content" role="main" class="main">
+      <!-- Content -->
+      <div class="content container-fluid">
+        <!-- Page Header -->
+        <div class="page-header">
+          <div class="row align-items-end mb-3">
+            <div class="col-sm mb-2 mb-sm-0">
 
-            <h1 class="page-header-title">Teams</h1>
-          </div>
-          <!-- End Col -->
-
-          <div class="col-sm-auto">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareWithPeopleModal">
-              <i class="bi-plus me-1"></i> Add team
-            </button>
-          </div>
-          <!-- End Col -->
-        </div>
-        <!-- End Row -->
-
-        <!-- Nav -->
-        <!-- Nav -->
-        <div class="js-nav-scroller hs-nav-scroller-horizontal">
-          <span class="hs-nav-scroller-arrow-prev" style="display: none;">
-            <a class="hs-nav-scroller-arrow-link" href="javascript:;">
-              <i class="bi-chevron-left"></i>
-            </a>
-          </span>
-
-          <span class="hs-nav-scroller-arrow-next" style="display: none;">
-            <a class="hs-nav-scroller-arrow-link" href="javascript:;">
-              <i class="bi-chevron-right"></i>
-            </a>
-          </span>
-
-          <ul class="nav nav-tabs page-header-tabs" id="projectsTab" role="tablist">
-            <li class="nav-item">
-            </li>
-          </ul>
-        </div>
-        <!-- End Nav -->
-      </div>
-      <!-- End Page Header -->
-
-      <!-- Card -->
-      <div class="card">
-        <!-- Header -->
-        <div class="card-header card-header-content-md-between">
-          <div class="mb-2 mb-md-0">
-            <form>
-              <!-- Search -->
-              <div class="input-group input-group-merge input-group-borderless">
-                <div class="input-group-prepend input-group-text">
-                  <i class="bi-search"></i>
-                </div>
-                <input id="datatableSearch" type="search" class="form-control" placeholder="Search users" aria-label="Search users">
-              </div>
-              <!-- End Search -->
-            </form>
-          </div>
-          <!-- End Col -->
-
-          <div class="d-grid d-sm-flex align-items-sm-center gap-2">
-            <!-- Datatable Info -->
-            <div id="datatableCounterInfo" style="display: none;">
-              <div class="d-flex align-items-center">
-                <span class="fs-5 me-3">
-                  <span id="datatableCounter">0</span> Selected
-                </span>
-
-                <a class="btn btn-outline-danger btn-sm" href="javascript:;">
-                  <i class="bi-trash"></i> Delete
-                </a>
-              </div>
+              <h1 class="page-header-title">Teams</h1>
             </div>
-            <!-- End Datatable Info -->
-          </div>
-        </div>
+            <!-- End Col -->
 
-        <!-- Table -->
-        <div class="table-responsive datatable-custom">
-          <table id="datatable" class="table table-borderless table-thead-bordered card-table" data-hs-datatables-options='{
+            <div class="col-sm-auto">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareWithPeopleModal">
+                <i class="bi-plus me-1"></i> Add team
+              </button>
+            </div>
+            <!-- End Col -->
+          </div>
+          <!-- End Row -->
+
+          <!-- Nav -->
+          <!-- Nav -->
+          <div class="js-nav-scroller hs-nav-scroller-horizontal">
+            <span class="hs-nav-scroller-arrow-prev" style="display: none;">
+              <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+                <i class="bi-chevron-left"></i>
+              </a>
+            </span>
+
+            <span class="hs-nav-scroller-arrow-next" style="display: none;">
+              <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+                <i class="bi-chevron-right"></i>
+              </a>
+            </span>
+
+            <ul class="nav nav-tabs page-header-tabs" id="projectsTab" role="tablist">
+              <li class="nav-item">
+              </li>
+            </ul>
+          </div>
+          <!-- End Nav -->
+        </div>
+        <!-- End Page Header -->
+
+        <!-- Card -->
+        <div class="card">
+          <!-- Header -->
+          <div class="card-header card-header-content-md-between">
+            <div class="mb-2 mb-md-0">
+              <form>
+                <!-- Search -->
+                <div class="input-group input-group-merge input-group-borderless">
+                  <div class="input-group-prepend input-group-text">
+                    <i class="bi-search"></i>
+                  </div>
+                  <input id="datatableSearch" type="search" class="form-control" placeholder="Search users" aria-label="Search users">
+                </div>
+                <!-- End Search -->
+              </form>
+            </div>
+            <!-- End Col -->
+
+            <div class="d-grid d-sm-flex align-items-sm-center gap-2">
+              <!-- Datatable Info -->
+              <div id="datatableCounterInfo" style="display: none;">
+                <div class="d-flex align-items-center">
+                  <span class="fs-5 me-3">
+                    <span id="datatableCounter">0</span> Selected
+                  </span>
+
+                  <a class="btn btn-outline-danger btn-sm" href="javascript:;">
+                    <i class="bi-trash"></i> Delete
+                  </a>
+                </div>
+              </div>
+              <!-- End Datatable Info -->
+
+              <!-- Filter Collapse Trigger -->
+              <a class="btn btn-white dropdown-toggle" data-bs-toggle="collapse" href="#filterSearchCollapse" role="button" aria-expanded="false" aria-controls="filterSearchCollapse">
+                <i class="bi-funnel me-1"></i> Filters
+              </a>
+              <!-- End Filter Collapse Trigger -->
+            </div>
+          </div>
+          <!-- End Header -->
+          <!-- Table -->
+          <div class="table-responsive datatable-custom">
+            <table id="datatable" class="table table-borderless table-thead-bordered card-table" data-hs-datatables-options='{
                    "autoWidth": false,
                    "columnDefs": [{
                       "targets": [0, 4],
@@ -182,8 +188,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                       null,
                       null,
                       { "width": "35%" },
-                      null,
-                      null,
                       null,
                       null
                     ],
@@ -198,334 +202,277 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                    "isShowPaging": false,
                    "pagination": "datatablePagination"
                  }'>
-            <thead class="thead-light">
-              <tr>
-                <th scope="col" class="table-column-pe-0">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
-                    <label class="form-check-label" for="datatableCheckAll"></label>
-                  </div>
-                </th>
-                <th scope="col" class="table-column-ps-0">Team</th>
-                <th scope="col" style="min-width: 20rem;">Description</th>
-                <th scope="col">Members</th>
-                <th scope="col">Created at</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td class="table-column-pe-0">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="teamDataCheck1">
-                    <label class="form-check-label" for="teamDataCheck1"></label>
-                  </div>
-                </td>
-                <td class="table-column-ps-0"><a href="#">#digitalmarketing</a></td>
-                <td>Our group promotes and sells products and services by leveraging online marketing tactics</td>
-                <td>2025-01-03</td>
-                <td>
-                  <div class="avatar-group avatar-group-xs avatar-circle">
-                    <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Ella Lauda">
-                      <img class="avatar-img" src="assets/img/160x160/img9.jpg" alt="Image Description">
-                    </span>
-                    <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="David Harrison">
-                      <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
-                    </span>
-                    <span class="avatar avatar-soft-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Antony Taylor">
-                      <span class="avatar-initials">A</span>
-                    </span>
-                    <span class="avatar avatar-soft-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Sara Iwens">
-                      <span class="avatar-initials">S</span>
-                    </span>
-                    <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Finch Hoot">
-                      <img class="avatar-img" src="assets/img/160x160/img5.jpg" alt="Image Description">
-                    </span>
-                    <span class="avatar avatar-light avatar-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="Sam Kart, Amanda Harvey and 1 more">
-                      <span class="avatar-initials">+3</span>
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn btn-white btn-sm" id="teamsDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                      More <i class="bi-chevron-down ms-1"></i>
-                    </button>
-
-                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsDropdown1">
-                      <a class="dropdown-item" href="#">Rename team</a>
-                      <a class="dropdown-item" href="#">Add to favorites</a>
-                      <a class="dropdown-item" href="#">Archive team</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item text-danger" href="#">Delete</a>
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" class="table-column-pe-0">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="datatableCheckAll">
+                      <label class="form-check-label" for="datatableCheckAll"></label>
                     </div>
-                  </div>
-                </td>
-              </tr>
+                  </th>
+                  <th scope="col" class="table-column-ps-0">Team</th>
+                  <th scope="col" style="min-width: 20rem;">Description</th>
+                  <th scope="col">Members</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
 
-              <tr>
-                <td class="table-column-pe-0">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="teamDataCheck2">
-                    <label class="form-check-label" for="teamDataCheck2"></label>
-                  </div>
-                </td>
-                <td class="table-column-ps-0"><a href="#">#ethereum</a></td>
-                <td>Focusing on innovative and disruptive business models</td>
-                <td>2025-01-03</td>
-                <td>
-                  <div class="avatar-group avatar-group-xs avatar-circle">
-                    <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Sam Kart">
-                      <img class="avatar-img" src="assets/img/160x160/img4.jpg" alt="Image Description">
-                    </span>
-                    <span class="avatar avatar-soft-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Teresa Eyker">
-                      <span class="avatar-initials">T</span>
-                    </span>
-                    <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Amanda Harvey">
-                      <img class="avatar-img" src="assets/img/160x160/img10.jpg" alt="Image Description">
-                    </span>
-                    <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="David Harrison">
-                      <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
-                    </span>
-                    <span class="avatar avatar-soft-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Olivier L.">
-                      <span class="avatar-initials">O</span>
-                    </span>
-                    <span class="avatar avatar-light avatar-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="Brian Halligan, Rachel Doe and 7 more">
-                      <span class="avatar-initials">+9</span>
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn btn-white btn-sm" id="teamsDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
-                      More <i class="bi-chevron-down ms-1"></i>
-                    </button>
-
-                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsDropdown2">
-                      <a class="dropdown-item" href="#">Rename team</a>
-                      <a class="dropdown-item" href="#">Add to favorites</a>
-                      <a class="dropdown-item" href="#">Archive team</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item text-danger" href="#">Delete</a>
+              <tbody>
+                <tr>
+                  <td class="table-column-pe-0">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="teamDataCheck1">
+                      <label class="form-check-label" for="teamDataCheck1"></label>
                     </div>
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td class="table-column-pe-0">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="teamDataCheck3">
-                    <label class="form-check-label" for="teamDataCheck3"></label>
-                  </div>
-                </td>
-                <td class="table-column-ps-0"><a href="#">#conference</a></td>
-                <td>Online meeting services group</td>
-                <td>2025-01-03</td>
-                <td>
-                  <div class="avatar-group avatar-group-xs avatar-circle">
-                    <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Costa Quinn">
-                      <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
-                    </span>
-                    <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Clarice Boone">
-                      <img class="avatar-img" src="assets/img/160x160/img7.jpg" alt="Image Description">
-                    </span>
-                    <span class="avatar avatar-soft-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Zack Ins">
-                      <span class="avatar-initials">Z</span>
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn btn-white btn-sm" id="teamsDropdown3" data-bs-toggle="dropdown" aria-expanded="false">
-                      More <i class="bi-chevron-down ms-1"></i>
-                    </button>
-
-                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsDropdown3">
-                      <a class="dropdown-item" href="#">Rename team</a>
-                      <a class="dropdown-item" href="#">Add to favorites</a>
-                      <a class="dropdown-item" href="#">Archive team</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item text-danger" href="#">Delete</a>
+                  </td>
+                  <td class="table-column-ps-0"><a href="#">#digitalmarketing</a></td>
+                  <td>Our group promotes and sells products and services by leveraging online marketing tactics</td>
+                  <td>
+                    <div class="avatar-group avatar-group-xs avatar-circle">
+                      <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Ella Lauda">
+                        <img class="avatar-img" src="assets/img/160x160/img9.jpg" alt="Image Description">
+                      </span>
+                      <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="David Harrison">
+                        <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
+                      </span>
+                      <span class="avatar avatar-soft-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Antony Taylor">
+                        <span class="avatar-initials">A</span>
+                      </span>
+                      <span class="avatar avatar-soft-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Sara Iwens">
+                        <span class="avatar-initials">S</span>
+                      </span>
+                      <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Finch Hoot">
+                        <img class="avatar-img" src="assets/img/160x160/img5.jpg" alt="Image Description">
+                      </span>
+                      <span class="avatar avatar-light avatar-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="Sam Kart, Amanda Harvey and 1 more">
+                        <span class="avatar-initials">+3</span>
+                      </span>
                     </div>
-                  </div>
-                </td>
-              </tr>
+                  </td>
+                  <td>
+                    <div class="dropdown">
+                      <button type="button" class="btn btn-white btn-sm" id="teamsDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                        More <i class="bi-chevron-down ms-1"></i>
+                      </button>
 
-              <tr>
-                <td class="table-column-pe-0">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="teamDataCheck4">
-                    <label class="form-check-label" for="teamDataCheck4"></label>
-                  </div>
-                </td>
-                <td class="table-column-ps-0"><a href="#">#supportteam</a></td>
-                <td>Keep in touch and stay productive with us</td>
-                <td>2025-01-03</td>
-                <td>
-                  <div class="avatar-group avatar-group-xs avatar-circle">
-                    <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Costa Quinn">
-                      <img class="avatar-img" src="assets/img/160x160/img6.jpg" alt="Image Description">
-                    </span>
-                    <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Clarice Boone">
-                      <img class="avatar-img" src="assets/img/160x160/img7.jpg" alt="Image Description">
-                    </span>
-                    <span class="avatar avatar-soft-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Adam Keep">
-                      <span class="avatar-initials">A</span>
-                    </span>
-                  </div>
-                </td>
-                <td>
-                  <div class="dropdown">
-                    <button type="button" class="btn btn-white btn-sm" id="teamsDropdown4" data-bs-toggle="dropdown" aria-expanded="false">
-                      More <i class="bi-chevron-down ms-1"></i>
-                    </button>
-
-                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsDropdown4">
-                      <a class="dropdown-item" href="#">Rename team</a>
-                      <a class="dropdown-item" href="#">Add to favorites</a>
-                      <a class="dropdown-item" href="#">Archive team</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item text-danger" href="#">Delete</a>
+                      <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsDropdown1">
+                        <a class="dropdown-item" href="#">Rename team</a>
+                        <a class="dropdown-item" href="#">Add to favorites</a>
+                        <a class="dropdown-item" href="#">Archive team</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="#">Delete</a>
+                      </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <!-- End Table -->
+                  </td>
+                </tr>
 
-        <!-- Footer -->
-        <div class="card-footer">
-          <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
-            <div class="col-sm mb-2 mb-sm-0">
-              <div class="d-flex justify-content-center justify-content-sm-start align-items-center">
-                <span class="me-2">Showing:</span>
+                <tr>
+                  <td class="table-column-pe-0">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="teamDataCheck2">
+                      <label class="form-check-label" for="teamDataCheck2"></label>
+                    </div>
+                  </td>
+                  <td class="table-column-ps-0"><a href="#">#ethereum</a></td>
+                  <td>Focusing on innovative and disruptive business models</td>
+                  <td>
+                    <div class="avatar-group avatar-group-xs avatar-circle">
+                      <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Sam Kart">
+                        <img class="avatar-img" src="assets/img/160x160/img4.jpg" alt="Image Description">
+                      </span>
+                      <span class="avatar avatar-soft-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Teresa Eyker">
+                        <span class="avatar-initials">T</span>
+                      </span>
+                      <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Amanda Harvey">
+                        <img class="avatar-img" src="assets/img/160x160/img10.jpg" alt="Image Description">
+                      </span>
+                      <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="David Harrison">
+                        <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
+                      </span>
+                      <span class="avatar avatar-soft-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Olivier L.">
+                        <span class="avatar-initials">O</span>
+                      </span>
+                      <span class="avatar avatar-light avatar-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="Brian Halligan, Rachel Doe and 7 more">
+                        <span class="avatar-initials">+9</span>
+                      </span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="dropdown">
+                      <button type="button" class="btn btn-white btn-sm" id="teamsDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
+                        More <i class="bi-chevron-down ms-1"></i>
+                      </button>
 
-                <!-- Select -->
-                <div class="tom-select-custom">
-                  <select id="datatableEntries" class="js-select form-select form-select-borderless w-auto" autocomplete="off" data-hs-tom-select-options='{
+                      <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsDropdown2">
+                        <a class="dropdown-item" href="#">Rename team</a>
+                        <a class="dropdown-item" href="#">Add to favorites</a>
+                        <a class="dropdown-item" href="#">Archive team</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="#">Delete</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- End Table -->
+
+          <!-- Footer -->
+          <div class="card-footer">
+            <div class="row justify-content-center justify-content-sm-between align-items-sm-center">
+              <div class="col-sm mb-2 mb-sm-0">
+                <div class="d-flex justify-content-center justify-content-sm-start align-items-center">
+                  <span class="me-2">Showing:</span>
+
+                  <!-- Select -->
+                  <div class="tom-select-custom">
+                    <select id="datatableEntries" class="js-select form-select form-select-borderless w-auto" autocomplete="off" data-hs-tom-select-options='{
                             "searchInDropdown": false,
                             "hideSearch": true
                           }'>
-                    <option value="4">4</option>
-                    <option value="6">6</option>
-                    <option value="8" selected>8</option>
-                    <option value="12">12</option>
-                  </select>
+                      <option value="4">4</option>
+                      <option value="6">6</option>
+                      <option value="8" selected>8</option>
+                      <option value="12">12</option>
+                    </select>
+                  </div>
+                  <!-- End Select -->
+
+                  <span class="text-secondary me-2">of</span>
+
+                  <!-- Pagination Quantity -->
+                  <span id="datatableWithPaginationInfoTotalQty"></span>
                 </div>
-                <!-- End Select -->
-
-                <span class="text-secondary me-2">of</span>
-
-                <!-- Pagination Quantity -->
-                <span id="datatableWithPaginationInfoTotalQty"></span>
               </div>
-            </div>
-            <!-- End Col -->
+              <!-- End Col -->
 
-            <div class="col-sm-auto">
-              <div class="d-flex justify-content-center justify-content-sm-end">
-                <!-- Pagination -->
-                <nav id="datatablePagination" aria-label="Activity pagination"></nav>
+              <div class="col-sm-auto">
+                <div class="d-flex justify-content-center justify-content-sm-end">
+                  <!-- Pagination -->
+                  <nav id="datatablePagination" aria-label="Activity pagination"></nav>
+                </div>
               </div>
+              <!-- End Col -->
             </div>
-            <!-- End Col -->
+            <!-- End Row -->
           </div>
-          <!-- End Row -->
+          <!-- End Footer -->
         </div>
-        <!-- End Footer -->
-      </div>
         <!-- End Table -->
-        </div>
+      </div>
       <!-- End Card -->
-    </div>
-    <!-- End Content -->
+      </div>
+      <!-- End Content -->
 
-    <!-- Footer -->
+      <!-- Footer -->
 
-  
-        <!-- End Col -->
+
+      <!-- End Col -->
       </div>
       <!-- End Row -->
-    </div>
+      </div>
 
-    <!-- End Footer -->
-  </main>
-  <div class="modal fade" id="shareWithPeopleModal" tabindex="-1" aria-labelledby="shareWithPeopleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+      <!-- End Footer -->
+    </main>
+    <div class="modal fade" id="shareWithPeopleModal" tabindex="-1" aria-labelledby="shareWithPeopleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="shareWithPeopleModalLabel">Create New Team</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+          <div class="modal-header">
+            <h5 class="modal-title" id="shareWithPeopleModalLabel">Create New Team</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
 
-            <div class="modal-body">
-                <form id="createTeamForm">
-                    <div class="mb-4">
-                        <div class="input-group mb-2 mb-sm-0">
-                            <input type="text" class="form-control" name="team_name" placeholder="Team Name" required>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <div class="input-group mb-2 mb-sm-0">
-                            <textarea class="form-control" name="team_description" placeholder="Team Description" rows="3"></textarea>
-                        </div>
-                    </div>
+          <div class="modal-body">
+            <form id="createTeamForm">
+              <!-- Team Name -->
+              <div class="mb-4">
+                <div class="input-group mb-2 mb-sm-0">
+                  <input type="text" class="form-control" name="team_name" placeholder="Team Name" required>
+                </div>
+              </div>
 
-                    <div class="mb-4">
-                        <label class="form-label">Search and Add Team Members</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="userSearch" 
-                                   placeholder="Type to search for users..."
-                                   autocomplete="off">
-                        </div>
+              <!-- Team Description -->
+              <div class="mb-4">
+                <div class="input-group mb-2 mb-sm-0">
+                  <textarea class="form-control" name="team_description" placeholder="Team Description" rows="3"></textarea>
+                </div>
+              </div>
 
-                        <!-- Search Results -->
-                        <div id="searchResults" class="border rounded mt-2" style="max-height: 200px; overflow-y: auto; display: none;">
-                            <!-- Search results will appear here -->
-                        </div>
-                    </div>
+              <!-- Team Creator Role -->
+              <div class="mb-4">
+                <label class="form-label">What is the role of the member?</label>
+                <div class="input-group mb-2 mb-sm-0">
+                <input type="text" class="form-control" name="role" placeholder="Viewer" required readonly>
+                </div>
+              </div>
 
-                    <!-- Selected Users -->
-                    <div class="mt-3">
-                        <label class="form-label">Selected Team Members</label>
-                        <div id="selectedUsers" class="border rounded p-2" style="min-height: 100px;">
-                            <!-- Selected users will appear here -->
-                        </div>
-                    </div>
+              <!-- Created At -->
+              <div class="mb-4">
+                <label class="form-label">Created At</label>
+                <input type="text" class="form-control" id="createdAt" name="created_at" readonly>
+              </div>
 
-                    <button type="submit" class="btn btn-primary w-100" id="createTeamButton">Create Team</button>
-                </form>
-            </div>
+              <!-- Search and Add Members -->
+              <div class="mb-4">
+                <label class="form-label">Search and Add Team Members</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="userSearch"
+                    placeholder="Type to search for users..."
+                    autocomplete="off">
+                </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
+                <!-- Search Results -->
+                <div id="searchResults" class="border rounded mt-2" style="max-height: 200px; overflow-y: auto; display: none;">
+                  <!-- Search results will appear here -->
+                </div>
+              </div>
+
+              <!-- Selected Users -->
+              <div class="mt-3">
+                <label class="form-label">Selected Team Members</label>
+                <div id="selectedUsers" class="border rounded p-2" style="min-height: 100px;">
+                  <!-- Selected users will appear here -->
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary w-100" id="createTeamButton">Create Team</button>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const selectedUsers = new Map();
-    let searchTimeout = null;
+    <script>
+      // Auto-generate the created_at timestamp
+      document.getElementById('shareWithPeopleModal').addEventListener('show.bs.modal', () => {
+        const createdAtField = document.getElementById('createdAt');
+        const now = new Date();
+        createdAtField.value = now.toISOString().slice(0, 19).replace('T', ' ');
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const selectedUsers = new Map();
+        let searchTimeout = null;
 
-    // Get DOM elements
-    const userSearch = document.getElementById('userSearch');
-    const searchResults = document.getElementById('searchResults');
-    const selectedUsersContainer = document.getElementById('selectedUsers');
+        // Get DOM elements
+        const userSearch = document.getElementById('userSearch');
+        const searchResults = document.getElementById('searchResults');
+        const selectedUsersContainer = document.getElementById('selectedUsers');
 
-    // Style for search results and selected users
-    const style = document.createElement('style');
-    style.textContent = `
+        // Style for search results and selected users
+        const style = document.createElement('style');
+        style.textContent = `
     .search-result-item {
         padding: 8px 12px;
         cursor: pointer;
-        border-bottom: 1px solidrgb(56, 68, 80);
+        border-bottom: 1px solid rgb(56, 68, 80);
     }
 
     .search-result-item:last-child {
@@ -533,13 +480,13 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     }
 
     .search-result-item:hover {
-        background-color:rgb(48, 52, 56);
+        background-color: rgb(48, 52, 56);
     }
 
     .selected-user-tag {
         display: inline-flex;
         align-items: center;
-        background-color:rgb(65, 71, 77);
+        background-color: rgb(65, 71, 77);
         border-radius: 4px;
         padding: 4px 8px;
         margin: 2px;
@@ -559,70 +506,81 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     }
 `;
 
-    document.head.appendChild(style);
+        document.head.appendChild(style);
 
-    // Handle search input with debounce
-    userSearch.addEventListener('input', () => {
-        clearTimeout(searchTimeout);
-        const query = userSearch.value.trim();
-        
-        if (query.length >= 1) {
+        // Handle search input with debounce
+        userSearch.addEventListener('input', () => {
+          clearTimeout(searchTimeout);
+          const query = userSearch.value.trim();
+
+          if (query.length >= 1) {
+            // Show loading state
+            searchResults.innerHTML = '<div class="p-3 text-center">Searching...</div>';
+            searchResults.style.display = 'block';
+
             searchTimeout = setTimeout(() => {
-                fetch(`search_users.php?query=${query}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('Search results:', data); // Debug log
-                        displaySearchResults(data);
-                    })
-                    .catch(error => {
-                        console.error('Error fetching search results:', error);
-                        searchResults.innerHTML = '<div class="p-3 text-center text-danger">Error searching users</div>';
-                        searchResults.style.display = 'block';
-                    });
-            }, 300); // Debounce delay
-        } else {
+              fetch(`search_users.php?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                  console.log('Search results:', data);
+                  if (userSearch.value.trim().length > 0) { // Only display if search input still has text
+                    displaySearchResults(data);
+                  }
+                })
+                .catch(error => {
+                  console.error('Error fetching search results:', error);
+                  if (userSearch.value.trim().length > 0) { // Only display if search input still has text
+                    searchResults.innerHTML = '<div class="p-3 text-center text-danger">Error searching users</div>';
+                    searchResults.style.display = 'block';
+                  }
+                });
+            }, 300);
+          } else {
             searchResults.style.display = 'none';
-        }
-    });
+          }
+        });
 
-    // Display search results
-    function displaySearchResults(users) {
-        searchResults.innerHTML = '';
-        
-        if (Array.isArray(users) && users.length > 0) {
+        // Display search results
+        function displaySearchResults(users) {
+          searchResults.innerHTML = '';
+
+          if (Array.isArray(users) && users.length > 0) {
+            // Remove the filtering here since the database is already providing different users
             users.forEach(user => {
-                if (!selectedUsers.has(user.user_id)) {
-                    const userItem = document.createElement('div');
-                    userItem.classList.add('search-result-item');
-                    userItem.innerHTML = `
-                        <strong>${user.user_name}</strong><br>
-                        <small class="text-muted">${user.user_email}</small>
-                    `;
-                    userItem.dataset.userId = user.user_id;
-                    userItem.dataset.userName = user.user_name;
-                    userItem.dataset.userEmail = user.user_email;
+              const userItem = document.createElement('div');
+              userItem.classList.add('search-result-item');
+              userItem.innerHTML = `
+                <strong>${user.user_name}</strong><br>
+                <small class="text-muted">${user.user_email}</small>
+            `;
+              userItem.dataset.userId = user.user_id;
+              userItem.dataset.userName = user.user_name;
+              userItem.dataset.userEmail = user.user_email;
 
-                    userItem.addEventListener('click', () => {
-                        addSelectedUser(user.user_id, user.user_name, user.user_email);
-                        userItem.remove();
-                        userSearch.value = ''; // Clear search input
-                        searchResults.style.display = 'none';
-                    });
+              userItem.addEventListener('click', () => {
+                addSelectedUser(user.user_id, user.user_name, user.user_email);
+                searchResults.style.display = 'none';
+                userSearch.value = '';
+                // Focus back on search input for adding more users
+                userSearch.focus();
+              });
 
-                    searchResults.appendChild(userItem);
-                }
+              searchResults.appendChild(userItem);
             });
             searchResults.style.display = 'block';
-        } else {
+          } else {
             searchResults.innerHTML = '<div class="p-3 text-center text-muted">No users found</div>';
             searchResults.style.display = 'block';
+          }
         }
-    }
 
-    // Add selected user
-    function addSelectedUser(userId, userName, userEmail) {
-        if (!selectedUsers.has(userId)) {
-            selectedUsers.set(userId, { name: userName, email: userEmail });
+        // Add selected user
+        function addSelectedUser(userId, userName, userEmail) {
+          if (!selectedUsers.has(userId)) {
+            selectedUsers.set(userId, {
+              name: userName,
+              email: userEmail
+            });
             const userTag = document.createElement('div');
             userTag.classList.add('selected-user-tag');
             userTag.dataset.userId = userId;
@@ -632,137 +590,152 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                 <span class="remove-user">&times;</span>
             `;
 
-            userTag.querySelector('.remove-user').addEventListener('click', () => {
-                selectedUsers.delete(userId);
-                userTag.remove();
+            userTag.querySelector('.remove-user').addEventListener('click', (e) => {
+              e.stopPropagation(); // Prevent event bubbling
+              selectedUsers.delete(userId);
+              userTag.remove();
+
+              // If there's an active search, refresh the results
+              if (userSearch.value.trim().length > 0) {
+                // Trigger the search again to show the removed user
+                userSearch.dispatchEvent(new Event('input'));
+              }
             });
 
             selectedUsersContainer.appendChild(userTag);
+          }
         }
-    }
 
-    // Handle form submission
-    const createTeamForm = document.getElementById('createTeamForm');
-    createTeamForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        if (selectedUsers.size === 0) {
+        // Handle form submission
+        const createTeamForm = document.getElementById('createTeamForm');
+        createTeamForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          if (selectedUsers.size === 0) {
             alert('Please select at least one team member.');
             return;
-        }
+          }
 
-        const selectedUsersArray = Array.from(selectedUsers.entries()).map(([id, data]) => ({
+          const selectedUsersArray = Array.from(selectedUsers.entries()).map(([id, data]) => ({
             id: id,
             name: data.name,
             email: data.email
-        }));
+          }));
 
-        console.log('Selected team members:', selectedUsersArray);
-        alert('Team created successfully!');
-        
-        // Reset form and selections
-        createTeamForm.reset();
-        selectedUsers.clear();
-        selectedUsersContainer.innerHTML = '';
-        searchResults.style.display = 'none';
-    });
+          console.log('Selected team members:', selectedUsersArray);
+          alert('Team created successfully!');
 
-    // Close search results when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!userSearch.contains(e.target) && !searchResults.contains(e.target)) {
+          // Reset form and selections
+          createTeamForm.reset();
+          selectedUsers.clear();
+          selectedUsersContainer.innerHTML = '';
+          searchResults.style.display = 'none';
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!userSearch.contains(e.target) && !searchResults.contains(e.target)) {
             searchResults.style.display = 'none';
-        }
-    });
-});
-</script>
-
-
-  <script src="assets/js/vendor.min.js"></script>
-  <script>
-    $(document).on('ready', function () {
-      // INITIALIZATION OF DATATABLES
-      // =======================================================
-      HSCore.components.HSDatatables.init($('#datatable'), {
-        select: {
-          style: 'multi',
-          selector: 'td:first-child input[type="checkbox"]',
-          classMap: {
-            checkAll: '#datatableCheckAll',
-            counter: '#datatableCounter',
-            counterInfo: '#datatableCounterInfo'
           }
-        },
-        language: {
-          zeroRecords: `<div class="text-center p-4">
+        });
+
+        // Ensure search results show when focusing back on search input
+        userSearch.addEventListener('focus', () => {
+          if (userSearch.value.trim().length > 0) {
+            // Trigger the search again
+            userSearch.dispatchEvent(new Event('input'));
+          }
+        });
+      });
+    </script>
+
+
+    <script src="assets/js/vendor.min.js"></script>
+    <script>
+      $(document).on('ready', function() {
+        // INITIALIZATION OF DATATABLES
+        // =======================================================
+        HSCore.components.HSDatatables.init($('#datatable'), {
+          select: {
+            style: 'multi',
+            selector: 'td:first-child input[type="checkbox"]',
+            classMap: {
+              checkAll: '#datatableCheckAll',
+              counter: '#datatableCounter',
+              counterInfo: '#datatableCounterInfo'
+            }
+          },
+          language: {
+            zeroRecords: `<div class="text-center p-4">
               <img class="mb-3" src="./assets/svg/illustrations/oc-error.svg" alt="Image Description" style="width: 10rem;" data-hs-theme-appearance="default">
               <img class="mb-3" src="./assets/svg/illustrations-light/oc-error.svg" alt="Image Description" style="width: 10rem;" data-hs-theme-appearance="dark">
             <p class="mb-0">No data to show</p>
             </div>`
-        }
-      });
-
-      const datatable = HSCore.components.HSDatatables.getItem(0)
-
-      $('.js-datatable-filter').on('change', function() {
-        var $this = $(this),
-          elVal = $this.val(),
-          targetColumnIndex = $this.data('target-column-index');
-
-        if (elVal === 'null') elVal = ''
-
-        datatable.column(targetColumnIndex).search(elVal).draw();
-      });
-    });
-  </script>
-      <?php
-      if (isset($_POST['update'])) {
-        include_once("create_database.php");
-        // Handle file upload
-        if (isset($_POST['update']) && isset($_FILES['file'])) {
-          $target_dir = "uploads/";
-          $target_file = $target_dir . basename($_FILES["file"]["name"]);
-          if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-            $profile_header = $_FILES["file"]["name"];
-            $updateQuery = "UPDATE users SET profile_header = '$profile_header', profile_header_updated = 1 WHERE user_email = '$email'";
-            $result3 = mysqli_query($conn, $updateQuery);
-          } else {
-            echo "Error uploading file.";
           }
-        }
-        if ($result3) {
-      ?>
-          <div class="alert alert-success alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
-            <strong>Success!</strong> Header Updated.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          <script>
-            setTimeout(function() {
-              window.location = "dashboard.php"; // Redirect after 3 seconds
-            }, 3000);
-          </script>
-        <?php
+        });
+
+        const datatable = HSCore.components.HSDatatables.getItem(0)
+
+        $('.js-datatable-filter').on('change', function() {
+          var $this = $(this),
+            elVal = $this.val(),
+            targetColumnIndex = $this.data('target-column-index');
+
+          if (elVal === 'null') elVal = ''
+
+          datatable.column(targetColumnIndex).search(elVal).draw();
+        });
+      });
+    </script>
+    <?php
+    if (isset($_POST['update'])) {
+      include_once("create_database.php");
+      // Handle file upload
+      if (isset($_POST['update']) && isset($_FILES['file'])) {
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($_FILES["file"]["name"]);
+        if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+          $profile_header = $_FILES["file"]["name"];
+          $updateQuery = "UPDATE users SET profile_header = '$profile_header', profile_header_updated = 1 WHERE user_email = '$email'";
+          $result3 = mysqli_query($conn, $updateQuery);
         } else {
-        ?>
-          <div class="alert alert-danger alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
-            <strong>Error!</strong> Select Image.
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          <script>
-            setTimeout(function() {
-              window.location = "dashboard.php"; // Redirect after 3 seconds
-            }, 3000);
-          </script>
-      <?php
+          echo "Error uploading file.";
         }
       }
-
-      ?>
-    <?php
-    include_once("user_footer.php");
-  } else {
-    header("Location: login_user.php");
-  }
+      if ($result3) {
     ?>
+        <div class="alert alert-success alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
+          <strong>Success!</strong> Header Updated.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <script>
+          setTimeout(function() {
+            window.location = "dashboard.php"; // Redirect after 3 seconds
+          }, 3000);
+        </script>
+      <?php
+      } else {
+      ?>
+        <div class="alert alert-danger alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
+          <strong>Error!</strong> Select Image.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <script>
+          setTimeout(function() {
+            window.location = "dashboard.php"; // Redirect after 3 seconds
+          }, 3000);
+        </script>
+    <?php
+      }
+    }
+
+    ?>
+  <?php
+  include_once("user_footer.php");
+} else {
+  header("Location: login_user.php");
+}
+  ?>
   </body>
 
   </html>
