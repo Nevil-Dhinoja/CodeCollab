@@ -260,7 +260,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <div class="avatar avatar-circle">
       <?php
       // Display the profile image
-      echo "<img id='profileCoverImg' class='avatar-img' for='profileCoverUploader' src='uploads/" . $row['profile_header'] . "' height='60px' width='65px'>";
+      echo "<img id='profileCoverImg' class='avatar-img' for='profileCoverUploader' src='uploads/" . $row['profile'] . "' height='60px' width='65px'>";
       ?>
     </div>
     <div class="ms-3">
