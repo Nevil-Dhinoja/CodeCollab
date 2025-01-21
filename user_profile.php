@@ -7,6 +7,9 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
   $pass = $_SESSION['password'];
   $q = "SELECT * FROM users WHERE user_email = '$user_email'";
   $result = mysqli_query($conn, $q);
+  $q1 = "SELECT * FROM projects";
+  $result01 = mysqli_query($conn,$q1);
+  $total_projects = mysqli_num_rows($result01);
 ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -177,7 +180,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                     <a class="nav-link" href="one_user_team.php?email=<?php echo urlencode($row['user_email']); ?>">Teams</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="one_user_project.php?email=<?php echo urlencode($row['user_email']); ?>">Projects <span class="badge bg-soft-dark text-dark rounded-circle ms-1"></span></a>
+                    <a class="nav-link" href="one_user_project.php?email=<?php echo urlencode($row['user_email']); ?>">Projects<span class="badge bg-soft-dark text-dark rounded-circle ms-1"><?php echo "$total_projects"; ?></span></a>
+
                   </li>
                   <li class="nav-item ms-auto">
                     <div class="d-flex gap-2">

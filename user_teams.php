@@ -167,12 +167,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                 </div>
               </div>
               <!-- End Datatable Info -->
-
-              <!-- Filter Collapse Trigger -->
-              <a class="btn btn-white dropdown-toggle" data-bs-toggle="collapse" href="#filterSearchCollapse" role="button" aria-expanded="false" aria-controls="filterSearchCollapse">
-                <i class="bi-funnel me-1"></i> Filters
-              </a>
-              <!-- End Filter Collapse Trigger -->
             </div>
           </div>
           <!-- End Header -->
@@ -187,7 +181,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                    "columns": [
                       null,
                       null,
-                      { "width": "35%" },
+                      { "width": "50%" },
                       null,
                       null
                     ],
@@ -213,7 +207,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                   <th scope="col" class="table-column-ps-0">Team</th>
                   <th scope="col" style="min-width: 20rem;">Description</th>
                   <th scope="col">Members</th>
-                  <th scope="col"></th>
+                  <th scope="col">Info</th>
                 </tr>
               </thead>
 
@@ -403,7 +397,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
               <div class="mb-4">
                 <label class="form-label">What is the role of the member?</label>
                 <div class="input-group mb-2 mb-sm-0">
-                <input type="text" class="form-control" name="role" placeholder="Viewer" required readonly>
+                  <input type="text" class="form-control" name="role" placeholder="Viewer" required readonly>
                 </div>
               </div>
 
@@ -573,37 +567,61 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
             searchResults.style.display = 'block';
           }
         }
+        function renderSelectedUsers() {
+  // Clear the container
+  selectedUsersContainer.innerHTML = '';
+
+  // Loop through the selectedUsers map and display all users
+  selectedUsers.forEach((user, id) => {
+    const userTag = document.createElement('div');
+    userTag.classList.add('selected-user-tag');
+    userTag.dataset.userId = id;
+    userTag.innerHTML = `
+      <span>${user.name}</span>
+      <small class="text-muted">(${user.email})</small>
+      <span class="remove-user">&times;</span>
+    `;
+
+    // Add click listener to remove the user
+    userTag.querySelector('.remove-user').addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent event bubbling
+      selectedUsers.delete(id); // Remove the user from the map
+      renderSelectedUsers(); // Re-render the selected users
+    });
+
+    selectedUsersContainer.appendChild(userTag);
+  });
+}
 
         // Add selected user
         function addSelectedUser(userId, userName, userEmail) {
-          if (!selectedUsers.has(userId)) {
-            selectedUsers.set(userId, {
-              name: userName,
-              email: userEmail
-            });
+          // Add the user to the map
+          selectedUsers.set(userId, {
+            name: userName,
+            email: userEmail
+          });
+
+          // Clear and re-render the selected users
+          selectedUsersContainer.innerHTML = '';
+          selectedUsers.forEach((user, id) => {
             const userTag = document.createElement('div');
             userTag.classList.add('selected-user-tag');
-            userTag.dataset.userId = userId;
+            userTag.dataset.userId = id;
             userTag.innerHTML = `
-                <span>${userName}</span>
-                <small class="text-muted">(${userEmail})</small>
-                <span class="remove-user">&times;</span>
-            `;
+        <span>${user.name}</span>
+        <small class="text-muted">(${user.email})</small>
+        <span class="remove-user">&times;</span>
+    `;
 
+            // Add click listener to remove the user
             userTag.querySelector('.remove-user').addEventListener('click', (e) => {
               e.stopPropagation(); // Prevent event bubbling
-              selectedUsers.delete(userId);
-              userTag.remove();
-
-              // If there's an active search, refresh the results
-              if (userSearch.value.trim().length > 0) {
-                // Trigger the search again to show the removed user
-                userSearch.dispatchEvent(new Event('input'));
-              }
+              selectedUsers.delete(id); // Remove user from map
+              userTag.remove(); // Remove the user tag from UI
             });
 
             selectedUsersContainer.appendChild(userTag);
-          }
+          });
         }
 
         // Handle form submission
