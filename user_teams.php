@@ -369,7 +369,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
       <!-- End Footer -->
     </main>
-    <div class="modal fade" id="shareWithPeopleModal" tabindex="-1" aria-labelledby="shareWithPeopleModalLabel" aria-hidden="true">
+
+     <div class="modal fade" id="shareWithPeopleModal" tabindex="-1" aria-labelledby="shareWithPeopleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -378,7 +379,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
           </div>
 
           <div class="modal-body">
-            <form id="createTeamForm">
+            <form id="createTeamForm" enctype="multipart/form-data" action="user_teams.php" method="post">
               <!-- Team Name -->
               <div class="mb-4">
                 <div class="input-group mb-2 mb-sm-0">
@@ -389,7 +390,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
               <!-- Team Description -->
               <div class="mb-4">
                 <div class="input-group mb-2 mb-sm-0">
-                  <textarea class="form-control" name="team_description" placeholder="Team Description" rows="3"></textarea>
+                  <textarea class="form-control" name="team_description" placeholder="Team Description" rows="3" required></textarea>
                 </div>
               </div>
 
@@ -429,9 +430,9 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                   <!-- Selected users will appear here -->
                 </div>
               </div>
-
+              <input type="hidden" name="members" id="membersInput">
               <!-- Submit Button -->
-              <button type="submit" class="btn btn-primary w-100" id="createTeamButton">Create Team</button>
+              <button type="submit" class="btn btn-primary w-100" id="createTeamButton" name="add_team">Create Team</button>
             </form>
           </div>
 
@@ -622,34 +623,9 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
             selectedUsersContainer.appendChild(userTag);
           });
+          document.getElementById('membersInput').value = JSON.stringify(Array.from(selectedUsers.values()).map(user => user.email));
         }
-
-        // Handle form submission
-        const createTeamForm = document.getElementById('createTeamForm');
-        createTeamForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-
-          if (selectedUsers.size === 0) {
-            alert('Please select at least one team member.');
-            return;
-          }
-
-          const selectedUsersArray = Array.from(selectedUsers.entries()).map(([id, data]) => ({
-            id: id,
-            name: data.name,
-            email: data.email
-          }));
-
-          console.log('Selected team members:', selectedUsersArray);
-          alert('Team created successfully!');
-
-          // Reset form and selections
-          createTeamForm.reset();
-          selectedUsers.clear();
-          selectedUsersContainer.innerHTML = '';
-          searchResults.style.display = 'none';
-        });
-
+    
         // Close search results when clicking outside
         document.addEventListener('click', (e) => {
           if (!userSearch.contains(e.target) && !searchResults.contains(e.target)) {
@@ -706,47 +682,85 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
       });
     </script>
     <?php
-    if (isset($_POST['update'])) {
+    if (isset($_POST['add_team'])) {
       include_once("create_database.php");
-      // Handle file upload
-      if (isset($_POST['update']) && isset($_FILES['file'])) {
-        $target_dir = "uploads/";
-        $target_file = $target_dir . basename($_FILES["file"]["name"]);
-        if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-          $profile_header = $_FILES["file"]["name"];
-          $updateQuery = "UPDATE users SET profile_header = '$profile_header', profile_header_updated = 1 WHERE user_email = '$email'";
-          $result3 = mysqli_query($conn, $updateQuery);
-        } else {
-          echo "Error uploading file.";
-        }
-      }
-      if ($result3) {
+
+      // Retrieve and sanitize form inputs
+      $team_name = mysqli_real_escape_string($conn, $_POST['team_name']);
+      $team_description = mysqli_real_escape_string($conn, $_POST['team_description']);
+      $created_at = date('Y-m-d H:i:s');
+
+      // Validate inputs
+      if (empty($team_name) || empty($team_description)) {
     ?>
-        <div class="alert alert-success alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
-          <strong>Success!</strong> Header Updated.
+        <div class="alert alert-danger alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
+          <strong>Error!</strong> All fields are required.
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         <script>
           setTimeout(function() {
-            window.location = "dashboard.php"; // Redirect after 3 seconds
+            window.location = "user_teams.php";
+          }, 3000);
+        </script>
+      <?php
+        exit;
+      }
+
+      // Insert team data into the teams table
+      $insertQuery = "INSERT INTO teams (team_name, team_description, created_at, updated_at) VALUES ('$team_name', '$team_description', NOW(), NOW())";
+      $result = mysqli_query($conn, $insertQuery);
+
+      if ($result) {
+        $team_id = mysqli_insert_id($conn);
+
+        // Process team members
+        if (!empty($_POST['members'])) {
+          // Decode JSON string of member emails
+          $members = json_decode($_POST['members'], true);
+          $joined_at = date('Y-m-d H:i:s');
+
+          // Insert each member into the team_members table
+          foreach ($members as $user_email) {
+            $safe_email = mysqli_real_escape_string($conn, $user_email);
+            $role = 'Member';
+
+            $memberQuery = "INSERT INTO team_members (team_id, user_email, role, joined_at) VALUES ('$team_id', '$safe_email', '$role', '$joined_at')";
+            $memberResult = mysqli_query($conn, $memberQuery);
+
+            if (!$memberResult) {
+              echo "<div class='alert alert-success alert-dismissible fade show'>Error adding member: " . mysqli_error($conn) . "</div>";
+            }
+          }
+        } else {
+          echo "<div class='alert alert-danger'>Please select at least one member!</div>";
+        }
+
+        // Success message
+      ?>
+        <div class="alert alert-success alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
+          <strong>Success!</strong> Team added successfully.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <script>
+          setTimeout(function() {
+            window.location = "user_teams.php";
           }, 3000);
         </script>
       <?php
       } else {
       ?>
         <div class="alert alert-danger alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
-          <strong>Error!</strong> Select Image.
+          <strong>Error!</strong> Failed to add team. Please try again.
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         <script>
           setTimeout(function() {
-            window.location = "dashboard.php"; // Redirect after 3 seconds
+            window.location = "user_teams.php";
           }, 3000);
         </script>
     <?php
       }
     }
-
     ?>
   <?php
   include_once("user_footer.php");
