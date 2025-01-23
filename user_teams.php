@@ -370,78 +370,82 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
       <!-- End Footer -->
     </main>
 
-     <div class="modal fade" id="shareWithPeopleModal" tabindex="-1" aria-labelledby="shareWithPeopleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="shareWithPeopleModalLabel">Create New Team</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
+    <div class="modal fade" id="shareWithPeopleModal" tabindex="-1" aria-labelledby="shareWithPeopleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="shareWithPeopleModalLabel">Create New Team</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
 
-          <div class="modal-body">
-            <form id="createTeamForm" enctype="multipart/form-data" action="user_teams.php" method="post">
-              <!-- Team Name -->
-              <div class="mb-4">
-                <div class="input-group mb-2 mb-sm-0">
-                  <input type="text" class="form-control" name="team_name" placeholder="Team Name" required>
-                </div>
-              </div>
-
-              <!-- Team Description -->
-              <div class="mb-4">
-                <div class="input-group mb-2 mb-sm-0">
-                  <textarea class="form-control" name="team_description" placeholder="Team Description" rows="3" required></textarea>
-                </div>
-              </div>
-
-              <!-- Team Creator Role -->
-              <div class="mb-4">
-                <label class="form-label">What is the role of the member?</label>
-                <div class="input-group mb-2 mb-sm-0">
-                  <input type="text" class="form-control" name="role" placeholder="Viewer" required readonly>
-                </div>
-              </div>
-
-              <!-- Created At -->
-              <div class="mb-4">
-                <label class="form-label">Created At</label>
-                <input type="text" class="form-control" id="createdAt" name="created_at" readonly>
-              </div>
-
-              <!-- Search and Add Members -->
-              <div class="mb-4">
-                <label class="form-label">Search and Add Team Members</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" id="userSearch"
-                    placeholder="Type to search for users..."
-                    autocomplete="off">
-                </div>
-
-                <!-- Search Results -->
-                <div id="searchResults" class="border rounded mt-2" style="max-height: 200px; overflow-y: auto; display: none;">
-                  <!-- Search results will appear here -->
-                </div>
-              </div>
-
-              <!-- Selected Users -->
-              <div class="mt-3">
-                <label class="form-label">Selected Team Members</label>
-                <div id="selectedUsers" class="border rounded p-2" style="min-height: 100px;">
-                  <!-- Selected users will appear here -->
-                </div>
-              </div>
-              <input type="hidden" name="members" id="membersInput">
-              <!-- Submit Button -->
-              <button type="submit" class="btn btn-primary w-100" id="createTeamButton" name="add_team">Create Team</button>
-            </form>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
+      <div class="modal-body">
+        <!-- Error Messages -->
+        <div id="errorMessages" class="alert alert-danger" style="display: none;">
+          <!-- Errors will be dynamically added here -->
         </div>
+
+        <form id="createTeamForm" enctype="multipart/form-data" action="user_teams.php" method="post">
+          <!-- Team Name -->
+          <div class="mb-4">
+            <div class="input-group mb-2 mb-sm-0">
+              <input type="text" class="form-control" name="team_name" placeholder="Team Name">
+            </div>
+          </div>
+
+          <!-- Team Description -->
+          <div class="mb-4">
+            <div class="input-group mb-2 mb-sm-0">
+              <textarea class="form-control" name="team_description" placeholder="Team Description" rows="3"></textarea>
+            </div>
+          </div>
+
+          <!-- Team Creator Role -->
+          <div class="mb-4">
+            <label class="form-label">What is the role of the member?</label>
+            <div class="input-group mb-2 mb-sm-0">
+              <input type="text" class="form-control" name="role" placeholder="Viewer" readonly>
+            </div>
+          </div>
+
+          <!-- Created At -->
+          <div class="mb-4">
+            <label class="form-label">Created At</label>
+            <input type="text" class="form-control" id="createdAt" name="created_at" readonly>
+          </div>
+
+          <!-- Search and Add Members -->
+          <div class="mb-4">
+            <label class="form-label">Search and Add Team Members</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="userSearch" placeholder="Type to search for users..." autocomplete="off">
+            </div>
+
+            <!-- Search Results -->
+            <div id="searchResults" class="border rounded mt-2" style="max-height: 200px; overflow-y: auto; display: none;">
+              <!-- Search results will appear here -->
+            </div>
+          </div>
+
+          <!-- Selected Users -->
+          <div class="mt-3">
+            <label class="form-label">Selected Team Members</label>
+            <div id="selectedUsers" class="border rounded p-2" style="min-height: 100px;">
+              <!-- Selected users will appear here -->
+            </div>
+          </div>
+          <input type="hidden" name="members" id="membersInput">
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary w-100" id="createTeamButton" name="add_team">Create Team</button>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
+  </div>
+</div>
+
 
     <script>
       // Auto-generate the created_at timestamp
@@ -681,87 +685,81 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
         });
       });
     </script>
-    <?php
-    if (isset($_POST['add_team'])) {
-      include_once("create_database.php");
+ <?php
+if (isset($_POST['add_team'])) {
+    include_once("create_database.php");
 
-      // Retrieve and sanitize form inputs
-      $team_name = mysqli_real_escape_string($conn, $_POST['team_name']);
-      $team_description = mysqli_real_escape_string($conn, $_POST['team_description']);
-      $created_at = date('Y-m-d H:i:s');
+    $team_name = mysqli_real_escape_string($conn, $_POST['team_name']);
+    $team_description = mysqli_real_escape_string($conn, $_POST['team_description']);
+    $members = !empty($_POST['members']) ? json_decode($_POST['members'], true) : [];
 
-      // Validate inputs
-      if (empty($team_name) || empty($team_description)) {
-    ?>
-        <div class="alert alert-danger alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
-          <strong>Error!</strong> All fields are required.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        <script>
-          setTimeout(function() {
-            window.location = "user_teams.php";
-          }, 3000);
-        </script>
-      <?php
-        exit;
-      }
+    $errors = [];
+    $successMessage = "";
 
-      // Insert team data into the teams table
-      $insertQuery = "INSERT INTO teams (team_name, team_description, created_at, updated_at) VALUES ('$team_name', '$team_description', NOW(), NOW())";
-      $result = mysqli_query($conn, $insertQuery);
-
-      if ($result) {
-        $team_id = mysqli_insert_id($conn);
-
-        // Process team members
-        if (!empty($_POST['members'])) {
-          // Decode JSON string of member emails
-          $members = json_decode($_POST['members'], true);
-          $joined_at = date('Y-m-d H:i:s');
-
-          // Insert each member into the team_members table
-          foreach ($members as $user_email) {
-            $safe_email = mysqli_real_escape_string($conn, $user_email);
-            $role = 'Member';
-
-            $memberQuery = "INSERT INTO team_members (team_id, user_email, role, joined_at) VALUES ('$team_id', '$safe_email', '$role', '$joined_at')";
-            $memberResult = mysqli_query($conn, $memberQuery);
-
-            if (!$memberResult) {
-              echo "<div class='alert alert-success alert-dismissible fade show'>Error adding member: " . mysqli_error($conn) . "</div>";
-            }
-          }
-        } else {
-          echo "<div class='alert alert-danger'>Please select at least one member!</div>";
-        }
-
-        // Success message
-      ?>
-        <div class="alert alert-success alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
-          <strong>Success!</strong> Team added successfully.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        <script>
-          setTimeout(function() {
-            window.location = "user_teams.php";
-          }, 3000);
-        </script>
-      <?php
-      } else {
-      ?>
-        <div class="alert alert-danger alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
-          <strong>Error!</strong> Failed to add team. Please try again.
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        <script>
-          setTimeout(function() {
-            window.location = "user_teams.php";
-          }, 3000);
-        </script>
-    <?php
-      }
+    if (empty($team_name)) {
+        $errors[] = "Team name is required.";
     }
-    ?>
+    if (empty($team_description)) {
+        $errors[] = "Team description is required.";
+    }
+    if (empty($members)) {
+        $errors[] = "Please select at least one team member.";
+    }
+
+    if (!empty($errors)) {
+        echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const errorDiv = document.getElementById('errorMessages');
+                errorDiv.style.display = 'block';
+                errorDiv.className = 'alert alert-danger'; // Set style for errors
+                errorDiv.innerHTML = '" . implode("<br>", $errors) . "';
+                const modal = new bootstrap.Modal(document.getElementById('shareWithPeopleModal'));
+                modal.show();
+            });
+        </script>";
+    } else {
+        $insertQuery = "INSERT INTO teams (team_name, team_description, created_at, updated_at) VALUES ('$team_name', '$team_description', NOW(), NOW())";
+        $result = mysqli_query($conn, $insertQuery);
+
+        if ($result) {
+            $team_id = mysqli_insert_id($conn);
+
+            foreach ($members as $user_email) {
+                $safe_email = mysqli_real_escape_string($conn, $user_email);
+                $role = 'Member';
+
+                $memberQuery = "INSERT INTO team_members (team_id, user_email, role, joined_at) VALUES ('$team_id', '$safe_email', 'Member', NOW())";
+                mysqli_query($conn, $memberQuery);
+            }
+
+            $successMessage = "Team created successfully!";
+
+            echo "<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const successDiv = document.getElementById('errorMessages');
+                    successDiv.style.display = 'block';
+                    successDiv.className = 'alert alert-success'; // Set style for success
+                    successDiv.innerHTML = '$successMessage';
+                    const modal = new bootstrap.Modal(document.getElementById('shareWithPeopleModal'));
+                    modal.show();
+                });
+            </script>";
+        } else {
+            echo "<script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const errorDiv = document.getElementById('errorMessages');
+                    errorDiv.style.display = 'block';
+                    errorDiv.className = 'alert alert-danger';
+                    errorDiv.innerHTML = 'Failed to create team. Please try again later.';
+                    const modal = new bootstrap.Modal(document.getElementById('shareWithPeopleModal'));
+                    modal.show();
+                });
+            </script>";
+        }
+    }
+}
+?>
+
   <?php
   include_once("user_footer.php");
 } else {
