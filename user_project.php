@@ -398,7 +398,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                   </div>
                 </td>
                 <td class="table-column-ps-0">
-                  <a class="d-flex align-items-center" href="project.html">
+                  <a class="d-flex align-items-center" href="one_project_overview.php">
                     <img class="avatar" src="assets/svg/brands/guideline-icon.svg" alt="Image Description">
                     <div class="ms-3">
                       <span class="d-block h5 text-inherit mb-0">Cloud computing web service</span>
