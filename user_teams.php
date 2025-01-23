@@ -705,7 +705,14 @@ if (isset($_POST['add_team'])) {
     if (empty($members)) {
         $errors[] = "Please select at least one team member.";
     }
+ if (!empty($team_name)) {
+        $checkQuery = "SELECT team_name FROM teams WHERE team_name = '$team_name'";
+        $checkResult = mysqli_query($conn, $checkQuery);
 
+        if (mysqli_num_rows($checkResult) > 0) {
+            $errors[] = "Team name already exists. Please choose a different name.";
+        }
+    }
     if (!empty($errors)) {
         echo "<script>
             document.addEventListener('DOMContentLoaded', function() {
