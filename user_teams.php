@@ -90,6 +90,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
       $progress_percentage = ($profile_complete / $total_fields) * 100;
     }
     ?>
+  <script src="assets/js/vendor.min.js"></script>
+
     <main id="content" role="main" class="main">
       <!-- Content -->
       <div class="content container-fluid">
@@ -250,9 +252,9 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                       </button>
 
                       <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsDropdown1">
-                        <a class="dropdown-item" href="#">Rename team</a>
+                        <!-- <a class="dropdown-item" href="#">Rename team</a> -->
                         <a class="dropdown-item" href="#">Add to favorites</a>
-                        <a class="dropdown-item" href="#">Archive team</a>
+                        <!-- <a class="dropdown-item" href="#">Archive team</a> -->
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-danger" href="#">Delete</a>
                       </div>
@@ -375,7 +377,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="shareWithPeopleModalLabel">Create New Team</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" action="user_teams.php"></button>
       </div>
 
       <div class="modal-body">
@@ -648,7 +650,10 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     </script>
 
 
-    <script src="assets/js/vendor.min.js"></script>
+<script src="assets/js/vendor.min.js"></script> 
+
+<!-- JS Front -->
+<script src="assets/js/theme.min.js"></script>
     <script>
       $(document).on('ready', function() {
         // INITIALIZATION OF DATATABLES
@@ -741,12 +746,13 @@ if (isset($_POST['add_team'])) {
 
             $successMessage = "Team created successfully!";
 
-            echo "<script>
+            echo "?>
                 document.addEventListener('DOMContentLoaded', function() {
                     const successDiv = document.getElementById('errorMessages');
                     successDiv.style.display = 'block';
                     successDiv.className = 'alert alert-success'; // Set style for success
                     successDiv.innerHTML = '$successMessage';
+                    header('Location: teams.php');
                     const modal = new bootstrap.Modal(document.getElementById('shareWithPeopleModal'));
                     modal.show();
                 });

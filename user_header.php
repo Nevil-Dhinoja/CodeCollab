@@ -145,7 +145,7 @@ $result1 = mysqli_query($conn, $q);  ?>
   <header id="header" class="navbar navbar-expand-lg navbar-fixed navbar-height navbar-container navbar-bordered bg-white">
     <div class="navbar-nav-wrap">
       <!-- Logo -->
-      <a class="navbar-brand" href="dashboard.php" aria-label="CodeColab">
+      <a class="navbar-brand" href="my_pofile.php" aria-label="CodeColab">
         <img class="navbar-brand-logo" src="assets/images/logo (2).svg" alt="Logo" data-hs-theme-appearance="default">
         <img class="navbar-brand-logo" src="assets/images/logo (2).svg" alt="Logo" data-hs-theme-appearance="dark">
         <!-- <img class="navbar-brand-logo-mini" src="assets/svg/logos/logo-short.svg" alt="Logo" data-hs-theme-appearance="default">
@@ -297,7 +297,7 @@ $result1 = mysqli_query($conn, $q);  ?>
               <!-- End Body -->
 
               <!-- Footer -->
-              <a class="card-footer text-center" href="dashboard.php">
+              <a class="card-footer text-center" href="my_profile.php">
                 See all results <i class="bi-chevron-right small"></i>
               </a>
               <!-- End Footer -->
@@ -891,7 +891,7 @@ $result1 = mysqli_query($conn, $q);  ?>
       <div class="navbar-vertical-footer-offset">
         <!-- Logo -->
 
-        <a class="navbar-brand" href="dashboard.php" aria-label="Front">
+        <a class="navbar-brand" href="my_profile.php" aria-label="Front">
           <img class="navbar-brand-logo" src="assets/images/logo.png" alt="Logo" data-hs-theme-appearance="default">
           <img class="navbar-brand-logo" src="assets/images/logo (2).svg" alt="Logo" data-hs-theme-appearance="dark">
           <img class="navbar-brand-logo-mini" src="assets/images/logo-mini.svg" alt="Logo" data-hs-theme-appearance="default">
