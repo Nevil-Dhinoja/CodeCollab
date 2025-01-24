@@ -371,13 +371,18 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
       <!-- End Footer -->
     </main>
-
+    
     <div class="modal fade" id="shareWithPeopleModal" tabindex="-1" aria-labelledby="shareWithPeopleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="shareWithPeopleModalLabel">Create New Team</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" action="user_teams.php"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
 
       <div class="modal-body">
@@ -442,7 +447,12 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          id="closeModalButton"
+        >Close</button>
       </div>
     </div>
   </div>
@@ -458,6 +468,23 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
       });
     </script>
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("shareWithPeopleModal");
+  const form = document.getElementById("createTeamForm");
+
+  modal.addEventListener("hidden.bs.modal", function () {
+    // Clear the form
+    form.reset();
+
+    // Clear error messages and selected users
+    document.getElementById("errorMessages").style.display = "none";
+    document.getElementById("selectedUsers").innerHTML = "";
+    document.getElementById("searchResults").style.display = "none";
+
+    // Redirect to user_teams.php
+    window.location.href = "user_teams.php";
+  });
+});
       document.addEventListener('DOMContentLoaded', () => {
         const selectedUsers = new Map();
         let searchTimeout = null;
@@ -692,84 +719,84 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     </script>
  <?php
 if (isset($_POST['add_team'])) {
-    include_once("create_database.php");
+  include_once("create_database.php");
 
-    $team_name = mysqli_real_escape_string($conn, $_POST['team_name']);
-    $team_description = mysqli_real_escape_string($conn, $_POST['team_description']);
-    $members = !empty($_POST['members']) ? json_decode($_POST['members'], true) : [];
+  $team_name = mysqli_real_escape_string($conn, $_POST['team_name']);
+  $team_description = mysqli_real_escape_string($conn, $_POST['team_description']);
+  $members = !empty($_POST['members']) ? json_decode($_POST['members'], true) : [];
 
-    $errors = [];
-    $successMessage = "";
+  $errors = [];
+  $successMessage = "";
 
-    if (empty($team_name)) {
-        $errors[] = "Team name is required.";
-    }
-    if (empty($team_description)) {
-        $errors[] = "Team description is required.";
-    }
-    if (empty($members)) {
-        $errors[] = "Please select at least one team member.";
-    }
- if (!empty($team_name)) {
-        $checkQuery = "SELECT team_name FROM teams WHERE team_name = '$team_name'";
-        $checkResult = mysqli_query($conn, $checkQuery);
+  if (empty($team_name)) {
+      $errors[] = "Team name is required.";
+  }
+  if (empty($team_description)) {
+      $errors[] = "Team description is required.";
+  }
+  if (empty($members)) {
+      $errors[] = "Please select at least one team member.";
+  }
+if (!empty($team_name)) {
+      $checkQuery = "SELECT team_name FROM teams WHERE team_name = '$team_name'";
+      $checkResult = mysqli_query($conn, $checkQuery);
 
-        if (mysqli_num_rows($checkResult) > 0) {
-            $errors[] = "Team name already exists. Please choose a different name.";
-        }
-    }
-    if (!empty($errors)) {
-        echo "<script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const errorDiv = document.getElementById('errorMessages');
-                errorDiv.style.display = 'block';
-                errorDiv.className = 'alert alert-danger'; // Set style for errors
-                errorDiv.innerHTML = '" . implode("<br>", $errors) . "';
-                const modal = new bootstrap.Modal(document.getElementById('shareWithPeopleModal'));
-                modal.show();
-            });
-        </script>";
-    } else {
-        $insertQuery = "INSERT INTO teams (team_name, team_description, created_at, updated_at) VALUES ('$team_name', '$team_description', NOW(), NOW())";
-        $result = mysqli_query($conn, $insertQuery);
+      if (mysqli_num_rows($checkResult) > 0) {
+          $errors[] = "Team name already exists. Please choose a different name.";
+      }
+  }
+  if (!empty($errors)) {
+      echo "<script>
+          document.addEventListener('DOMContentLoaded', function() {
+              const errorDiv = document.getElementById('errorMessages');
+              errorDiv.style.display = 'block';
+              errorDiv.className = 'alert alert-danger'; // Set style for errors
+              errorDiv.innerHTML = '" . implode("<br>", $errors) . "';
+              const modal = new bootstrap.Modal(document.getElementById('shareWithPeopleModal'));
+              modal.show();
+          });
+      </script>";
+  } else {
+      $insertQuery = "INSERT INTO teams (team_name, team_description, created_at, updated_at) VALUES ('$team_name', '$team_description', NOW(), NOW())";
+      $result = mysqli_query($conn, $insertQuery);
 
-        if ($result) {
-            $team_id = mysqli_insert_id($conn);
+      if ($result) {
+          $team_id = mysqli_insert_id($conn);
 
-            foreach ($members as $user_email) {
-                $safe_email = mysqli_real_escape_string($conn, $user_email);
-                $role = 'Member';
+          foreach ($members as $user_email) {
+              $safe_email = mysqli_real_escape_string($conn, $user_email);
+              $role = 'Member';
 
-                $memberQuery = "INSERT INTO team_members (team_id, user_email, role, joined_at) VALUES ('$team_id', '$safe_email', 'Member', NOW())";
-                mysqli_query($conn, $memberQuery);
-            }
+              $memberQuery = "INSERT INTO team_members (team_id, user_email, role, joined_at) VALUES ('$team_id', '$safe_email', 'Member', NOW())";
+              mysqli_query($conn, $memberQuery);
+          }
 
-            $successMessage = "Team created successfully!";
+          $successMessage = "Team created successfully!";
 
-            echo "?>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const successDiv = document.getElementById('errorMessages');
-                    successDiv.style.display = 'block';
-                    successDiv.className = 'alert alert-success'; // Set style for success
-                    successDiv.innerHTML = '$successMessage';
-                    header('Location: teams.php');
-                    const modal = new bootstrap.Modal(document.getElementById('shareWithPeopleModal'));
-                    modal.show();
-                });
-            </script>";
-        } else {
-            echo "<script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const errorDiv = document.getElementById('errorMessages');
-                    errorDiv.style.display = 'block';
-                    errorDiv.className = 'alert alert-danger';
-                    errorDiv.innerHTML = 'Failed to create team. Please try again later.';
-                    const modal = new bootstrap.Modal(document.getElementById('shareWithPeopleModal'));
-                    modal.show();
-                });
-            </script>";
-        }
-    }
+          echo "<script>
+              document.addEventListener('DOMContentLoaded', function() {
+                  const successDiv = document.getElementById('errorMessages');
+                  successDiv.style.display = 'block';
+                  successDiv.className = 'alert alert-success'; // Set style for success
+                  successDiv.innerHTML = '$successMessage';
+                  header('Location: teams.php');
+                  const modal = new bootstrap.Modal(document.getElementById('shareWithPeopleModal'));
+                  modal.show();
+              });
+          </script>";
+      } else {
+          echo "<script>
+              document.addEventListener('DOMContentLoaded', function() {
+                  const errorDiv = document.getElementById('errorMessages');
+                  errorDiv.style.display = 'block';
+                  errorDiv.className = 'alert alert-danger';
+                  errorDiv.innerHTML = 'Failed to create team. Please try again later.';
+                  const modal = new bootstrap.Modal(document.getElementById('shareWithPeopleModal'));
+                  modal.show();
+              });
+          </script>";
+      }
+  }
 }
 ?>
 
