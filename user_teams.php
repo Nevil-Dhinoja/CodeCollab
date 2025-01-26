@@ -6,6 +6,17 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
   $pass = $_SESSION['password'];
   $q = "SELECT * FROM users WHERE user_email = '$email'";
   $result = mysqli_query($conn, $q);
+  $q1 = "SELECT 
+  t.team_id, 
+  t.team_name, 
+  t.team_description, 
+  GROUP_CONCAT(CONCAT(user_email, '|', role) SEPARATOR ',') AS members
+FROM teams t
+LEFT JOIN team_members tm  ON t.team_id = tm.team_id
+GROUP BY t.team_id
+ORDER BY t.created_at DESC;";
+$result01 = mysqli_query($conn, $q1);
+
 ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -212,104 +223,36 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                   <th scope="col">Info</th>
                 </tr>
               </thead>
-
               <tbody>
-                <tr>
-                  <td class="table-column-pe-0">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="teamDataCheck1">
-                      <label class="form-check-label" for="teamDataCheck1"></label>
+    <?php while ($team = mysqli_fetch_assoc($result01)): ?>
+        <tr>
+            <td class="table-column-pe-0">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="<?= $team['team_id'] ?>">
+                </div>
+            </td>
+            <td><?= htmlspecialchars($team['team_name']) ?></td>
+            <td><?= htmlspecialchars($team['team_description']) ?></td>
+            <td>
+                <?php 
+                $members = explode(',', $team['members']);
+                echo count($members) . " Members";
+                ?>
+            </td>
+            <td>
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-white" data-bs-toggle="dropdown">
+                        <i class="bi-three-dots-vertical"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">View</a>
+                        <a class="dropdown-item" href="#">Edit</a>
                     </div>
-                  </td>
-                  <td class="table-column-ps-0"><a href="#">#digitalmarketing</a></td>
-                  <td>Our group promotes and sells products and services by leveraging online marketing tactics</td>
-                  <td>
-                    <div class="avatar-group avatar-group-xs avatar-circle">
-                      <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Ella Lauda">
-                        <img class="avatar-img" src="assets/img/160x160/img9.jpg" alt="Image Description">
-                      </span>
-                      <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="David Harrison">
-                        <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
-                      </span>
-                      <span class="avatar avatar-soft-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Antony Taylor">
-                        <span class="avatar-initials">A</span>
-                      </span>
-                      <span class="avatar avatar-soft-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Sara Iwens">
-                        <span class="avatar-initials">S</span>
-                      </span>
-                      <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Finch Hoot">
-                        <img class="avatar-img" src="assets/img/160x160/img5.jpg" alt="Image Description">
-                      </span>
-                      <span class="avatar avatar-light avatar-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="Sam Kart, Amanda Harvey and 1 more">
-                        <span class="avatar-initials">+3</span>
-                      </span>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="dropdown">
-                      <button type="button" class="btn btn-white btn-sm" id="teamsDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                        More <i class="bi-chevron-down ms-1"></i>
-                      </button>
-
-                      <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsDropdown1">
-                        <!-- <a class="dropdown-item" href="#">Rename team</a> -->
-                        <a class="dropdown-item" href="#">Add to favorites</a>
-                        <!-- <a class="dropdown-item" href="#">Archive team</a> -->
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger" href="#">Delete</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td class="table-column-pe-0">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="teamDataCheck2">
-                      <label class="form-check-label" for="teamDataCheck2"></label>
-                    </div>
-                  </td>
-                  <td class="table-column-ps-0"><a href="#">#ethereum</a></td>
-                  <td>Focusing on innovative and disruptive business models</td>
-                  <td>
-                    <div class="avatar-group avatar-group-xs avatar-circle">
-                      <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Sam Kart">
-                        <img class="avatar-img" src="assets/img/160x160/img4.jpg" alt="Image Description">
-                      </span>
-                      <span class="avatar avatar-soft-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Teresa Eyker">
-                        <span class="avatar-initials">T</span>
-                      </span>
-                      <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="Amanda Harvey">
-                        <img class="avatar-img" src="assets/img/160x160/img10.jpg" alt="Image Description">
-                      </span>
-                      <span class="avatar" data-bs-toggle="tooltip" data-bs-placement="top" title="David Harrison">
-                        <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
-                      </span>
-                      <span class="avatar avatar-soft-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Olivier L.">
-                        <span class="avatar-initials">O</span>
-                      </span>
-                      <span class="avatar avatar-light avatar-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="Brian Halligan, Rachel Doe and 7 more">
-                        <span class="avatar-initials">+9</span>
-                      </span>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="dropdown">
-                      <button type="button" class="btn btn-white btn-sm" id="teamsDropdown2" data-bs-toggle="dropdown" aria-expanded="false">
-                        More <i class="bi-chevron-down ms-1"></i>
-                      </button>
-
-                      <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsDropdown2">
-                        <a class="dropdown-item" href="#">Rename team</a>
-                        <a class="dropdown-item" href="#">Add to favorites</a>
-                        <a class="dropdown-item" href="#">Archive team</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger" href="#">Delete</a>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
+                </div>
+            </td>
+        </tr>
+    <?php endwhile; ?>
+</tbody>
             </table>
           </div>
           <!-- End Table -->
