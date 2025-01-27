@@ -9,6 +9,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
   $q1 = "SELECT 
   t.team_id, 
   t.team_name, 
+  t.admin_email, 
   t.team_description, 
   GROUP_CONCAT(CONCAT(user_email, '|', role) SEPARATOR ',') AS members
 FROM teams t
@@ -188,13 +189,13 @@ $result01 = mysqli_query($conn, $q1);
             <table id="datatable" class="table table-borderless table-thead-bordered card-table" data-hs-datatables-options='{
                    "autoWidth": false,
                    "columnDefs": [{
-                      "targets": [0, 4],
+                      "targets": [0, 5],
                       "orderable": false
                     }],
                    "columns": [
                       null,
                       null,
-                      { "width": "50%" },
+                      { "width": "10%" },
                       null,
                       null
                     ],
@@ -219,6 +220,7 @@ $result01 = mysqli_query($conn, $q1);
                   </th>
                   <th scope="col" class="table-column-ps-0">Team</th>
                   <th scope="col" style="min-width: 20rem;">Description</th>
+                  <th scope="col">Admin</th>
                   <th scope="col">Members</th>
                   <th scope="col">Info</th>
                 </tr>
@@ -233,10 +235,11 @@ $result01 = mysqli_query($conn, $q1);
             </td>
             <td><?= htmlspecialchars($team['team_name']) ?></td>
             <td><?= htmlspecialchars($team['team_description']) ?></td>
+            <td><?= htmlspecialchars($team['admin_email']) ?></td>
             <td>
                 <?php 
                 $members = explode(',', $team['members']);
-                echo count($members) . " Members";
+                echo count($members) . "  Members";
                 ?>
             </td>
             <td>
@@ -349,6 +352,12 @@ $result01 = mysqli_query($conn, $q1);
             </div>
           </div>
 
+          <div class="mb-4">
+            <label class="form-label">Admin Email (Creator)</label>
+            <div class="input-group mb-2 mb-sm-0">
+              <input type="email" class="form-control" name="admin_email" value="<?php echo $email; ?>" readonly>
+            </div>
+          </div>
           <!-- Team Creator Role -->
           <div class="mb-4">
             <label class="form-label">What is the role of the member?</label>
@@ -663,7 +672,7 @@ $result01 = mysqli_query($conn, $q1);
  <?php
 if (isset($_POST['add_team'])) {
   include_once("create_database.php");
-
+  $admin_email = $email;
   $team_name = mysqli_real_escape_string($conn, $_POST['team_name']);
   $team_description = mysqli_real_escape_string($conn, $_POST['team_description']);
   $members = !empty($_POST['members']) ? json_decode($_POST['members'], true) : [];
@@ -704,7 +713,7 @@ if (isset($_POST['add_team'])) {
       </script>";
   } else {
       // Insert the team
-      $insertQuery = "INSERT INTO teams (team_name, team_description, created_at, updated_at) VALUES ('$team_name', '$team_description', NOW(), NOW())";
+      $insertQuery = "INSERT INTO teams (team_name, team_description, admin_email, created_at, updated_at) VALUES ('$team_name', '$team_description', '$admin_email', NOW(), NOW())";
       $result = mysqli_query($conn, $insertQuery);
 
       if ($result) {
@@ -714,8 +723,7 @@ if (isset($_POST['add_team'])) {
           foreach ($members as $user_email) {
               $safe_email = mysqli_real_escape_string($conn, $user_email);
               $role = 'Member';
-
-              $memberQuery = "INSERT INTO team_members (team_id, user_email, role, joined_at) VALUES ('$team_id', '$safe_email', 'Member', NOW())";
+              $memberQuery = "INSERT INTO team_members (team_id, user_email, role, joined_at) VALUES ('$team_id', '$safe_email', '$role', NOW())";
               mysqli_query($conn, $memberQuery);
           }
 
