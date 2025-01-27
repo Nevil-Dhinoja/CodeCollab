@@ -204,12 +204,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                       "targets": [0, 4],
                       "orderable": false
                     }],
-                    "columns": [
-                      { "width": "8%" },
-                      { "width": "33%" },
-                      { "width": "25%" },
-                      { "width": "58%" }
-                    ],
+         
                    "order": [],
                    "info": {
                      "totalQty": "#datatableWithPaginationInfoTotalQty"

@@ -9,7 +9,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
   $result = mysqli_query($conn, $q);
   $q1 = "SELECT * FROM projects";
   $result01 = mysqli_query($conn,$q1);
-  $total_projects = mysqli_num_rows($result01);
+  $total_projects = mysqli_num_rows($result01);  $query = "SELECT COUNT(*) AS team_count FROM team_members WHERE user_email = '$email'";
+  $result11 = mysqli_query($conn, $query);
 ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -229,10 +230,30 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                         <li class="pt-4 pb-0"><span class="card-subtitle">Contacts</li>
                         <li><i class="bi-at dropdown-item-icon"></i><?php echo "$row[user_email]" ?></li>
                         <li><i class="bi-phone dropdown-item-icon"></i><?php echo "$row[Mobile_no]";} ?></li>
-
-                        <li class="pt-4 pb-0"><span class="card-subtitle">Teams</span></li>
-                        <li class="fs-6 text-body"><i class="bi-people dropdown-item-icon"></i> You are not a member of any teams</li>
-                        <li class="fs-6 text-body"><i class="bi-stickies dropdown-item-icon"></i> You are not working on any projects</li>
+                        <?php 
+                 $query = "SELECT COUNT(*) AS team_count FROM team_members WHERE user_email = '$email'";
+                 $result = mysqli_query($conn, $query);
+             
+                 if ($result && mysqli_num_rows($result) > 0) {
+                     $row = mysqli_fetch_assoc($result); // Fetch the result
+             
+                     // Ensure the team_count field exists and is valid
+                     if (isset($row['team_count'])) {
+                         $team_count = $row['team_count']; // Extract the team count
+                         $teams_message = $team_count > 0
+                             ? "You are a member of $team_count team" . ($team_count > 1 ? 's' : '') . "."
+                             : "You are not a member of any teams.";
+                     } else {
+                         $teams_message = "No data available for your teams.";
+                     }
+                    }
+                ?>
+                      <li class="pt-4 pb-0"><span class="card-subtitle">Teams</span></li>
+<li class="fs-6 text-body">
+    <i class="bi-people dropdown-item-icon"></i>
+    <?php echo $teams_message; ?>
+</li>
+<li class="fs-6 text-body"><i class="bi-stickies dropdown-item-icon"></i> You are not working on any projects</li>
                       </ul>
                     </div>
                     <!-- End Body -->
