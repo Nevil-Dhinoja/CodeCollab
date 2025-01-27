@@ -284,7 +284,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                   <div class="d-flex align-items-center">
                     <span class="fs-5 me-2"><?php echo "$progress_percentage %"; ?></span>
                     <div class="progress table-progress">
-                      <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100y" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
                 </td>

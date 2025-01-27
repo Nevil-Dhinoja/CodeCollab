@@ -671,6 +671,7 @@ if (isset($_POST['add_team'])) {
   $errors = [];
   $successMessage = "";
 
+  // Validation
   if (empty($team_name)) {
       $errors[] = "Team name is required.";
   }
@@ -680,7 +681,7 @@ if (isset($_POST['add_team'])) {
   if (empty($members)) {
       $errors[] = "Please select at least one team member.";
   }
-if (!empty($team_name)) {
+  if (!empty($team_name)) {
       $checkQuery = "SELECT team_name FROM teams WHERE team_name = '$team_name'";
       $checkResult = mysqli_query($conn, $checkQuery);
 
@@ -688,6 +689,8 @@ if (!empty($team_name)) {
           $errors[] = "Team name already exists. Please choose a different name.";
       }
   }
+
+  // If there are errors
   if (!empty($errors)) {
       echo "<script>
           document.addEventListener('DOMContentLoaded', function() {
@@ -700,12 +703,14 @@ if (!empty($team_name)) {
           });
       </script>";
   } else {
+      // Insert the team
       $insertQuery = "INSERT INTO teams (team_name, team_description, created_at, updated_at) VALUES ('$team_name', '$team_description', NOW(), NOW())";
       $result = mysqli_query($conn, $insertQuery);
 
       if ($result) {
           $team_id = mysqli_insert_id($conn);
 
+          // Insert members
           foreach ($members as $user_email) {
               $safe_email = mysqli_real_escape_string($conn, $user_email);
               $role = 'Member';
@@ -714,17 +719,14 @@ if (!empty($team_name)) {
               mysqli_query($conn, $memberQuery);
           }
 
-          $successMessage = "Team created successfully!";
-
+          // JavaScript redirection
           echo "<script>
               document.addEventListener('DOMContentLoaded', function() {
                   const successDiv = document.getElementById('errorMessages');
                   successDiv.style.display = 'block';
                   successDiv.className = 'alert alert-success'; // Set style for success
-                  successDiv.innerHTML = '$successMessage';
-                  header('Location: teams.php');
-                  const modal = new bootstrap.Modal(document.getElementById('shareWithPeopleModal'));
-                  modal.show();
+                  successDiv.innerHTML = 'Team created successfully!';
+                  window.location.href = 'user_teams.php'; // Redirect to the desired page
               });
           </script>";
       } else {
@@ -741,6 +743,7 @@ if (!empty($team_name)) {
       }
   }
 }
+
 ?>
 
   <?php
