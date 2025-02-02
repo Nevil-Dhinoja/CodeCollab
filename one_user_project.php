@@ -2,14 +2,14 @@
 session_start();
 include_once("create_database.php");
 if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
-  $user_email = urldecode($_GET['email']);
-  $email = $_SESSION['email'];
-  $pass = $_SESSION['password'];
-  $q = "SELECT * FROM users WHERE user_email = '$user_email'";
-  $result = mysqli_query($conn, $q);
-  $q1 = "SELECT * FROM projects";
-  $result01 = mysqli_query($conn,$q1);
-  $total_projects = mysqli_num_rows($result01);
+    $user_email = urldecode($_GET['email']);
+    $email = $_SESSION['email'];
+    $pass = $_SESSION['password'];
+    $q = "SELECT * FROM users WHERE user_email = '$user_email'";
+    $result = mysqli_query($conn, $q);
+    $q1 = "SELECT * FROM projects";
+    $result01 = mysqli_query($conn, $q1);
+    $total_projects = mysqli_num_rows($result01);
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -61,11 +61,11 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <?php include_once("user_header.php") ?>
 
     <body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl   footer-offset">
-    <?php while ($row = mysqli_fetch_array($result)) {
+        <?php while ($row = mysqli_fetch_array($result)) {
         ?>
-        <script src="assets/js/hs.theme-appearance.js"></script>
+            <script src="assets/js/hs.theme-appearance.js"></script>
 
-        <script src="assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
+            <script src="assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
             <main id="content" role="main" class="main">
                 <!-- Content -->
                 <div class="content container-fluid">
@@ -138,7 +138,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                                         <a class="nav-link " href="user_profile.php?email=<?php echo urlencode($row['user_email']); ?>">Profile</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link "  href="one_user_team.php?email=<?php echo urlencode($row['user_email']); }?>">Teams</a>
+                                        <a class="nav-link " href="one_user_team.php?email=<?php echo urlencode($row['user_email']);}?>">Teams</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link active" href="#">Projects <span class="badge bg-soft-dark text-dark rounded-circle ms-1"><?php echo "$total_projects"; ?></span></a>
