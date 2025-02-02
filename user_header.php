@@ -1,11 +1,11 @@
-
-<?php    
+<?php
 include_once("create_database.php");
 $result1 = mysqli_query($conn, $q);  ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <!-- Mirrored from htmlstream.com/front-dashboard/user-profile-my-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 29 Dec 2024 09:38:11 GMT -->
+
 <head>
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">
@@ -30,13 +30,11 @@ $result1 = mysqli_query($conn, $q);  ?>
   <link rel="preload" href="assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
 
   <style data-hs-appearance-onload-styles>
-    *
-    {
+    * {
       transition: unset !important;
     }
 
-    body
-    {
+    body {
       opacity: 0;
     }
   </style>
@@ -44,94 +42,168 @@ $result1 = mysqli_query($conn, $q);  ?>
   <!-- ONLY DEV -->
 
   <style>
-    body
-    {
+    body {
       opacity: 0;
     }
   </style>
   <script>
-            window.hs_config = {"autopath":"@@autopath","deleteLine":"hs-builder:delete","deleteLine:build":"hs-builder:build-delete","deleteLine:dist":"hs-builder:dist-delete","previewMode":false,"startPath":"/index.html","vars":{"themeFont":"https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap","version":"?v=1.0"},"layoutBuilder":{"extend":{"switcherSupport":true},"header":{"layoutMode":"default","containerMode":"container-fluid"},"sidebarLayout":"default"},"themeAppearance":{"layoutSkin":"default","sidebarSkin":"default","styles":{"colors":{"primary":"#377dff","transparent":"transparent","white":"#fff","dark":"132144","gray":{"100":"#f9fafc","900":"#1e2022"}},"font":"Inter"}},"languageDirection":{"lang":"en"},"skipFilesFromBundle":{"dist":["assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","assets/js/demo.js"],"build":["assets/css/theme.css","assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js","assets/js/demo.js","assets/css/theme-dark.html","assets/css/docs.css","assets/vendor/icon-set/style.html","assets/js/hs.theme-appearance.js","assets/js/hs.theme-appearance-charts.js","node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.html","assets/js/demo.js"]},"minifyCSSFiles":["assets/css/theme.css","assets/css/theme-dark.css"],"copyDependencies":{"dist":{"*assets/js/theme-custom.js":""},"build":{"*assets/js/theme-custom.js":"","node_modules/bootstrap-icons/font/*fonts/**":"assets/css"}},"buildFolder":"","replacePathsToCDN":{},"directoryNames":{"src":"./src","dist":"./dist","build":"./build"},"fileNames":{"dist":{"js":"theme.min.js","css":"theme.min.css"},"build":{"css":"theme.min.css","js":"theme.min.js","vendorCSS":"vendor.min.css","vendorJS":"vendor.min.js"}},"fileTypes":"jpg|png|svg|mp4|webm|ogv|json"}
-            window.hs_config.gulpRGBA = (p1) => {
-  const options = p1.split(',')
-  const hex = options[0].toString()
-  const transparent = options[1].toString()
-
-  var c;
-  if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
-    c= hex.substring(1).split('');
-    if(c.length== 3){
-      c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+    window.hs_config = {
+      "autopath": "@@autopath",
+      "deleteLine": "hs-builder:delete",
+      "deleteLine:build": "hs-builder:build-delete",
+      "deleteLine:dist": "hs-builder:dist-delete",
+      "previewMode": false,
+      "startPath": "/index.html",
+      "vars": {
+        "themeFont": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap",
+        "version": "?v=1.0"
+      },
+      "layoutBuilder": {
+        "extend": {
+          "switcherSupport": true
+        },
+        "header": {
+          "layoutMode": "default",
+          "containerMode": "container-fluid"
+        },
+        "sidebarLayout": "default"
+      },
+      "themeAppearance": {
+        "layoutSkin": "default",
+        "sidebarSkin": "default",
+        "styles": {
+          "colors": {
+            "primary": "#377dff",
+            "transparent": "transparent",
+            "white": "#fff",
+            "dark": "132144",
+            "gray": {
+              "100": "#f9fafc",
+              "900": "#1e2022"
+            }
+          },
+          "font": "Inter"
+        }
+      },
+      "languageDirection": {
+        "lang": "en"
+      },
+      "skipFilesFromBundle": {
+        "dist": ["assets/js/hs.theme-appearance.js", "assets/js/hs.theme-appearance-charts.js", "assets/js/demo.js"],
+        "build": ["assets/css/theme.css", "assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js", "assets/js/demo.js", "assets/css/theme-dark.html", "assets/css/docs.css", "assets/vendor/icon-set/style.html", "assets/js/hs.theme-appearance.js", "assets/js/hs.theme-appearance-charts.js", "node_modules/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.html", "assets/js/demo.js"]
+      },
+      "minifyCSSFiles": ["assets/css/theme.css", "assets/css/theme-dark.css"],
+      "copyDependencies": {
+        "dist": {
+          "*assets/js/theme-custom.js": ""
+        },
+        "build": {
+          "*assets/js/theme-custom.js": "",
+          "node_modules/bootstrap-icons/font/*fonts/**": "assets/css"
+        }
+      },
+      "buildFolder": "",
+      "replacePathsToCDN": {},
+      "directoryNames": {
+        "src": "./src",
+        "dist": "./dist",
+        "build": "./build"
+      },
+      "fileNames": {
+        "dist": {
+          "js": "theme.min.js",
+          "css": "theme.min.css"
+        },
+        "build": {
+          "css": "theme.min.css",
+          "js": "theme.min.js",
+          "vendorCSS": "vendor.min.css",
+          "vendorJS": "vendor.min.js"
+        }
+      },
+      "fileTypes": "jpg|png|svg|mp4|webm|ogv|json"
     }
-    c= '0x'+c.join('');
-    return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',' + transparent + ')';
-  }
-  throw new Error('Bad Hex');
-}
-            window.hs_config.gulpDarken = (p1) => {
-  const options = p1.split(',')
+    window.hs_config.gulpRGBA = (p1) => {
+      const options = p1.split(',')
+      const hex = options[0].toString()
+      const transparent = options[1].toString()
 
-  let col = options[0].toString()
-  let amt = -parseInt(options[1])
-  var usePound = false
+      var c;
+      if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
+        c = hex.substring(1).split('');
+        if (c.length == 3) {
+          c = [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c = '0x' + c.join('');
+        return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + transparent + ')';
+      }
+      throw new Error('Bad Hex');
+    }
+    window.hs_config.gulpDarken = (p1) => {
+      const options = p1.split(',')
 
-  if (col[0] == "#") {
-    col = col.slice(1)
-    usePound = true
-  }
-  var num = parseInt(col, 16)
-  var r = (num >> 16) + amt
-  if (r > 255) {
-    r = 255
-  } else if (r < 0) {
-    r = 0
-  }
-  var b = ((num >> 8) & 0x00FF) + amt
-  if (b > 255) {
-    b = 255
-  } else if (b < 0) {
-    b = 0
-  }
-  var g = (num & 0x0000FF) + amt
-  if (g > 255) {
-    g = 255
-  } else if (g < 0) {
-    g = 0
-  }
-  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
-}
-            window.hs_config.gulpLighten = (p1) => {
-  const options = p1.split(',')
+      let col = options[0].toString()
+      let amt = -parseInt(options[1])
+      var usePound = false
 
-  let col = options[0].toString()
-  let amt = parseInt(options[1])
-  var usePound = false
+      if (col[0] == "#") {
+        col = col.slice(1)
+        usePound = true
+      }
+      var num = parseInt(col, 16)
+      var r = (num >> 16) + amt
+      if (r > 255) {
+        r = 255
+      } else if (r < 0) {
+        r = 0
+      }
+      var b = ((num >> 8) & 0x00FF) + amt
+      if (b > 255) {
+        b = 255
+      } else if (b < 0) {
+        b = 0
+      }
+      var g = (num & 0x0000FF) + amt
+      if (g > 255) {
+        g = 255
+      } else if (g < 0) {
+        g = 0
+      }
+      return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+    }
+    window.hs_config.gulpLighten = (p1) => {
+      const options = p1.split(',')
 
-  if (col[0] == "#") {
-    col = col.slice(1)
-    usePound = true
-  }
-  var num = parseInt(col, 16)
-  var r = (num >> 16) + amt
-  if (r > 255) {
-    r = 255
-  } else if (r < 0) {
-    r = 0
-  }
-  var b = ((num >> 8) & 0x00FF) + amt
-  if (b > 255) {
-    b = 255
-  } else if (b < 0) {
-    b = 0
-  }
-  var g = (num & 0x0000FF) + amt
-  if (g > 255) {
-    g = 255
-  } else if (g < 0) {
-    g = 0
-  }
-  return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
-}
-            </script>
+      let col = options[0].toString()
+      let amt = parseInt(options[1])
+      var usePound = false
+
+      if (col[0] == "#") {
+        col = col.slice(1)
+        usePound = true
+      }
+      var num = parseInt(col, 16)
+      var r = (num >> 16) + amt
+      if (r > 255) {
+        r = 255
+      } else if (r < 0) {
+        r = 0
+      }
+      var b = ((num >> 8) & 0x00FF) + amt
+      if (b > 255) {
+        b = 255
+      } else if (b < 0) {
+        b = 0
+      }
+      var g = (num & 0x0000FF) + amt
+      if (g > 255) {
+        g = 255
+      } else if (g < 0) {
+        g = 0
+      }
+      return (usePound ? "#" : "") + (g | (b << 8) | (r << 16)).toString(16)
+    }
+  </script>
 </head>
 
 <body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl   footer-offset">
@@ -857,24 +929,24 @@ $result1 = mysqli_query($conn, $q);  ?>
                   </div>
 
 
-                <div class="dropdown-divider"></div>
+                  <div class="dropdown-divider"></div>
 
-                <a class="dropdown-item" href="#">Profile &amp; account</a>
-                <a class="dropdown-item" href="#">Settings</a>
+                  <a class="dropdown-item" href="#">Profile &amp; account</a>
+                  <a class="dropdown-item" href="#">Settings</a>
 
-                <div class="dropdown-divider"></div>
+                  <div class="dropdown-divider"></div>
 
-                <div class="dropdown-divider"></div>
+                  <div class="dropdown-divider"></div>
 
-                <a class="dropdown-item" href="#">Manage teams</a>
+                  <a class="dropdown-item" href="#">Manage teams</a>
 
-                <div class="dropdown-divider"></div>
+                  <div class="dropdown-divider"></div>
 
-                <a class="dropdown-item" href="logout.php">Sign out</a>
+                  <a class="dropdown-item" href="logout.php">Sign out</a>
+                </div>
               </div>
-            </div>
-            <!-- End Account -->
-          </li>
+              <!-- End Account -->
+            </li>
         </ul>
         <!-- End Navbar -->
       </div>
@@ -919,7 +991,7 @@ $result1 = mysqli_query($conn, $q);  ?>
               </a>
 
               <div id="navbarVerticalMenuDashboards" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenu">
-              <a class="nav-link " href="my_profile.php">My Profile</a>
+                <a class="nav-link " href="my_profile.php">My Profile</a>
                 <a class="nav-link " href="my_teams.php">My Teams</a>
                 <a class="nav-link " href="my_projects.php">My Projects</a>
               </div>
@@ -936,11 +1008,11 @@ $result1 = mysqli_query($conn, $q);  ?>
             <div id="navbarVerticalMenuPagesMenu">
               <!-- Collapse -->
               <div class="nav-item">
-              <a class="nav-link " href="users.php" data-placement="left">
-              <i class="bi-person nav-icon"></i>
-                <span class="nav-link-title">Users</span>
-              </a>
-            </div>
+                <a class="nav-link " href="users.php" data-placement="left">
+                  <i class="bi-person nav-icon"></i>
+                  <span class="nav-link-title">Users</span>
+                </a>
+              </div>
               <!-- End Collapse -->
 
               <!-- Collapse -->
@@ -954,178 +1026,190 @@ $result1 = mysqli_query($conn, $q);  ?>
               <!-- End Collapse -->
 
               <div class="nav-item">
-                    <!-- Collapse -->
-                    <div class="nav-item">
-                      <a class="nav-link " href="change_pass.php" role="button">
-                      <i class="bi-archive  nav-icon"></i>
-                      <span class="nav-link-title">Change Password</span>
-                      </a>
-                    </div>
-                    <!-- End Collapse -->
-            </div>
-              <!-- Collapse -->
-              </div>
-              <!-- End Collapse -->
-
-              <!-- Collapse -->
-              <div class="nav-item">
-                <a class="nav-link " href="user_project.php" role="button">
-                  <i class="bi-briefcase nav-icon"></i>
-                  <span class="nav-link-title">Public Projects</span>
-                </a>
-              </div>
-              <!-- End Collapse -->
-              <div class="nav-item">
-                <a class="nav-link dropdown-toggle " href="#navbarVerticalMenuPagesAccountMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesAccountMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesAccountMenu">
-                  <i class="bi-shield-lock nav-icon"></i>
-                  <span class="nav-link-title">Account</span>
-                </a>
-
-                <div id="navbarVerticalMenuPagesAccountMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
-                  <a class="nav-link " href="account_settings.php">Settings</a>
-                  <a class="nav-link " href="account_bill.php">Billing</a>
+                <!-- Collapse -->
+                <div class="nav-item">
+                  <a class="nav-link " href="change_pass.php" role="button">
+                    <i class="bi-archive  nav-icon"></i>
+                    <span class="nav-link-title">Change Password</span>
+                  </a>
                 </div>
+                <!-- End Collapse -->
+              </div>
               <!-- Collapse -->
-              
+            </div>
             <!-- End Collapse -->
 
-            <span class="dropdown-header mt-4">Project Files</span>
-            <small class="bi-three-dots nav-subtitle-replacer"></small>
-
+            <!-- Collapse -->
             <div class="nav-item">
-              <a class="nav-link " href="project_file_manager.php" data-placement="left">
-                <i class="bi-folder2-open nav-icon"></i>
-                <span class="nav-link-title">File Manager</span>
+              <a class="nav-link " href="user_project.php" role="button">
+                <i class="bi-stickies nav-icon"></i>
+                <span class="nav-link-title">Public Projects</span>
               </a>
             </div>
-
-            <span class="dropdown-header mt-4">Documentation</span>
-            <small class="bi-three-dots nav-subtitle-replacer"></small>
+            <!-- End Collapse -->
 
             <div class="nav-item">
-              <a class="nav-link " href="documentation.php" data-placement="left">
-                <i class="bi-book nav-icon"></i>
-                <span class="nav-link-title">Documentation <span class="badge bg-primary rounded-pill ms-1">v0.1</span></span>
+              <a class="nav-link dropdown-toggle " href="#navbarVerticalMenuPagesProjectsMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesProjectsMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesProjectsMenu">
+                <i class="bi-briefcase nav-icon"></i>
+                <span class="nav-link-title">Project</span>
               </a>
+
+              <div id="navbarVerticalMenuPagesProjectsMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
+                <a class="nav-link " href="one_project_overview.php">Overview</a>
+              </div>
             </div>
 
             <div class="nav-item">
-              <a class="nav-link " href="components.php" data-placement="left">
-                <i class="bi-layers nav-icon"></i>
-                <span class="nav-link-title">Components</span>
+              <a class="nav-link dropdown-toggle " href="#navbarVerticalMenuPagesAccountMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesAccountMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesAccountMenu">
+                <i class="bi-shield-lock nav-icon"></i>
+                <span class="nav-link-title">Account</span>
               </a>
+
+              <div id="navbarVerticalMenuPagesAccountMenu" class="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
+                <a class="nav-link " href="account_settings.php">Settings</a>
+                <a class="nav-link " href="account_bill.php">Billing</a>
+              </div>
+              <!-- Collapse -->
+
+              <!-- End Collapse -->
+
+              <span class="dropdown-header mt-4">apps</span>
+              <small class="bi-three-dots nav-subtitle-replacer"></small>
+
+              <div class="nav-item">
+                <a class="nav-link " href="project_file_manager.php" data-placement="left">
+                  <i class="bi-folder2-open nav-icon"></i>
+                  <span class="nav-link-title">File Manager</span>
+                </a>
+              </div>
+
+              <span class="dropdown-header mt-4">Documentation</span>
+              <small class="bi-three-dots nav-subtitle-replacer"></small>
+
+              <div class="nav-item">
+                <a class="nav-link " href="documentation.php" data-placement="left">
+                  <i class="bi-book nav-icon"></i>
+                  <span class="nav-link-title">Documentation <span class="badge bg-primary rounded-pill ms-1">v0.1</span></span>
+                </a>
+              </div>
+
+              <div class="nav-item">
+                <a class="nav-link " href="components.php" data-placement="left">
+                  <i class="bi-layers nav-icon"></i>
+                  <span class="nav-link-title">Components</span>
+                </a>
+              </div>
             </div>
+
           </div>
+          <!-- End Content -->
 
+          <!-- Footer -->
+          <div class="navbar-vertical-footer">
+            <ul class="navbar-vertical-footer-list">
+              <li class="navbar-vertical-footer-list-item">
+                <!-- Style Switcher -->
+                <div class="dropdown dropup">
+                  <button type="button" class="btn btn-ghost-secondary btn-icon rounded-circle" id="selectThemeDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
+
+                  </button>
+
+                  <div class="dropdown-menu navbar-dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="selectThemeDropdown">
+                    <a class="dropdown-item" href="#" data-icon="bi-moon-stars" data-value="auto">
+                      <i class="bi-moon-stars me-2"></i>
+                      <span class="text-truncate" title="Auto (system default)">Auto (system default)</span>
+                    </a>
+                    <a class="dropdown-item" href="#" data-icon="bi-brightness-high" data-value="default">
+                      <i class="bi-brightness-high me-2"></i>
+                      <span class="text-truncate" title="Default (light mode)">Default (light mode)</span>
+                    </a>
+                    <a class="dropdown-item active" href="#" data-icon="bi-moon" data-value="dark">
+                      <i class="bi-moon me-2"></i>
+                      <span class="text-truncate" title="Dark">Dark</span>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- End Style Switcher -->
+              </li>
+
+              <li class="navbar-vertical-footer-list-item">
+                <!-- Other Links -->
+                <div class="dropdown dropup">
+                  <button type="button" class="btn btn-ghost-secondary btn-icon rounded-circle" id="otherLinksDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
+                    <i class="bi-info-circle"></i>
+                  </button>
+
+                  <div class="dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="otherLinksDropdown">
+                    <span class="dropdown-header">Help</span>
+                    <a class="dropdown-item" href="#">
+                      <i class="bi-journals dropdown-item-icon"></i>
+                      <span class="text-truncate" title="Resources &amp; tutorials">Resources &amp; tutorials</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <i class="bi-command dropdown-item-icon"></i>
+                      <span class="text-truncate" title="Keyboard shortcuts">Keyboard shortcuts</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <i class="bi-alt dropdown-item-icon"></i>
+                      <span class="text-truncate" title="Connect other apps">Connect other apps</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <i class="bi-gift dropdown-item-icon"></i>
+                      <span class="text-truncate" title="What's new?">What's new?</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <span class="dropdown-header">Contacts</span>
+                    <a class="dropdown-item" href="#">
+                      <i class="bi-chat-left-dots dropdown-item-icon"></i>
+                      <span class="text-truncate" title="Contact support">Contact support</span>
+                    </a>
+                  </div>
+                </div>
+                <!-- End Other Links -->
+              </li>
+
+              <li class="navbar-vertical-footer-list-item">
+                <!-- Language -->
+                <div class="dropdown dropup">
+                  <button type="button" class="btn btn-ghost-secondary btn-icon rounded-circle" id="selectLanguageDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
+                    <img class="avatar avatar-xss avatar-circle" src="assets/vendor/flag-icon-css/flags/1x1/in.svg" alt="Indian">
+                  </button>
+
+                  <div class="dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="selectLanguageDropdown">
+                    <span class="dropdown-header">Select language</span>
+                    <a class="dropdown-item" href="#">
+                      <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/us.svg" alt="Flag">
+                      <span class="text-truncate" title="English">English (US)</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/gb.svg" alt="Flag">
+                      <span class="text-truncate" title="English">English (UK)</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/de.svg" alt="Flag">
+                      <span class="text-truncate" title="Deutsch">Deutsch</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/dk.svg" alt="Flag">
+                      <span class="text-truncate" title="Dansk">Dansk</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/it.svg" alt="Flag">
+                      <span class="text-truncate" title="Italiano">Italiano</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/cn.svg" alt="Flag">
+                      <span class="text-truncate" title="中文 (繁體)">中文 (繁體)</span>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- End Language -->
+              </li>
+            </ul>
+          </div>
+          <!-- End Footer -->
         </div>
-        <!-- End Content -->
-
-        <!-- Footer -->
-        <div class="navbar-vertical-footer">
-          <ul class="navbar-vertical-footer-list">
-            <li class="navbar-vertical-footer-list-item">
-              <!-- Style Switcher -->
-              <div class="dropdown dropup">
-                <button type="button" class="btn btn-ghost-secondary btn-icon rounded-circle" id="selectThemeDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
-
-                </button>
-
-                <div class="dropdown-menu navbar-dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="selectThemeDropdown">
-                  <a class="dropdown-item" href="#" data-icon="bi-moon-stars" data-value="auto">
-                    <i class="bi-moon-stars me-2"></i>
-                    <span class="text-truncate" title="Auto (system default)">Auto (system default)</span>
-                  </a>
-                  <a class="dropdown-item" href="#" data-icon="bi-brightness-high" data-value="default">
-                    <i class="bi-brightness-high me-2"></i>
-                    <span class="text-truncate" title="Default (light mode)">Default (light mode)</span>
-                  </a>
-                  <a class="dropdown-item active" href="#" data-icon="bi-moon" data-value="dark">
-                    <i class="bi-moon me-2"></i>
-                    <span class="text-truncate" title="Dark">Dark</span>
-                  </a>
-                </div>
-              </div>
-
-              <!-- End Style Switcher -->
-            </li>
-
-            <li class="navbar-vertical-footer-list-item">
-              <!-- Other Links -->
-              <div class="dropdown dropup">
-                <button type="button" class="btn btn-ghost-secondary btn-icon rounded-circle" id="otherLinksDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
-                  <i class="bi-info-circle"></i>
-                </button>
-
-                <div class="dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="otherLinksDropdown">
-                  <span class="dropdown-header">Help</span>
-                  <a class="dropdown-item" href="#">
-                    <i class="bi-journals dropdown-item-icon"></i>
-                    <span class="text-truncate" title="Resources &amp; tutorials">Resources &amp; tutorials</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="bi-command dropdown-item-icon"></i>
-                    <span class="text-truncate" title="Keyboard shortcuts">Keyboard shortcuts</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="bi-alt dropdown-item-icon"></i>
-                    <span class="text-truncate" title="Connect other apps">Connect other apps</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="bi-gift dropdown-item-icon"></i>
-                    <span class="text-truncate" title="What's new?">What's new?</span>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <span class="dropdown-header">Contacts</span>
-                  <a class="dropdown-item" href="#">
-                    <i class="bi-chat-left-dots dropdown-item-icon"></i>
-                    <span class="text-truncate" title="Contact support">Contact support</span>
-                  </a>
-                </div>
-              </div>
-              <!-- End Other Links -->
-            </li>
-
-            <li class="navbar-vertical-footer-list-item">
-              <!-- Language -->
-              <div class="dropdown dropup">
-                <button type="button" class="btn btn-ghost-secondary btn-icon rounded-circle" id="selectLanguageDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-dropdown-animation>
-                  <img class="avatar avatar-xss avatar-circle" src="assets/vendor/flag-icon-css/flags/1x1/in.svg" alt="Indian">
-                </button>
-
-                <div class="dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="selectLanguageDropdown">
-                  <span class="dropdown-header">Select language</span>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/us.svg" alt="Flag">
-                    <span class="text-truncate" title="English">English (US)</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/gb.svg" alt="Flag">
-                    <span class="text-truncate" title="English">English (UK)</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/de.svg" alt="Flag">
-                    <span class="text-truncate" title="Deutsch">Deutsch</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/dk.svg" alt="Flag">
-                    <span class="text-truncate" title="Dansk">Dansk</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/it.svg" alt="Flag">
-                    <span class="text-truncate" title="Italiano">Italiano</span>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <img class="avatar avatar-xss avatar-circle me-2" src="assets/vendor/flag-icon-css/flags/1x1/cn.svg" alt="Flag">
-                    <span class="text-truncate" title="中文 (繁體)">中文 (繁體)</span>
-                  </a>
-                </div>
-              </div>
-
-              <!-- End Language -->
-            </li>
-          </ul>
-        </div>
-        <!-- End Footer -->
       </div>
-    </div>
   </aside>
