@@ -82,7 +82,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                                     </label>
                                     <!-- Custom File Cover -->
                                     <div class="profile-cover-content profile-cover-uploader p-3">
-                                        <form method="post" enctype="multipart/form-data">
+                                        <!-- <form method="post" enctype="multipart/form-data">
                                             <input type="file" class="js-file-attach profile-cover-uploader-input" id="profileCoverUplaoder" name="file" data-hs-file-attach-options='{
                             "textTarget": "#profileCoverImg",
                             "mode": "image",
@@ -93,7 +93,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                                                 <i class="bi-camera-fill"></i>
                                                 <span class="d-none d-sm-inline-block ms-1" name="update" type="submit">Update Header</span>
                                             </Button>
-                                        </form>
+                                        </form> -->
                                     </div>
                                     <!-- End Custom File Cover -->
                                 </div>
@@ -106,7 +106,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                                     <?php
                                     echo "<img id='editAvatarImgModal' class='avatar-img' src='uploads/" . $row['profile'] . "' height='60px' width='65px'style='border-radius:100%'>";
                                     ?>
-                                    <input type="file" class="js-file-attach avatar-uploader-input" id="editAvatarUploaderModal" name="profile" data-hs-file-attach-options='{
+                                    <!-- <input type="file" class="js-file-attach avatar-uploader-input" id="editAvatarUploaderModal" name="profile" data-hs-file-attach-options='{
                           "textTarget": "#editAvatarImgModal",
                           "mode": "image",
                           "targetAttr": "src",
@@ -115,7 +115,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
                                     <span class="avatar-uploader-trigger">
                                         <i class="bi-pencil-fill avatar-uploader-icon shadow-sm"></i>
-                                    </span>
+                                    </span> -->
                                 </label>
                                 <!-- End Avatar -->
 

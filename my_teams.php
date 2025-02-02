@@ -473,7 +473,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
           </div>
           <script>
             setTimeout(function() {
-              window.location = "dashboard.php"; // Redirect after 3 seconds
+              window.location = "my_teams.php"; // Redirect after 3 seconds
             }, 3000);
           </script>
         <?php
@@ -485,7 +485,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
           </div>
           <script>
             setTimeout(function() {
-              window.location = "dashboard.php"; // Redirect after 3 seconds
+              window.location = "my_teams.php"; // Redirect after 3 seconds
             }, 3000);
           </script>
       <?php

@@ -7,7 +7,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     $q = "SELECT * FROM users WHERE user_email = '$email'";
     $result = mysqli_query($conn, $q);
     $q1 = "SELECT * FROM projects";
-    $result01 = mysqli_query($conn,$q1);
+    $result01 = mysqli_query($conn, $q1);
     $total_projects = mysqli_num_rows($result01);
 ?>
     <!DOCTYPE html>
@@ -61,7 +61,10 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
     <body class="has-navbar-vertical-aside navbar-vertical-aside-show-xl   footer-offset">
 
+
         <script src="assets/js/hs.theme-appearance.js"></script>
+
+        <script src="assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
 
         <script src="assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
         <?php while ($row = mysqli_fetch_array($result)) {
@@ -142,7 +145,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                                         <a class="nav-link " href="my_teams.php">Teams</a>
                                     </li>
                                     <li class="nav-item">
-                                    <a class="nav-link active" href="my_projects.php">Projects <span class="badge bg-soft-dark text-dark rounded-circle ms-1"><?php echo "$total_projects"; ?></span></a>
+                                        <a class="nav-link active" href="my_projects.php">Projects <span class="badge bg-soft-dark text-dark rounded-circle ms-1"><?php echo "$total_projects"; ?></span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -368,6 +371,49 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
 
                 <!-- End Footer -->
             </main>
+            <?php
+            if (isset($_POST['update'])) {
+                include_once("create_database.php");
+                // Handle file upload
+                if (isset($_POST['update']) && isset($_FILES['file'])) {
+                    $target_dir = "uploads/";
+                    $target_file = $target_dir . basename($_FILES["file"]["name"]);
+                    if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+                        $profile_header = $_FILES["file"]["name"];
+                        $updateQuery = "UPDATE users SET profile_header = '$profile_header', profile_header_updated = 1 WHERE user_email = '$email'";
+                        $result3 = mysqli_query($conn, $updateQuery);
+                    } else {
+                        echo "Error uploading file.";
+                    }
+                }
+                if ($result3) {
+            ?>
+                    <div class="alert alert-success alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
+                        <strong>Success!</strong> Header Updated.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            window.location = "my_projects.php"; // Redirect after 3 seconds
+                        }, 3000);
+                    </script>
+                <?php
+                } else {
+                ?>
+                    <div class="alert alert-danger alert-dismissible fade show" id="alertmsg" style="position: fixed; top: 20px; right: 20px; z-index: 9999; width: 300px;">
+                        <strong>Error!</strong> Select Image.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            window.location = "my_projects.php"; // Redirect after 3 seconds
+                        }, 3000);
+                    </script>
+            <?php
+                }
+            }
+
+            ?>
         <?php
         include_once("user_footer.php");
     } else {
