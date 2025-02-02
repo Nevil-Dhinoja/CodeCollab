@@ -9,6 +9,9 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
   $q1 = "SELECT * FROM projects";
   $result01 = mysqli_query($conn,$q1);
   $total_projects = mysqli_num_rows($result01);
+  $q2 = "SELECT * FROM teams WHERE admin_email = '$email'";
+  $result20 = mysqli_query($conn, $q2);
+  $total_teams = mysqli_num_rows($result20);
 ?>
   <!DOCTYPE html>
   <html lang="en">
@@ -208,7 +211,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
               </div>
               <div class="row align-items-center mb-5">
             <div class="col">
-              <h3 class="mb-0">7 teams</h3>
+              <h3 class="mb-0"><?php echo $total_teams; ?> Teams</h3>
             </div>
             <!-- End Col -->
 
@@ -231,7 +234,9 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
             <!-- End Col -->
           </div>
           <!-- End Row -->
+          <?php while ($row = mysqli_fetch_array($result20)) { ?>
 
+          <?php } ?>
           <!-- Tab Content -->
           <div class="tab-content" id="profileTeamsTabContent">
             <div class="tab-pane fade show active" id="grid" role="tabpanel" aria-labelledby="grid-tab">
@@ -249,7 +254,6 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                           </h4>
                         </div>
                         <!-- End Col -->
-
                         <div class="col-3 text-end">
                           <!-- Dropdown -->
                           <div class="dropdowm">
@@ -278,42 +282,12 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                     <!-- Footer -->
                     <div class="card-footer border-0 pt-0">
                       <div class="list-group list-group-flush list-group-no-gutters">
-                        <!-- List Item -->
-                        <div class="list-group-item">
-                          <div class="row align-items-center">
-                            <div class="col">
-                              <span class="card-subtitle">Industry:</span>
-                            </div>
-                            <!-- End Col -->
-
-                            <div class="col-auto">
-                              <a class="badge bg-soft-primary text-primary p-2" href="#">Marketing team</a>
-                            </div>
-                            <!-- End Col -->
-                          </div>
-                        </div>
+                        <!-- List Item -->                 
                         <!-- End List Item -->
 
                         <!-- List Item -->
                         <div class="list-group-item">
-                          <div class="row align-items-center">
-                            <div class="col">
-                              <span class="card-subtitle">Rated:</span>
-                            </div>
                             <!-- End Col -->
-
-                            <div class="col-auto">
-                              <!-- Stars -->
-                              <div class="d-flex gap-1">
-                                <img src="assets/svg/illustrations/star.svg" alt="Review rating" width="14">
-                                <img src="assets/svg/illustrations/star.svg" alt="Review rating" width="14">
-                                <img src="assets/svg/illustrations/star.svg" alt="Review rating" width="14">
-                                <img src="assets/svg/illustrations/star.svg" alt="Review rating" width="14">
-                                <img src="assets/svg/illustrations/star-half.svg" alt="Review rating" width="14" data-hs-theme-appearance="default">
-                                <img src="assets/svg/illustrations-light/star-half.svg" alt="Review rating" width="14" data-hs-theme-appearance="dark">
-                              </div>
-                              <!-- End Stars -->
-                            </div>
                             <!-- End Col -->
                           </div>
                         </div>
