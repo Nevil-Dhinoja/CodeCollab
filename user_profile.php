@@ -231,7 +231,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                         <li><i class="bi-at dropdown-item-icon"></i><?php echo "$row[user_email]" ?></li>
                         <li><i class="bi-phone dropdown-item-icon"></i><?php echo "$row[Mobile_no]";} ?></li>
                         <?php 
-                 $query = "SELECT COUNT(*) AS team_count FROM team_members WHERE user_email = '$email'";
+                 $query = "SELECT COUNT(*) AS team_count FROM team_members WHERE user_email = '$user_email'";
                  $result = mysqli_query($conn, $query);
              
                  if ($result && mysqli_num_rows($result) > 0) {
