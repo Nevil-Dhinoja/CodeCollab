@@ -7,7 +7,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
   $q = "SELECT * FROM users WHERE user_email = '$email'";
   $result = mysqli_query($conn, $q);
   $q1 = "SELECT * FROM projects";
-  $result01 = mysqli_query($conn,$q1);
+  $result01 = mysqli_query($conn, $q1);
   $total_projects = mysqli_num_rows($result01);
   $q2 = "SELECT * FROM teams WHERE admin_email = '$email'";
   $result20 = mysqli_query($conn, $q2);
@@ -177,7 +177,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                 <ul class="list-inline list-px-2">
                   <li class="list-inline-item">
                     <i class="bi-envelope me-1"></i>
-                    <span><?php echo "$row[user_email]"; } ?></span>
+                    <span><?php echo "$row[user_email]";
+                        } ?></span>
                   </li>
                   <!-- End List -->
               </div>
@@ -205,63 +206,195 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                     <a class="nav-link active disabled" href="user_teams.php">Teams</a>
                   </li>
                   <li class="nav-item">
-                  <a class="nav-link" href="my_projects.php">Projects <span class="badge bg-soft-dark text-dark rounded-circle ms-1"><?php echo "$total_projects"; ?></span></a>
+                    <a class="nav-link" href="my_projects.php">Projects <span class="badge bg-soft-dark text-dark rounded-circle ms-1"><?php echo "$total_projects"; ?></span></a>
                   </li>
                 </ul>
               </div>
               <div class="row align-items-center mb-5">
-            <div class="col">
-              <h3 class="mb-0"><?php echo $total_teams; ?> Teams</h3>
-            </div>
-            <!-- End Col -->
+                <div class="col">
+                  <h3 class="mb-0"><?php echo $total_teams; ?> Teams</h3>
+                </div>
+                <!-- End Col -->
 
-            <div class="col-auto">
-              <!-- Nav -->
-              <ul class="nav nav-segment" id="profileTeamsTab" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" id="grid-tab" data-bs-toggle="tab" href="#grid" role="tab" aria-controls="grid" aria-selected="true" title="Column view">
-                    <i class="bi-grid"></i>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="list-tab" data-bs-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false" title="List view">
-                    <i class="bi-view-list"></i>
-                  </a>
-                </li>
-              </ul>
-              <!-- End Nav -->
-            </div>
-            <!-- End Col -->
-          </div>
-          <!-- End Row -->
-          <?php while ($row = mysqli_fetch_array($result20)) { ?>
+                <div class="col-auto">
+                  <!-- Nav -->
+                  <ul class="nav nav-segment" id="profileTeamsTab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="grid-tab" data-bs-toggle="tab" href="#grid" role="tab" aria-controls="grid" aria-selected="true" title="Column view">
+                        <i class="bi-grid"></i>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="list-tab" data-bs-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="false" title="List view">
+                        <i class="bi-view-list"></i>
+                      </a>
+                    </li>
+                  </ul>
+                  <!-- End Nav -->
+                </div>
+                <!-- End Col -->
+              </div>
+              <!-- End Row -->
+              <!-- Tab Content -->
+              <!-- Tab Content -->
+              <div class="tab-content" id="profileTeamsTabContent">
+                <div class="tab-pane fade show active" id="grid" role="tabpanel" aria-labelledby="grid-tab">
+                  <!-- Teams -->
+                  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
+                    <?php
+                    while ($row = mysqli_fetch_array($result20)) {
+                      $team_id = $row['team_id'];
+                    ?>
+                      <div class="col mb-3 mb-lg-5">
+                        <!-- Card -->
+                        <div class="card h-100">
+                          <!-- Body -->
+                          <div class="card-body pb-0">
+                            <div class="row align-items-center mb-2">
+                              <div class="col-9">
+                                <h4 class="mb-1">
+                                  <a href="#"><?php echo htmlspecialchars($row['team_name']); ?></a>
+                                </h4>
+                              </div>
+                              <!-- End Col -->
+                              <div class="col-3 text-end">
+                                <!-- Dropdown -->
+                                <div class="dropdown">
+                                  <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="teamsDropdown<?php echo $team_id; ?>" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi-three-dots-vertical"></i>
+                                  </button>
 
-          <?php } ?>
-          <!-- Tab Content -->
-          <div class="tab-content" id="profileTeamsTabContent">
-            <div class="tab-pane fade show active" id="grid" role="tabpanel" aria-labelledby="grid-tab">
-              <!-- Teams -->
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
-                <div class="col mb-3 mb-lg-5">
-                  <!-- Card -->
-                  <div class="card h-100">
-                    <!-- Body -->
-                    <div class="card-body pb-0">
-                      <div class="row align-items-center mb-2">
-                        <div class="col-9">
-                          <h4 class="mb-1">
-                            <a href="#">#digitalmarketing</a>
-                          </h4>
+                                  <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsDropdown<?php echo $team_id; ?>">
+                                    <a class="dropdown-item" href="#">Rename team</a>
+                                    <a class="dropdown-item" href="#">Add to favorites</a>
+                                    <a class="dropdown-item" href="#">Archive team</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-danger" href="#">Delete</a>
+                                  </div>
+                                </div>
+                                <!-- End Dropdown -->
+                              </div>
+                              <!-- End Col -->
+                            </div>
+                            <!-- End Row -->
+
+                            <p><?php echo htmlspecialchars($row['team_description']); ?></p>
+                          </div>
+                          <!-- End Body -->
+
+                          <!-- Footer -->
+                          <div class="card-footer border-0 pt-0">
+                            <div class="list-group list-group-flush list-group-no-gutters">
+                              <!-- List Item -->
+                              <div class="list-group-item">
+                                <div class="row align-items-center">
+                                  <div class="col">
+                                    <span class="card-subtitle">Members:</span>
+                                  </div>
+                                  <!-- End Col -->
+
+                                  <div class="col-auto">
+                                    <!-- Avatar Group -->
+                                    <div class="d-flex">
+                                      <?php
+                                      // Fetch members for the current team
+                                      $queryMembers = "SELECT u.user_name, u.profile 
+                                       FROM team_members tm
+                                       JOIN users u ON tm.user_email = u.user_email 
+                                       WHERE tm.team_id = ? 
+                                       LIMIT 5";
+
+                                      // Using prepared statement for security
+                                      $stmt = mysqli_prepare($conn, $queryMembers);
+                                      mysqli_stmt_bind_param($stmt, "i", $team_id);
+                                      mysqli_stmt_execute($stmt);
+                                      $membersResult = mysqli_stmt_get_result($stmt);
+
+                                      while ($member = mysqli_fetch_assoc($membersResult)) {
+                                        $name = $member['user_name'];
+                                        $profileImage = $member['profile'];
+                                        $initials = strtoupper(substr($name, 0, 1));
+                                      ?>
+                                        <?php if (!empty($profileImage)): ?>
+                                          <div class="avatar avatar-xs avatar-circle">
+                                            <img class="avatar-img" src="uploads/<?php echo htmlspecialchars($profileImage); ?>" alt="<?php echo htmlspecialchars($name); ?>">
+                                          </div>
+                                        <?php else: ?>
+                                          <div class="avatar avatar-xs avatar-soft-dark avatar-circle">
+                                            <span class="avatar-initials"><?php echo $initials; ?></span>
+                                          </div>
+                                        <?php endif; ?>
+                                      <?php }
+                                      mysqli_stmt_close($stmt);
+                                      ?>
+
+                                      <?php
+                                      // Get total members count
+                                      $totalMembersQuery = "SELECT COUNT(*) as total FROM team_members WHERE team_id = ?";
+                                      $stmt = mysqli_prepare($conn, $totalMembersQuery);
+                                      mysqli_stmt_bind_param($stmt, "i", $team_id);
+                                      mysqli_stmt_execute($stmt);
+                                      $totalResult = mysqli_stmt_get_result($stmt);
+                                      $totalRow = mysqli_fetch_assoc($totalResult);
+                                      $totalMembers = $totalRow['total'];
+
+                                      if ($totalMembers > 5) {
+                                        $remaining = $totalMembers - 5;
+                                      ?>
+                                        <div class="avatar avatar-xs avatar-light avatar-circle">
+                                          <span class="avatar-initials">+<?php echo $remaining; ?></span>
+                                        </div>
+                                      <?php }
+                                      mysqli_stmt_close($stmt);
+                                      ?>
+                                    </div>
+                                    <!-- End Avatar Group -->
+                                  </div>
+                                  <!-- End Col -->
+                                </div>
+                              </div>
+                              <!-- End List Item -->
+
+                              <!-- Additional team details can be added here -->
+
+                            </div>
+                          </div>
+                          <!-- End Footer -->
                         </div>
-                        <!-- End Col -->
-                        <div class="col-3 text-end">
+                        <!-- End Card -->
+                      </div>
+                    <?php } ?>
+                  </div>
+                  <!-- End Teams -->
+                </div>
+
+                <!-- List View Tab -->
+                <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
+                  <!-- Add list view implementation if needed -->
+                </div>
+              </div>
+              <!-- End Tab Content -->
+
+              <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
+                <div class="row row-cols-1">
+                  <div class="col mb-3">
+                    <!-- Card -->
+                    <div class="card card-body">
+                      <div class="row align-items-md-center">
+                        <div class="col-9 col-md-4 col-lg-3 mb-2 mb-md-0">
+                          <h4><a href="#">#digitalmarketing</a></h4>
+
+                          <a class="badge bg-soft-primary text-primary p-2" href="#">Marketing team</a>
+                        </div>
+
+                        <div class="col-3 col-md-auto order-md-last text-end">
                           <!-- Dropdown -->
-                          <div class="dropdowm">
-                            <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="teamsDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
+                          <div class="dropdown">
+                            <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="teamsListDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
                               <i class="bi-three-dots-vertical"></i>
                             </button>
 
-                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsDropdown1">
+                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsListDropdown1">
                               <a class="dropdown-item" href="#">Rename team</a>
                               <a class="dropdown-item" href="#">Add to favorites</a>
                               <a class="dropdown-item" href="#">Archive team</a>
@@ -272,155 +405,58 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                           <!-- End Dropdown -->
                         </div>
                         <!-- End Col -->
+
+                        <div class="col-sm mb-2 mb-sm-0">
+                          <p>Our group promotes and sells products and services by leveraging online marketing tactics</p>
+                        </div>
+                        <!-- End Col -->
+
+                        <div class="col-sm-auto">
+                          <!-- Stars -->
+                          <div class="d-flex gap-1 mb-2">
+                            <img src="assets/svg/illustrations/star.svg" alt="Review rating" width="14">
+                            <img src="assets/svg/illustrations/star.svg" alt="Review rating" width="14">
+                            <img src="assets/svg/illustrations/star.svg" alt="Review rating" width="14">
+                            <img src="assets/svg/illustrations/star.svg" alt="Review rating" width="14">
+                            <img src="assets/svg/illustrations/star-half.svg" alt="Review rating" width="14" data-hs-theme-appearance="default">
+                            <img src="assets/svg/illustrations-light/star-half.svg" alt="Review rating" width="14" data-hs-theme-appearance="dark">
+                          </div>
+                          <!-- End Stars -->
+
+                          <!-- Avatar Group -->
+                          <div class="avatar-group avatar-group-xs avatar-circle">
+                            <span class="avatar" data-toggle="tooltip" data-placement="top" title="Ella Lauda">
+                              <img class="avatar-img" src="assets/img/160x160/img9.jpg" alt="Image Description">
+                            </span>
+                            <span class="avatar" data-toggle="tooltip" data-placement="top" title="David Harrison">
+                              <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
+                            </span>
+                            <span class="avatar avatar-soft-dark" data-toggle="tooltip" data-placement="top" title="Antony Taylor">
+                              <span class="avatar-initials">A</span>
+                            </span>
+                            <span class="avatar avatar-soft-info" data-toggle="tooltip" data-placement="top" title="Sara Iwens">
+                              <span class="avatar-initials">S</span>
+                            </span>
+                            <span class="avatar" data-toggle="tooltip" data-placement="top" title="Finch Hoot">
+                              <img class="avatar-img" src="assets/img/160x160/img5.jpg" alt="Image Description">
+                            </span>
+                            <span class="avatar avatar-light avatar-circle" data-toggle="tooltip" data-placement="top" title="Sam Kart, Amanda Harvey and 1 more">
+                              <span class="avatar-initials">+3</span>
+                            </span>
+                          </div>
+                          <!-- End Avatar Group -->
+                        </div>
+                        <!-- End Col -->
                       </div>
                       <!-- End Row -->
-
-                      <p>Our group promotes and sells products and services by leveraging online marketing tactics</p>
                     </div>
-                    <!-- End Body -->
-
-                    <!-- Footer -->
-                    <div class="card-footer border-0 pt-0">
-                      <div class="list-group list-group-flush list-group-no-gutters">
-                        <!-- List Item -->                 
-                        <!-- End List Item -->
-
-                        <!-- List Item -->
-                        <div class="list-group-item">
-                            <!-- End Col -->
-                            <!-- End Col -->
-                          </div>
-                        </div>
-                        <!-- End List Item -->
-
-                        <!-- List Item -->
-                        <div class="list-group-item">
-                          <div class="row align-items-center">
-                            <div class="col">
-                              <span class="card-subtitle">Members:</span>
-                            </div>
-                            <!-- End Col -->
-
-                            <div class="col-auto">
-                              <!-- Avatar Group -->
-                              <div class="avatar-group avatar-group-xs avatar-circle">
-                                <span class="avatar" data-toggle="tooltip" data-placement="top" title="Ella Lauda">
-                                  <img class="avatar-img" src="assets/img/160x160/img9.jpg" alt="Image Description">
-                                </span>
-                                <span class="avatar" data-toggle="tooltip" data-placement="top" title="David Harrison">
-                                  <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
-                                </span>
-                                <span class="avatar avatar-soft-dark" data-toggle="tooltip" data-placement="top" title="Antony Taylor">
-                                  <span class="avatar-initials">A</span>
-                                </span>
-                                <span class="avatar avatar-soft-info" data-toggle="tooltip" data-placement="top" title="Sara Iwens">
-                                  <span class="avatar-initials">S</span>
-                                </span>
-                                <span class="avatar" data-toggle="tooltip" data-placement="top" title="Finch Hoot">
-                                  <img class="avatar-img" src="assets/img/160x160/img5.jpg" alt="Image Description">
-                                </span>
-                                <span class="avatar avatar-light avatar-circle" data-toggle="tooltip" data-placement="top" title="Sam Kart, Amanda Harvey and 1 more">
-                                  <span class="avatar-initials">+3</span>
-                                </span>
-                              </div>
-                              <!-- End Avatar Group -->
-                            </div>
-                            <!-- End Col -->
-                          </div>
-                        </div>
-                        <!-- End List Item -->
-                      </div>
-                    </div>
-                    <!-- End Footer -->
+                    <!-- End Card -->
                   </div>
-                  <!-- End Card -->
                 </div>
+                <!-- End Row -->
               </div>
-              <!-- End Teams -->
             </div>
-
-            <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="list-tab">
-              <div class="row row-cols-1">
-                <div class="col mb-3">
-                  <!-- Card -->
-                  <div class="card card-body">
-                    <div class="row align-items-md-center">
-                      <div class="col-9 col-md-4 col-lg-3 mb-2 mb-md-0">
-                        <h4><a href="#">#digitalmarketing</a></h4>
-
-                        <a class="badge bg-soft-primary text-primary p-2" href="#">Marketing team</a>
-                      </div>
-
-                      <div class="col-3 col-md-auto order-md-last text-end">
-                        <!-- Dropdown -->
-                        <div class="dropdown">
-                          <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle" id="teamsListDropdown1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi-three-dots-vertical"></i>
-                          </button>
-
-                          <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end" aria-labelledby="teamsListDropdown1">
-                            <a class="dropdown-item" href="#">Rename team</a>
-                            <a class="dropdown-item" href="#">Add to favorites</a>
-                            <a class="dropdown-item" href="#">Archive team</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item text-danger" href="#">Delete</a>
-                          </div>
-                        </div>
-                        <!-- End Dropdown -->
-                      </div>
-                      <!-- End Col -->
-
-                      <div class="col-sm mb-2 mb-sm-0">
-                        <p>Our group promotes and sells products and services by leveraging online marketing tactics</p>
-                      </div>
-                      <!-- End Col -->
-
-                      <div class="col-sm-auto">
-                        <!-- Stars -->
-                        <div class="d-flex gap-1 mb-2">
-                          <img src="assets/svg/illustrations/star.svg" alt="Review rating" width="14">
-                          <img src="assets/svg/illustrations/star.svg" alt="Review rating" width="14">
-                          <img src="assets/svg/illustrations/star.svg" alt="Review rating" width="14">
-                          <img src="assets/svg/illustrations/star.svg" alt="Review rating" width="14">
-                          <img src="assets/svg/illustrations/star-half.svg" alt="Review rating" width="14" data-hs-theme-appearance="default">
-                          <img src="assets/svg/illustrations-light/star-half.svg" alt="Review rating" width="14" data-hs-theme-appearance="dark">
-                        </div>
-                        <!-- End Stars -->
-
-                        <!-- Avatar Group -->
-                        <div class="avatar-group avatar-group-xs avatar-circle">
-                          <span class="avatar" data-toggle="tooltip" data-placement="top" title="Ella Lauda">
-                            <img class="avatar-img" src="assets/img/160x160/img9.jpg" alt="Image Description">
-                          </span>
-                          <span class="avatar" data-toggle="tooltip" data-placement="top" title="David Harrison">
-                            <img class="avatar-img" src="assets/img/160x160/img3.jpg" alt="Image Description">
-                          </span>
-                          <span class="avatar avatar-soft-dark" data-toggle="tooltip" data-placement="top" title="Antony Taylor">
-                            <span class="avatar-initials">A</span>
-                          </span>
-                          <span class="avatar avatar-soft-info" data-toggle="tooltip" data-placement="top" title="Sara Iwens">
-                            <span class="avatar-initials">S</span>
-                          </span>
-                          <span class="avatar" data-toggle="tooltip" data-placement="top" title="Finch Hoot">
-                            <img class="avatar-img" src="assets/img/160x160/img5.jpg" alt="Image Description">
-                          </span>
-                          <span class="avatar avatar-light avatar-circle" data-toggle="tooltip" data-placement="top" title="Sam Kart, Amanda Harvey and 1 more">
-                            <span class="avatar-initials">+3</span>
-                          </span>
-                        </div>
-                        <!-- End Avatar Group -->
-                      </div>
-                      <!-- End Col -->
-                    </div>
-                    <!-- End Row -->
-                  </div>
-                  <!-- End Card -->
-                </div>
-              </div>
-              <!-- End Row -->
-            </div>
-          </div>
-              <!-- End Nav -->
+            <!-- End Nav -->
 
 
       </main>
@@ -474,5 +510,4 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
   }
     ?>
   </body>
-
   </html>
